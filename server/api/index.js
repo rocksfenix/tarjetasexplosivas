@@ -7,7 +7,6 @@ import authFacebook from './auth/auth-facebook'
 import loginOauth from './auth/login-oauth'
 import user from './user/user'
 import recovery from './auth/recovery-password'
-
 import design from './design'
 import photos from './photos'
 import works from './works'
@@ -16,7 +15,7 @@ import coupon from './coupon'
 import paypal from './paypal'
 import texture from './texture'
 import category from './category'
-import invoice from './invoice'
+import invoice from './invoice/invoice-controller'
 import envelope from './envelope'
 
 var csrfProtection = csrf({ cookie: true })
