@@ -312,7 +312,7 @@ class App extends Component {
 
   render () {
     const { modal, work, paymentModal } = this.state
-
+    console.log(this.state.work)
     return (
       <Panel height={this.state.height}>
         <SeoHead title='Diseña tu tarjeta Explosiva' />

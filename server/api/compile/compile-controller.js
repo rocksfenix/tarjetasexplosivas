@@ -49,17 +49,17 @@ export default {
 
       const endPath = path.resolve(__dirname, '../../../', 'uploads', `${work._id}`)
       // 3 - Generar SVG en base a esas imagenes en Base64
-      const { pathSvg1, pathSvg2, pathSvg3 } = await createSVG(endPath, work, img0, img1, img2, img3, img4, img5, envelope)
-      console.log(pathSvg1, pathSvg2)
+      const { pathSvg1, pathSvg2, pathSvg3, pathSvg4 } = await createSVG(endPath, work, img0, img1, img2, img3, img4, img5, envelope)
+      // console.log(pathSvg1, pathSvg2)
 
       // 4 - Generamos los PDFS
-      await createPDFS(work, endPath, pathSvg1, pathSvg2, pathSvg3)
+      await createPDFS(work, endPath, pathSvg1, pathSvg2, pathSvg3, pathSvg4)
 
       // 4 - Creamos el Readme
       await createReadme(endPath, 'INSTRUCCIONES.txt', work, req.decode.sub)
 
       // 5 Eliminamos las imagenes svg temporales
-      await del([ pathSvg1, pathSvg2, pathSvg3 ])
+      await del([ pathSvg1, pathSvg2, pathSvg3, pathSvg4 ])
 
       // 6 - Generamos la carpeta comprimida
       await createZip(endPath, endPath + '.zip')
