@@ -16,6 +16,7 @@ import auth from './midlewares/auth'
 import path from 'path'
 import fs from 'fs'
 import https from 'https'
+import favicon from 'serve-favicon'
 
 mongoose.Promise = global.Promise
 
@@ -47,6 +48,9 @@ mongoose
         server.use(fileUpload({
           limits: { fileSize: 20 * 1024 * 1024 } // 5 MB
         }))
+
+        server.use(favicon(path.join(__dirname, '../', 'static', 'brand', 'favicon.ico')))
+
         // Check jwt headers
         server.use(auth)
         server.use(api)

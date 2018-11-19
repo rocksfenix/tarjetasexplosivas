@@ -13,7 +13,8 @@ const defaultConfig = {
       'https://player.vimeo.com',
       'https://www.google.com/recaptcha/api.js',
       'https://www.gstatic.com',
-      'fast.wistia.com'
+      'fast.wistia.com',
+      'googletagmanager.com'
     ],
     connectSrc: [
       'data:'
@@ -42,7 +43,9 @@ const defaultConfig = {
       'www.gstatic.com',
       'fast.wistia.com',
       'connect.facebook.net',
-      'facebook.com'
+      'facebook.com',
+      'www.googletagmanager.com',
+      'https://www.google-analytics.com'
     ],
     frameSrc: [
       'https://www.google.com/',

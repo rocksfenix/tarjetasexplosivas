@@ -58,7 +58,6 @@ margin: 0.4em 0;
   }
 `
 
-
 const DesignBox = styled.div`
   width: 100vw;
   height: 70px;
@@ -95,6 +94,11 @@ const SelectBox = styled.div`
   width: ${p => p.width || '180px'};
   height: 40px;
   display: block;
+`
+const Input = styled.input`
+border: 1px solid gray;
+padding: 10px;
+border-radius: 5px;
 `
 
 class User extends Component {
@@ -167,22 +171,28 @@ class User extends Component {
     return (
       <DesignBox>
         <Avatar src={avatar || '/static/img/user-default.jpg'} />
-        <Column>
-          <div>{ credits } { cards } { purchaseCredits }</div>
+        <Column width='40px'>
+          <div>{ credits }</div>
+        </Column>
+        <Column width='40px'>
+          <div>{ cards }</div>
+        </Column>
+        <Column width='40px'>
+          <div>{ purchaseCredits }</div>
         </Column>
         <Column>
-          <input type='text' defaultValue={fullname} onChange={this.setTitle} />
+          <Input type='text' defaultValue={fullname} onChange={this.setTitle} />
         </Column>
         <Column>
-          <input type='text' defaultValue={email} onChange={this.setTitle} />
+          <Input type='text' defaultValue={email} onChange={this.setTitle} />
         </Column>
-        <Column width='300px'>
-          <SelectBox width='300px'>
+        <Column width='130px'>
+          <SelectBox>
             <Select isSearchable options={this.props.roles} onChange={this.changeRole} defaultValue={{ label: capitalize(role), value: role }} />
           </SelectBox>
         </Column>
-        <Column width='300px'>
-          <SelectBox width='300px'>
+        <Column width='130px'>
+          <SelectBox>
             <Select isSearchable options={this.props.status} onChange={this.changeStatus} defaultValue={{ label: capitalize(status), value: status }} />
           </SelectBox>
         </Column>
@@ -195,6 +205,41 @@ class User extends Component {
     )
   }
 }
+
+const HeaderTable = () => (
+  <DesignBox>
+    <div>Avatar</div>
+    <Column width='40px'>
+      <div>credits</div>
+    </Column>
+    <Column width='40px'>
+      <div>cards</div>
+    </Column>
+    <Column width='40px'>
+      <div>pCredits</div>
+    </Column>
+    <Column>
+              fullname
+    </Column>
+    <Column>
+              email
+    </Column>
+    <Column width='130px'>
+      <SelectBox>
+                  Role
+      </SelectBox>
+    </Column>
+    <Column width='130px'>
+      <SelectBox>
+                  Status
+      </SelectBox>
+    </Column>
+    <Column>Creado</Column>
+    <Column>
+                Ediar
+    </Column>
+  </DesignBox>
+)
 
 class DesignsDashboad extends Component {
   static async getInitialProps ({ req, res }) {
@@ -318,6 +363,7 @@ class DesignsDashboad extends Component {
         <SearchBox>
           <Search onSeach={this.searchUser} />
         </SearchBox>
+        <HeaderTable />
         <Box id='scrollableUsers'>
           <InfiniteScroll
             dataLength={this.state.users.length}
@@ -331,6 +377,7 @@ class DesignsDashboad extends Component {
               width: '100vw'
             }}
           >
+
             { this.state.users.map(user => (
               <User
                 key={user._id}

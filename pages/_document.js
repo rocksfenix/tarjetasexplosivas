@@ -25,6 +25,9 @@ export default class MyDocument extends Document {
           <script src='https://fast.wistia.com/embed/medias/hcr56y3zbh.jsonp' async />
           <script src='https://fast.wistia.com/assets/external/E-v1.js' async />
           <meta name='csrf-token' content={this.props.csrf} />
+          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+          <script async src='https://www.googletagmanager.com/gtag/js?id=UA-129457225-1' />
+          <script src='/static/js/gtag.js' />
         </Head>
         <body>
           <Main />
