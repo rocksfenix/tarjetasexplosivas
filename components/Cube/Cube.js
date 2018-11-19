@@ -76,12 +76,15 @@ class CubeBlock extends Component {
 
   componentDidMount () {
     if (process.browser) {
-      if (window.innerWidth < 900) {
-        this.size = 170
-        this.sensivityFade = 0.93
-      } else {
-        this.size = 250
-      }
+      // if (window.innerWidth < 1400) {
+      //   this.size = 210
+      // } else if (window.innerWidth < 900) {
+      //   this.size = 170
+      //   this.sensivityFade = 0.93
+      // } else {
+      //   this.size = 250
+      // }
+      this.resize()
       this.transforms = this.getSideTransforms(this.size)
     }
 
@@ -111,11 +114,17 @@ class CubeBlock extends Component {
   }
 
   resize = () => {
-    if (window.innerWidth < 900) {
-      this.size = 170
-    } else {
-      this.size = 250
+    this.size = 250
+    if (window.innerWidth < 1400) {
+      this.size = 210
     }
+
+    if (window.innerWidth < 900) {
+      this.size = 180
+      this.sensivityFade = 0.93
+    }
+
+    this.transforms = this.getSideTransforms(this.size)
   }
 
   mouseDown = (e) => {
