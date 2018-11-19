@@ -3,6 +3,8 @@ import { getCookie, setCookie, removeCookie } from './session'
 import config from '../config'
 
 const HOST = 'https://localhost:3000'
+// const HOST = process.env.HOST || `https://localhost:3000`
+
 // Se inicializan las configuraciones por defecto
 // de axios
 if (process.browser) {
@@ -59,7 +61,7 @@ const getCsrf = () => {
 
 const Auth = {
   async oAuth (hash) {
-    const res = await axios.post(`${HOST}/api/auth/login/oauth/${hash}`)
+    const res = await axios.post(`/api/auth/login/oauth/${hash}`)
     return res.data
   },
 
