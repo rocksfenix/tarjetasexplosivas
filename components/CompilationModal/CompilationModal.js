@@ -142,7 +142,7 @@ export default class extends React.Component {
 
             ? (
               <Information>
-                <Title>Tienes disponibles <strong>{ this.props.user.credits} Creditos</strong></Title>
+                <Title>Tienes disponibles <strong>{ this.props.user.credits} Credito${plural}</strong></Title>
                 <Note>Cuidado! Cada Diseño cuesta 1 Credito y una vez procesado no se pueden hacer modificaciones a tu tarjeta:</Note>
                 <Note>Da un ultimo vistaso a tu tarjeta o procesala si ya es hermosamente perfecta.</Note>
                 <Button bg='#2196F3' onClick={this.onBack}>Revisar Diseño</Button>
