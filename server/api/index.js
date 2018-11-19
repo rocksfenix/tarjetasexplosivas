@@ -93,8 +93,8 @@ api.delete('/api/design/:id', design.delete)
 api.post('/api/design/:id/image', design.upload)
 
 // Invoice
-// api.get('/api/invoices', invoice.getAllSelf)
-// api.get('/api/allinvoices', invoice.getAll)
+api.get('/api/invoices', invoice.getAllSelf)
+api.get('/api/allinvoices', invoice.getAll)
 
 // Letters Envelopes
 api.get('/api/envelopes', envelope.getAll)
