@@ -16,7 +16,7 @@ import coupon from './coupon'
 import paypal from './paypal'
 import texture from './texture'
 import category from './category'
-// import invoice from './invoice'
+import invoice from './invoice'
 import envelope from './envelope'
 
 var csrfProtection = csrf({ cookie: true })
