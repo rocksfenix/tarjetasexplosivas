@@ -1,0 +1,10 @@
+node_modules
+.next
+.env
+server-build
+notes.txt
+TODO
+TODO.todo
+ux
+uploads
+cert

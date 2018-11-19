@@ -1,0 +1,12 @@
+{
+    "presets": [
+        "@babel/env",
+        "@babel/react"
+    ],
+    "plugins": [
+        "@babel/transform-runtime",
+        "@babel/transform-async-to-generator",
+        "@babel/plugin-proposal-class-properties",
+        ["styled-components", { "ssr": true, "displayName": true, "preprocess": false }]
+    ]
+}
