@@ -50,7 +50,7 @@ export default class extends React.Component {
               }
               {
                 this.props.showCredits
-                  ? <Link href='/credits'>{this.props.user.credits} Creditos</Link>
+                  ? <Link href='/credits'>{this.props.user.credits} Credito{this.props.user.credits > 1 ? 's' : ''}</Link>
                   : null
               }
               <Profile {...this.props} />
