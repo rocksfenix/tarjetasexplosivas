@@ -46,7 +46,7 @@ export default class extends Component {
         if (jwtDecode(this.props.token).acpp === 'false') {
           window.location = '/terms'
         } else {
-          window.location = '/works'
+          window.location = '/my-cards'
         }
       }
     }

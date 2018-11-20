@@ -96,10 +96,7 @@ const Panel = styled.div`
   background: radial-gradient(white, #00a1b8);
   background: radial-gradient(white,#7eefff);
   background: radial-gradient(#00a1b8, white);
-
-  @media (max-width: 900px) {
-    overflow-y: auto;
-  }
+  overflow-y: auto;
 `
 
 export default class extends Component {
@@ -109,11 +106,11 @@ export default class extends Component {
     if (user) {
       if (res) {
         res.writeHead(302, {
-          Location: '/works'
+          Location: '/my-cards'
         })
         res.end()
       } else {
-        Router.push('/works')
+        Router.push('/my-cards')
       }
     }
     return {}
@@ -161,7 +158,7 @@ export default class extends Component {
       if (jwtDecode(res.token).acpp === 'false') {
         window.location = '/terms'
       } else {
-        window.location = '/app/new'
+        window.location = '/cube-app/new'
       }
     }
   }
@@ -184,7 +181,14 @@ export default class extends Component {
         <Wrapper>
           <Form>
             <Title>CREAR CUENTA GRATIS</Title>
-            <Subtitle>Con tu email y contraseña:</Subtitle>
+            <Subtitle>Con tus redes sociales:</Subtitle>
+            <Link href='/api/auth/signup/facebook' passHref>
+              <Facebook>Facebook</Facebook>
+            </Link>
+            <Link href='/api/auth/signup/google' passHref>
+              <Google>Google</Google>
+            </Link>
+            <Subtitle>O con tu email y contraseña:</Subtitle>
             <Input
               label='Nombre Completo'
               field='fullname'
@@ -216,14 +220,6 @@ export default class extends Component {
                 ? <Register onClick={this.signup}>Registrar</Register>
                 : null
             }
-
-            <Subtitle>O con tus redes sociales:</Subtitle>
-            <Link href='/api/auth/signup/facebook' passHref>
-              <Facebook>Facebook</Facebook>
-            </Link>
-            <Link href='/api/auth/signup/google' passHref>
-              <Google>Google</Google>
-            </Link>
             <Subtitle>Ya tienes cuenta?
               <Link href='login' passHref>
                 <a> Has Login</a>

@@ -36,11 +36,11 @@ class App extends Component {
     if (!user) {
       if (res) {
         res.writeHead(302, {
-          Location: '/crear-cuenta'
+          Location: '/login'
         })
         res.end()
       } else {
-        Router.push('/crear-cuenta')
+        Router.push('/login')
       }
     }
 

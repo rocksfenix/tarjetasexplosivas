@@ -95,7 +95,7 @@ class Menu extends React.Component {
             ? <Link href='/dashboard'>Dashboard</Link>
             : null
           }
-          <Link href='/works'>Mis Tarjetas</Link>
+          <Link href='/my-cards'>Mis Tarjetas</Link>
           <Link href='/cube-app/new'>Crear Nueva Tarjeta</Link>
           <Link href='/ejemplos'>Ejemplos</Link>
           <Link href='/logout'>Logout</Link>

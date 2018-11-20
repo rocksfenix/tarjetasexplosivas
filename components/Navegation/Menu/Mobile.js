@@ -98,7 +98,7 @@ class MobileComponent extends React.Component {
             ? (
               <Block>
                 { this.props.showCredits ? <Link href='/credits'>{this.props.user.credits} Creditos</Link> : null }
-                <Link href='/works'>Mis Tarjetas</Link>
+                <Link href='/my-cards'>Mis Tarjetas</Link>
                 <Link href='/cube-app/new'>Crear Nueva Tarjeta</Link>
                 <Link href='/account'>Mi Cuenta</Link>
                 <Link href='/ejemplos'>Ejemplos</Link>
