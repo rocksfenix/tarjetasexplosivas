@@ -16,7 +16,6 @@ const defaultConfig = {
       'fast.wistia.com',
       'googletagmanager.com',
       // Tool GDRP
-
       't.sharethis.com'
     ],
     connectSrc: [
