@@ -196,27 +196,27 @@ class texturesDashboad extends Component {
   }
 
   state = {
-    categories: [],
+    albumsDesigns: [],
     skip: false,
     hasMore: false
   }
 
   async componentDidMount () {
-    const { categories, hasMore } = await api.Category.getAll()
-    this.setState({ categories, hasMore })
+    const { albumsDesigns, hasMore } = await api.AlbumDesign.getAll()
+    this.setState({ albumsDesigns, hasMore })
   }
 
   onDrop = async (category, image) => {
     const formData = new window.FormData()
     formData.append('image', image)
-    const res = await api.Category.upload(category._id, formData)
+    const res = await api.AlbumDesign.upload(category._id, formData)
 
     this.setState({
-      categories: this.state.categories.map(category => {
-        if (category._id === res.category._id) {
-          return res.category
+      albumsDesigns: this.state.albumsDesigns.map(albumDesign => {
+        if (albumDesign._id === res.albumDesign._id) {
+          return res.albumDesign
         }
-        return category
+        return albumDesign
       })
     })
   }
@@ -226,42 +226,43 @@ class texturesDashboad extends Component {
   }
 
   createNew = async () => {
-    const res = await api.Category.post({ title: this.state.title })
+    const res = await api.AlbumDesign.post({ title: this.state.title })
     console.log(res)
-    this.setState({ categories: [ res.category, ...this.state.categories ], title: '' })
+    this.setState({ albumsDesigns: [ res.albumDesign, ...this.state.albumsDesigns ], title: '' })
   }
 
-  update = async (category) => {
-    const res = await api.Category.update(category)
+  update = async (albumDesign) => {
+    console.log(albumDesign)
+    const res = await api.AlbumDesign.update(albumDesign)
 
     this.setState({
-      categories: this.state.categories.map(category => {
-        if (category._id === res.category._id) {
-          return res.category
+      albumsDesigns: this.state.albumsDesigns.map(albumDesign => {
+        if (albumDesign._id === res.albumDesign._id) {
+          return res.albumDesign
         }
-        return category
+        return albumDesign
       })
     })
     console.log(res)
   }
 
-  delete = async (category) => {
-    const res = await api.Category.delete(category)
+  delete = async (albumDesign) => {
+    const res = await api.AlbumDesign.delete(albumDesign)
 
     this.setState({
-      categories: this.state.categories.filter(category => category._id !== res.category._id)
+      albumsDesigns: this.state.albumsDesigns.filter(albumDesign => albumDesign._id !== res.albumDesign._id)
     })
     console.log(res)
   }
 
   loadMore = () => {
-    this.setState({ skip: this.state.skip + 15 }, this.fetchCategories)
+    this.setState({ skip: this.state.skip + 15 }, this.fetch)
   }
 
-  fetchCategories = async () => {
-    const res = await api.Category.getAll(this.state.skip)
+  fetch = async () => {
+    const res = await api.AlbumDesign.getAll(this.state.skip)
     this.setState({
-      categories: [ ...this.state.categories, ...res.categories ],
+      albumsDesigns: [ ...this.state.albumsDesigns, ...res.albumsDesigns ],
       hasMore: res.hasMore
     })
   }
@@ -276,7 +277,7 @@ class texturesDashboad extends Component {
         </SearchBox>
         <Box id='scrollableCategories'>
           <InfiniteScroll
-            dataLength={this.state.categories.length}
+            dataLength={this.state.albumsDesigns.length}
             next={this.loadMore}
             hasMore={this.state.hasMore}
             scrollableTarget='scrollableCategories'
@@ -288,7 +289,7 @@ class texturesDashboad extends Component {
             }}
           >
 
-            { this.state.categories.map(category => (
+            { this.state.albumsDesigns.map(category => (
               <Category
                 key={category._id}
                 category={category}

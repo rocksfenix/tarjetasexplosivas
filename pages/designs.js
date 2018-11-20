@@ -231,12 +231,12 @@ class DesignsDashboad extends Component {
 
   async componentDidMount () {
     const { designs, hasMore } = await api.Design.getAll()
-    const { categories } = await api.Category.getAllAdmin()
+    const { albumsDesigns } = await api.AlbumDesign.getAllAdmin()
 
     this.setState({
       designs,
       hasMore,
-      categories: categories.map(c => ({ value: c.title, label: c.title }))
+      albumsDesigns: albumsDesigns.map(c => ({ value: c.title, label: c.title }))
     })
   }
 
@@ -329,7 +329,7 @@ class DesignsDashboad extends Component {
                 onDrop={this.onDrop}
                 onDelete={this.delete}
                 onUpdate={this.update}
-                options={this.state.categories}
+                options={this.state.albumsDesigns}
               />
             ))}
           </InfiniteScroll>

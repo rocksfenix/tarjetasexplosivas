@@ -11,16 +11,16 @@ export default {
 
     let query = {}
 
-    const total = await models.Category
+    const total = await models.AlbumDesign
       .find(query)
       .countDocuments()
 
-    const categories = await models.Category.find(query)
+    const album = await models.AlbumDesign.find(query)
       .sort({ position: 1 })
       .exec()
 
     res.json({
-      categories: categories.map(p => p.toJSON()),
+      albumsDesigns: album.map(p => p.toJSON()),
       total
     })
   },
@@ -40,20 +40,20 @@ export default {
       limit = Number(req.query.limit)
     }
 
-    const total = await models.Category
+    const total = await models.AlbumDesign
       .find(query)
       .countDocuments()
 
-    const categories = await models.Category.find(query)
+    const albums = await models.AlbumDesign.find(query)
       .limit(limit)
       .skip(skip)
       .sort({ position: 1 })
       .exec()
 
     res.json({
-      categories: categories.map(p => p.toJSON()),
+      albumsDesigns: albums.map(p => p.toJSON()),
       total,
-      hasMore: skip + categories.length < total
+      hasMore: skip + albums.length < total
     })
   },
 
@@ -61,72 +61,72 @@ export default {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const category = await models.Category.create({ ...req.body.category, author: req.decode.sub })
+    const album = await models.AlbumDesign.create({ ...req.body.album, author: req.decode.sub })
 
-    res.json({ category: category.toJSON() })
+    res.json({ albumDesign: album.toJSON() })
   },
 
   put: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const category = await models.Category.findById(req.params.id)
+    const album = await models.AlbumDesign.findById(req.params.id)
 
-    if (!category) return next(NotFound());
+    if (!album) return next(NotFound());
 
     [
       'title',
       'position',
       'active'
     ].forEach(key => {
-      if (req.body.category[key]) {
-        category[key] = req.body.category[key]
+      if (req.body.albumDesign[key]) {
+        album[key] = req.body.albumDesign[key]
       }
     })
 
-    await category.save()
+    await album.save()
 
-    res.json({ category: category.toJSON() })
+    res.json({ albumDesign: album.toJSON() })
   },
 
   delete: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const category = await models.Category.findById(req.params.id)
+    const album = await models.AlbumDesign.findById(req.params.id)
 
-    if (!category) return next(NotFound())
+    if (!album) return next(NotFound())
 
-    await category.remove()
+    await album.remove()
 
-    res.json({ category: category.toJSON() })
+    res.json({ albumDesign: album.toJSON() })
   },
 
   upload: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const category = await models.Category.findById(req.params.id)
+    const album = await models.AlbumDesign.findById(req.params.id)
 
-    if (!category) return next(NotFound())
+    if (!album) return next(NotFound())
 
     const { id, ext } = getFileData(req.files.image)
     const Key = `album-designs/${req.decode.sub}/${id}.${ext}`
 
     const baseLocation = await uploadImage(req.files.image, Key, id)
 
-    category.key = baseLocation.key
-    category.location = baseLocation.location
+    album.key = baseLocation.key
+    album.location = baseLocation.location
 
-    await category.save()
+    await album.save()
 
     // Emitir Evento de generacion de Thumbnails
-    thumnailify(baseLocation, category, req.params.id, [
+    thumnailify(baseLocation, album, req.params.id, [
       { size: 260, suffix: 'thumbnail' }
     ])
 
     res.json({
-      category: category.toJSON()
+      albumDesign: album.toJSON()
     })
   }
 }

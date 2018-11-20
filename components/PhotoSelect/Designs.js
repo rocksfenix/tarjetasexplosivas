@@ -38,8 +38,6 @@ const AlbumBox = styled.div`
 const AlbumImage = styled.img`
   width: 100%;
   height: 100%;
-  /* width: ${p => `${p.size}px` || '200px'};
-  height: ${p => `${p.size}px` || '200px'}; */
   background: url('/static/img/default-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -84,19 +82,19 @@ const Text = styled.div`
 class DesignsComponent extends React.Component {
   state = {
     albums: {},
-    categories: [],
-    hasMoreCategories: true,
-    skipCategories: 0,
+    albumsDesigns: [],
+    hasMoreAlbums: true,
+    skipAlbums: 0,
     imageSelected: null
   }
 
   async componentDidMount () {
-    const { categories } = await api.Category.getAll()
+    const { albumsDesigns, hasMore } = await api.AlbumDesign.getAll()
     if (process.browser) {
       window.addEventListener('popstate', this.popstate)
     }
 
-    this.setState({ categories })
+    this.setState({ albumsDesigns, hasMoreAlbums: hasMore })
   }
 
   componentWillUnmount () {
@@ -129,18 +127,18 @@ class DesignsComponent extends React.Component {
 
   // Se ejecuta con cuando hasMore es true
   // y el scroll llega abajo
-  loadMoreCategories = () => {
+  loadMoreAlbums = () => {
     this.setState({
-      skipCategories: this.state.skipCategories + 15
-    }, this.fetchCategories)
+      skipAlbums: this.state.skipAlbums + 15
+    }, this.fetchAlbums)
   }
 
   // Fech a categorias y se agregan al estado
-  fetchCategories = async () => {
-    const res = await api.Category.getAll(this.state.skipCategories)
+  fetchAlbums = async () => {
+    const res = await api.AlbumDesign.getAll(this.state.skipAlbums)
     this.setState({
-      categories: [ ...this.state.categories, ...res.categories ],
-      hasMoreCategories: res.hasMore
+      albumsDesigns: [ ...this.state.albumsDesigns, ...res.albumsDesigns ],
+      hasMoreAlbums: res.hasMore
     })
   }
 
@@ -251,8 +249,9 @@ class DesignsComponent extends React.Component {
   }
 
   render () {
-    const { albumTitle, albums, currentAlbumID, imageSelected, categories, hasMoreCategories, photoSize } = this.state
+    const { albumTitle, albums, currentAlbumID, imageSelected, albumsDesigns, hasMoreAlbums, photoSize } = this.state
     const currentAlbum = albums[currentAlbumID]
+    console.log(albumsDesigns)
     return (
       <GalleryPanel
         onBack={this.onBack}
@@ -291,15 +290,15 @@ class DesignsComponent extends React.Component {
             : (
               <Albums>
                 <InfiniteScroll
-                  dataLength={categories.length}
-                  next={this.loadMoreCategories}
-                  hasMore={hasMoreCategories}
+                  dataLength={albumsDesigns.length}
+                  next={this.loadMoreAlbums}
+                  hasMore={hasMoreAlbums}
                   scrollableTarget='scrollableGallery'
                   style={this.scrollStyle}
                   loader={'loading'}
                 >
-                  { !categories.length ? <Text>Wops! No hay ninguna foto en este album.</Text> : null }
-                  { categories.map(category => (
+                  { !albumsDesigns.length ? <Text>Wops! No hay ninguna foto en este album.</Text> : null }
+                  { albumsDesigns.map(category => (
                     <Album
                       key={category._id}
                       category={category}

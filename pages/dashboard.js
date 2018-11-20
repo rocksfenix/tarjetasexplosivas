@@ -50,7 +50,7 @@ class App extends Component {
         <div>
           <Link href='/users' color='blue'>Usuarios</Link>
           <Link href='/designs' color='blue'>Designs</Link>
-          <Link href='/categories' color='blue'>Categorias</Link>
+          <Link href='/album-designs' color='blue'>Album Designs</Link>
           <Link href='/textures' color='blue'>Textures</Link>
           <Link href='/envelopes' color='blue'>Envelopes</Link>
           <Link href='/config' color='blue'>Config</Link>

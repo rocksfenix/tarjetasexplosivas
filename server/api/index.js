@@ -15,7 +15,7 @@ import compile from './compile'
 import coupon from './coupon'
 import paypal from './paypal'
 import texture from './texture'
-import category from './category'
+import albumnDesign from './album-design'
 import envelope from './envelope'
 
 var csrfProtection = csrf({ cookie: true })
@@ -75,13 +75,13 @@ api.put('/api/texture/:id', texture.put)
 api.post('/api/texture/:id/image', texture.upload)
 api.delete('/api/texture/:id', texture.delete)
 
-// Category
-api.get('/api/allcategories', category.getAllAdmin)
-api.get('/api/categories', category.getAll)
-api.post('/api/category', category.post)
-api.put('/api/category/:id', category.put)
-api.delete('/api/category/:id', category.delete)
-api.post('/api/category/:id/image', category.upload)
+// Album Designs
+api.get('/api/allalbumdesigns', albumnDesign.getAllAdmin)
+api.get('/api/albumdeigns', albumnDesign.getAll)
+api.post('/api/albumdesign', albumnDesign.post)
+api.put('/api/albumdesign/:id', albumnDesign.put)
+api.delete('/api/albumdesign/:id', albumnDesign.delete)
+api.post('/api/albumdesign/:id/image', albumnDesign.upload)
 
 // Designs
 api.get('/api/designs', design.getAll)

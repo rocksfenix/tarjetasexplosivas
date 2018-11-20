@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import shortid from 'shortid'
 
-const CategorySchema = new mongoose.Schema({
+const AlbumDesignSchema = new mongoose.Schema({
   _id: { type: String, 'default': shortid.generate },
   author: { type: String, ref: 'User' },
   title: String,
@@ -16,7 +16,7 @@ const CategorySchema = new mongoose.Schema({
   active: Boolean
 }, { timestamps: true })
 
-CategorySchema.methods.toJSON = function () {
+AlbumDesignSchema.methods.toJSON = function () {
   return {
     _id: this._id,
     key: this.key,
@@ -29,4 +29,4 @@ CategorySchema.methods.toJSON = function () {
   }
 }
 
-export default mongoose.model('Category', CategorySchema)
+export default mongoose.model('AlbumDesign', AlbumDesignSchema)

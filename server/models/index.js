@@ -4,7 +4,7 @@ import Work from './work-model.js'
 import Photo from './photo-model.js'
 import Coupon from './coupon-model'
 import Texture from './texture-model'
-import Category from './category-model'
+import AlbumDesign from './album-design-model'
 import Invoice from './invoice-model'
 import Envelope from './envelope-model'
 
@@ -15,7 +15,7 @@ export default {
   Photo,
   Coupon,
   Texture,
-  Category,
+  AlbumDesign,
   Invoice,
   Envelope
 }

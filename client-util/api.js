@@ -204,36 +204,36 @@ const Texture = {
   }
 }
 
-const Category = {
+const AlbumDesign = {
   // Solo admin
   // retorna todas las categorias sin paginacion ni limite
   async getAllAdmin () {
-    const res = await axios.get(`/api/allcategories`)
+    const res = await axios.get(`/api/allalbumdesigns`)
     return res.data
   },
 
   async getAll (skip = 0) {
-    const res = await axios.get(`/api/categories?skip=${skip}`)
+    const res = await axios.get(`/api/albumdeigns?skip=${skip}`)
     return res.data
   },
 
-  async post (category) {
-    const res = await axios.post(`/api/category`, { category })
+  async post (albumsDesigns) {
+    const res = await axios.post(`/api/albumdesign`, { albumsDesigns })
     return res.data
   },
 
-  async update (category) {
-    const res = await axios.put(`/api/category/${category._id}`, { category })
+  async update (albumDesign) {
+    const res = await axios.put(`/api/albumdesign/${albumDesign._id}`, { albumDesign })
     return res.data
   },
 
-  async delete (category) {
-    const res = await axios.delete(`/api/category/${category._id}`)
+  async delete (albumsDesigns) {
+    const res = await axios.delete(`/api/albumdesign/${albumsDesigns._id}`)
     return res.data
   },
 
   async upload (id, formData) {
-    const res = await axios.post(`/api/category/${id}/image`, formData, {
+    const res = await axios.post(`/api/albumdesign/${id}/image`, formData, {
       headers: {
         'Content-Type': `multipart/form-data`
       }
@@ -333,7 +333,7 @@ export default {
   Work,
   Photo,
   Texture,
-  Category,
+  AlbumDesign,
   Design,
   Envelope,
   Invoice
