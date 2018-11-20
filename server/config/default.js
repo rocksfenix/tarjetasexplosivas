@@ -45,7 +45,8 @@ const defaultConfig = {
       'connect.facebook.net',
       'facebook.com',
       'www.googletagmanager.com',
-      'https://www.google-analytics.com'
+      'https://www.google-analytics.com',
+      'platform-api.sharethis.com'
     ],
     frameSrc: [
       'https://www.google.com/',

@@ -32,6 +32,7 @@ const Section = styled.section`
   font-weight: 300;
   line-height: 1.58;
   padding-bottom: 5em;
+  overflow-y: auto;
 
   @media (max-width: 900px) {
     width: 100%;
@@ -51,6 +52,8 @@ const Present = styled.img`
 
 const Panel = styled.div`
   position: relative;
+  overflow-y: auto;
+  height: 100vh;
 `
 
 export default class extends Component {
@@ -67,8 +70,11 @@ export default class extends Component {
         <Section>
           <Title>POLÍTICA DE PRIVACIDAD</Title>
           <Present src='/static/img/privacy.svg' />
+
+
+          <Title>POLÍTICA DE PRIVACIDAD</Title>
           <Parragraph>
-            El presente Política de Privacidad establece los términos en que TarjetasExplosivas usa
+            El presente Política de Privacidad establece los términos en que TarjetasExplosivas.com usa
             y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web.
             Esta compañía está comprometida con la seguridad de los datos de sus usuarios.
             Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado,
@@ -97,7 +103,7 @@ export default class extends Component {
             Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso
             no autorizado.
           </Parragraph>
-          <H3>Cookies</H3>
+          <H3>¿QUÉ SON LAS COOKIES?</H3>
           <Parragraph>
             Una cookie se refiere a un fichero que es enviado con la finalidad de solicitar permiso para almacenarse en su
             ordenador, al aceptar dicho fichero se crea y la cookie sirve entonces para tener información respecto al
