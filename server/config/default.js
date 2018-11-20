@@ -14,7 +14,10 @@ const defaultConfig = {
       'https://www.google.com/recaptcha/api.js',
       'https://www.gstatic.com',
       'fast.wistia.com',
-      'googletagmanager.com'
+      'googletagmanager.com',
+      // Tool GDRP
+
+      't.sharethis.com'
     ],
     connectSrc: [
       'data:'
@@ -46,14 +49,21 @@ const defaultConfig = {
       'facebook.com',
       'www.googletagmanager.com',
       'https://www.google-analytics.com',
-      'platform-api.sharethis.com'
+      // Tool GDRP
+      'platform-api.sharethis.com',
+      'buttons-config.sharethis.com',
+      'c.sharethis.mgr.consensu.org',
+      't.sharethis.com'
     ],
     frameSrc: [
       'https://www.google.com/',
       'https://player.vimeo.com',
       'fast.wistia.com',
       'staticxx.facebook.com',
-      'https://www.facebook.com/'
+      'https://www.facebook.com/',
+      // Tool GDRP
+      'c.sharethis.mgr.consensu.org',
+      't.sharethis.com'
     ],
     styleSrc: [
       'fonts.googleapis.com/css'
