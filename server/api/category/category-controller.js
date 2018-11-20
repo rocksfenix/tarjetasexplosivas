@@ -1,6 +1,8 @@
 import models from '../../models'
 import { ForbiddenError, NotFound } from '../../errors'
 import uploadImage from '../upload/upload-image'
+import thumnailify from '../../services/thumnailify'
+import getFileData from '../getFileData'
 
 export default {
   getAllAdmin: async (req, res, next) => {
@@ -108,13 +110,20 @@ export default {
 
     if (!category) return next(NotFound())
 
-    const { key, filename, location } = await uploadImage(req.files.image, req.decode.sub)
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `album-designs/${req.decode.sub}/${id}.${ext}`
 
-    category.key = key
-    category.filename = filename
-    category.location = location
+    const baseLocation = await uploadImage(req.files.image, Key, id)
+
+    category.key = baseLocation.key
+    category.location = baseLocation.location
 
     await category.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, category, req.params.id, [
+      { size: 260, suffix: 'thumbnail' }
+    ])
 
     res.json({
       category: category.toJSON()

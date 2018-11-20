@@ -6,14 +6,11 @@ const CategorySchema = new mongoose.Schema({
   author: { type: String, ref: 'User' },
   title: String,
   key: String,
-  filename: String,
-
   // Image to represent the category
   location: String,
-
+  thumbnail: String,
   // Pocicion para ordenar
   position: Number,
-
   // Solo mostrar las activas util para
   // para mostrar diseños tematicos de epoca
   active: Boolean
@@ -23,13 +20,12 @@ CategorySchema.methods.toJSON = function () {
   return {
     _id: this._id,
     key: this.key,
-    filename: this.filename,
     title: this.title,
-    author: this.author,
     location: this.location,
     position: this.position,
     active: this.active,
-    createdAt: this.createdAt
+    createdAt: this.createdAt,
+    thumbnail: this.thumbnail
   }
 }
 

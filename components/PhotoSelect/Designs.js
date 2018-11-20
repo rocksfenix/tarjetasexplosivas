@@ -71,7 +71,7 @@ const Album = ({ size, category, onClick }) => (
     style={{ width: `${size}px`, height: `${size}px` }}
   >
     <AlbumName>{ category.title }</AlbumName>
-    <AlbumImage src={category.location} alt={category.title} />
+    <AlbumImage src={category.thumbnail || category.location} alt={category.title} />
   </AlbumBox>
 )
 
@@ -148,7 +148,7 @@ class DesignsComponent extends React.Component {
   // esta se selecciona
   focusPhoto = (e) => {
     this.setState({
-      imageSelected: e.target.src
+      imageSelected: e.target.getAttribute('data-location')
     })
   }
 
@@ -276,9 +276,10 @@ class DesignsComponent extends React.Component {
                   { currentAlbum.designs.map(photo => (
                     <Photo
                       key={photo._id}
-                      src={photo.location}
+                      src={photo.thumbnail || photo.location}
                       data-title={photo.title}
                       onClick={this.focusPhoto}
+                      data-location={photo.location}
                       isSelected={imageSelected === photo.location}
                       size={photoSize}
                     />

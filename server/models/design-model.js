@@ -5,8 +5,10 @@ const DesignSchema = new mongoose.Schema({
   _id: { type: String, 'default': shortid.generate },
   category: String,
   author: { type: String, ref: 'User' },
-  published: { type: Boolean, default: false },
+  active: { type: Boolean, default: false },
   location: String,
+  thumbnail: String,
+  thumbnailKey: String,
   title: String,
   key: String
 }, { timestamps: true })
@@ -16,7 +18,8 @@ DesignSchema.methods.toJSON = function () {
     _id: this._id,
     category: this.category,
     title: this.title,
-    published: this.published,
+    thumbnail: this.thumbnail,
+    active: this.active,
     location: this.location,
     key: this.key
   }

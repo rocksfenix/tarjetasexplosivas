@@ -1,6 +1,8 @@
 import models from '../../models'
 import { ForbiddenError, NotFound } from '../../errors'
 import uploadImage from '../upload/upload-image'
+import getFileData from '../getFileData'
+import thumnailify from '../../services/thumnailify'
 
 export default {
   getAll: async (req, res, next) => {
@@ -87,12 +89,19 @@ export default {
 
     if (!texture) return next(NotFound())
 
-    const { key, location } = await uploadImage(req.files.image, req.decode.sub)
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `textures/${req.decode.sub}/${id}.${ext}`
+    const baseLocation = await uploadImage(req.files.image, Key, id)
 
-    texture.key = key
-    texture.location = location
+    texture.key = baseLocation.key
+    texture.location = baseLocation.location
 
     await texture.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, texture, req.params.id, [
+      { size: 260, suffix: 'thumbnail' }
+    ])
 
     res.json({
       texture: texture.toJSON()

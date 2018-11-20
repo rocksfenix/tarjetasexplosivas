@@ -62,7 +62,7 @@ class GalleryComponent extends React.Component {
   focusPhoto = (e) => {
     /* Selected here */
     this.setState({
-      imageSelected: e.target.src
+      imageSelected: e.target.getAttribute('data-location')
     })
   }
 
@@ -115,8 +115,9 @@ class GalleryComponent extends React.Component {
             { this.state.textures.map(texture => (
               <Photo
                 key={texture.key}
-                src={texture.location}
+                src={texture.thumbnail || texture.location}
                 onClick={this.focusPhoto}
+                data-location={texture.location}
                 isSelected={this.state.imageSelected === texture.location}
                 size={this.state.photoSize}
               />

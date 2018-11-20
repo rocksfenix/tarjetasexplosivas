@@ -1,6 +1,8 @@
 import models from '../../models'
 import { ForbiddenError, NotFound } from '../../errors'
 import uploadImage from '../upload/upload-image'
+import getFileData from '../getFileData'
+import thumnailify from '../../services/thumnailify'
 
 export default {
   getAllSelf: async (req, res, next) => {
@@ -48,21 +50,26 @@ export default {
 
     if (work.author !== req.decode.sub) return next(ForbiddenError())
 
-    const { key, filename, location } = await uploadImage(req.files.image, req.decode.sub)
-
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `photos/${req.decode.sub}/${id}.${ext}`
+    const baseLocation = await uploadImage(req.files.image, Key, id)
     work[req.params.side] = {
-      src: location
+      src: baseLocation.location
     }
 
     const photo = await models.Photo.create({
       author: req.decode.sub,
       work: work._id,
-      key,
-      filename,
-      location
+      key: baseLocation.key,
+      location: baseLocation.location
     })
 
     await work.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, photo, id, [
+      { size: 260, suffix: 'thumbnail' }
+    ])
 
     res.json({
       work: work.toJSON(),

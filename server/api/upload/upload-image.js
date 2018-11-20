@@ -11,12 +11,10 @@ mkdirp.sync(uploadDir)
 
 const BUCKET = process.env.S3_BUCKET
 
-export default async (file, userId) => new Promise((resolve, reject) => {
-  const id = `${shortid.generate()}${shortid.generate()}${shortid.generate()}${shortid.generate()}${shortid.generate()}${shortid.generate()}${shortid.generate()}${shortid.generate()}`
+export default async (file, Key, id) => new Promise((resolve, reject) => {
   const { mimetype } = file
   const ext = mime.getExtension(mimetype)
   const pathTemp = uploadDir + '/' + id + '.' + ext
-  const Key = `photos/${userId}/${id}.${ext}`
 
   file.mv(pathTemp, async (error) => {
     if (error) return console.log(error)
@@ -45,11 +43,13 @@ export default async (file, userId) => new Promise((resolve, reject) => {
         'https://d39p6dv27gzlaf.cloudfront.net'
       )
 
-      console.log(location)
+      // console.log(location)
       resolve({
         filename: `${id}.${ext}`,
         location,
-        key: Key
+        key: Key,
+        ext,
+        mimetype
       })
     })
   })

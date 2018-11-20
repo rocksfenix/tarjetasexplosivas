@@ -6,8 +6,9 @@ const PhotoSchema = new mongoose.Schema({
   author: { type: String, ref: 'User' },
   work: { type: String, ref: 'Work' },
   key: String,
-  filename: String,
-  location: String
+  location: String,
+  thumbnail: String,
+  thumbnailKey: String
 }, { timestamps: true })
 
 PhotoSchema.methods.toJSON = function () {
@@ -16,7 +17,8 @@ PhotoSchema.methods.toJSON = function () {
     key: this.key,
     filename: this.filename,
     author: this.author,
-    location: this.location
+    location: this.location,
+    thumbnail: this.thumbnail
   }
 }
 

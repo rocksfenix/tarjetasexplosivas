@@ -8,8 +8,12 @@ const Envelope = new mongoose.Schema({
   imageKey: String,
   // Es la ruta de la cubierta de ejemplo
   coverLocation: String,
+  coverThumbnail: String,
+  coverThumbnailKey: String,
   // Es la ruta de imagen real
   imageLocation: String,
+  imageThumbnail: String,
+  imageThumbnailKey: String,
   position: { type: Number, default: 0 },
   active: Boolean
 }, { timestamps: true })
@@ -23,7 +27,9 @@ Envelope.methods.toJSON = function () {
     imageLocation: this.imageLocation,
     createdAt: this.createdAt,
     position: this.position,
-    active: this.active
+    active: this.active,
+    coverThumbnail: this.coverThumbnail,
+    coverThumbnailKey: this.coverThumbnailKey
   }
 }
 

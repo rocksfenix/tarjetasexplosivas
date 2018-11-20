@@ -1,6 +1,8 @@
 import models from '../../models'
 import { ForbiddenError, NotFound } from '../../errors'
 import uploadImage from '../upload/upload-image'
+import thumnailify from '../../services/thumnailify'
+import getFileData from '../getFileData'
 
 export default {
   getAll: async (req, res, next) => {
@@ -123,12 +125,20 @@ export default {
 
     if (!design) return next(NotFound())
 
-    const { key, location } = await uploadImage(req.files.image, req.decode.sub)
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `designs/${req.decode.sub}/${id}.${ext}`
 
-    design.key = key
-    design.location = location
+    const baseLocation = await uploadImage(req.files.image, Key, id)
+
+    design.key = baseLocation.key
+    design.location = baseLocation.location
 
     await design.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, design, req.params.id, [
+      { size: 260, suffix: 'thumbnail' }
+    ])
 
     res.json({
       design: design.toJSON()

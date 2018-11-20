@@ -1,6 +1,8 @@
 import models from '../../models'
 import { ForbiddenError, NotFound } from '../../errors'
 import uploadImage from '../upload/upload-image'
+import getFileData from '../getFileData'
+import thumnailify from '../../services/thumnailify'
 
 export default {
   getAll: async (req, res, next) => {
@@ -87,16 +89,23 @@ export default {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const { key, location } = await uploadImage(req.files.image, req.decode.sub)
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `envelopes/${req.decode.sub}/${id}.${ext}`
+    const baseLocation = await uploadImage(req.files.image, Key, id)
 
     const envelope = await models.Envelope.findById(req.params.id)
 
     if (!envelope) return NotFound()
 
-    envelope.imagekey = key
-    envelope.imageLocation = location
+    envelope.imagekey = baseLocation.key
+    envelope.imageLocation = baseLocation.location
 
     await envelope.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, envelope, req.params.id, [
+      { size: 260, suffix: 'imageThumbnail' }
+    ])
 
     res.json({
       envelope: envelope.toJSON()
@@ -107,16 +116,23 @@ export default {
     if (!req.decode) return next(ForbiddenError())
     if (req.decode.role !== 'admin') return next(ForbiddenError())
 
-    const { key, location } = await uploadImage(req.files.image, req.decode.sub)
+    const { id, ext } = getFileData(req.files.image)
+    const Key = `envelopes/${req.decode.sub}/${id}.${ext}`
+    const baseLocation = await uploadImage(req.files.image, Key, id)
 
     const envelope = await models.Envelope.findById(req.params.id)
 
     if (!envelope) return NotFound()
 
-    envelope.coverKey = key
-    envelope.coverLocation = location
+    envelope.coverKey = baseLocation.key
+    envelope.coverLocation = baseLocation.location
 
     await envelope.save()
+
+    // Emitir Evento de generacion de Thumbnails
+    thumnailify(baseLocation, envelope, req.params.id, [
+      { size: 260, suffix: 'coverThumbnail' }
+    ])
 
     res.json({
       envelope: envelope.toJSON()

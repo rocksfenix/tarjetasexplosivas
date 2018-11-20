@@ -7,7 +7,9 @@ const TextureSchema = new mongoose.Schema({
   key: String,
   filename: String,
   position: { type: Number, default: 0 },
-  location: String
+  location: String,
+  thumbnail: String,
+  thumbnailKey: String
 }, { timestamps: true })
 
 TextureSchema.methods.toJSON = function () {
@@ -18,7 +20,8 @@ TextureSchema.methods.toJSON = function () {
     author: this.author,
     location: this.location,
     position: this.position,
-    createdAt: this.createdAt
+    createdAt: this.createdAt,
+    thumbnail: this.thumbnail
   }
 }
 
