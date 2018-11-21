@@ -45,6 +45,8 @@ const Present = styled.img`
 
 const Panel = styled.div`
   position: relative;
+  overflow-y: auto;
+  height: 100vh;
 `
 
 const PrivacyLink = styled.a`

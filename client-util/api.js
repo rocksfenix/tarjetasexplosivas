@@ -244,7 +244,7 @@ const AlbumDesign = {
 
 const Design = {
   // Admin only
-  async getAll (skicop = 0) {
+  async getAll (skip = 0) {
     const res = await axios.get(`/api/designs/?skip=${skip}`)
     return res.data
   },
