@@ -21,10 +21,10 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
           <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
           <link rel='stylesheet' type='text/css' href='/static/global.css' />
-          <script src='https://www.google.com/recaptcha/api.js' />
-          <script src='https://fast.wistia.com/embed/medias/hcr56y3zbh.jsonp' async />
+          {/* <script src='https://www.google.com/recaptcha/api.js' /> */}
+          {/* <script src='https://fast.wistia.com/embed/medias/hcr56y3zbh.jsonp' async /> */}
           <script src='https://fast.wistia.com/assets/external/E-v1.js' async />
-          <script src='//platform-api.sharethis.com/js/sharethis.js#property=5bf4792b1d4aa900114390c4&product=gdpr-compliance-tool' />
+          {/* <script src='//platform-api.sharethis.com/js/sharethis.js#property=5bf4792b1d4aa900114390c4&product=gdpr-compliance-tool' /> */}
           <meta name='csrf-token' content={this.props.csrf} />
           {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
           <script async src='https://www.googletagmanager.com/gtag/js?id=UA-129457225-1' />

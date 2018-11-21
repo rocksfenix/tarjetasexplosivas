@@ -1,3 +1,3 @@
 export default {
-  user_cookie_key: 't_explosivas_sub'
+  user_cookie_key: 't_sub'
 }

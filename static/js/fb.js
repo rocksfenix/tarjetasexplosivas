@@ -14,3 +14,9 @@ window.fbAsyncInit = function () {
   js.src = 'https://connect.facebook.net/en_US/sdk.js'
   fjs.parentNode.insertBefore(js, fjs)
 }(document, 'script', 'facebook-jssdk'))
+
+// DESABILITAR COOKIES DE WISTIA
+window._wq = window._wq || []
+window._wq.push(function (W) {
+  W.consent(false)
+})

@@ -16,7 +16,7 @@ const defaultConfig = {
       'fast.wistia.com',
       'googletagmanager.com',
       // Tool GDRP
-      't.sharethis.com'
+      // 't.sharethis.com'
     ],
     connectSrc: [
       'data:'
@@ -49,10 +49,10 @@ const defaultConfig = {
       'www.googletagmanager.com',
       'https://www.google-analytics.com',
       // Tool GDRP
-      'platform-api.sharethis.com',
-      'buttons-config.sharethis.com',
-      'c.sharethis.mgr.consensu.org',
-      't.sharethis.com'
+      // 'platform-api.sharethis.com',
+      // 'buttons-config.sharethis.com',
+      // 'c.sharethis.mgr.consensu.org',
+      // 't.sharethis.com'
     ],
     frameSrc: [
       'https://www.google.com/',
