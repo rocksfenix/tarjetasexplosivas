@@ -24,13 +24,12 @@ export default {
         from: 'TarjetasExplosivas Soporte <TarjetasExplosivas@tarjetasexplosivas.com>',
         to: email,
         subject: 'Recuperar Contraseña de tarjetasexplosivas.com',
-        // text: 'Testing some Mailgun awesomeness!',
         html: `<h4>Hola</h4>
         <p>Tu email <strong>${email}</strong> No esta registrado en TarjetasExplosivas.com, puede ser que hayas utilizado
         algun otro email para tu registro.</p>
 
-        <p>Pueder registrarte en <a href="https://tarjetasexplosivas.com/crear-cuenta">https://tarjetasexplosivas.com/crear-cuenta</a></p>
-        <p>O contactar con nuestro equipo de soporte <a href="https://tarjetasexplosivas.com/soporte">https://tarjetasexplosivas.com/soporte</a></p>
+        <p>Pueder registrarte en <a href="https://www.tarjetasexplosivas.com/crear-cuenta">https://www.tarjetasexplosivas.com/crear-cuenta</a></p>
+        <p>O contactar con nuestro equipo de soporte <a href="https://www.tarjetasexplosivas.com/soporte">https://www.tarjetasexplosivas.com/soporte</a></p>
         <br> El equipo de tarjetasexplosivas.com ♥
         `
       }
@@ -57,7 +56,7 @@ export default {
         to: email,
         subject: 'Recuperar Contraseña de tarjetasexplosivas.com',
         html: `<h4>Hola ${user.fullname}</h4>
-        <p>Alguien solicito tu cambio de contraseña para <strong><a href="https://tarjetasexplosivas.com">tarjetasexplosivas.com</a></strong></p>
+        <p>Alguien solicito tu cambio de contraseña para <strong><a href="https://www.tarjetasexplosivas.com">tarjetasexplosivas.com</a></strong></p>
         <p>Puedes hacerlo en el siguiente enlace:</p>
         <br>
         <a href='${link}'>${link}</a>
@@ -122,7 +121,7 @@ export default {
       subject: 'Cambio de contraseña de tarjetasexplosivas.com',
       html: `<h4>Hola ${user.fullname}</h4>
       <p>Tu contraseña en tarjetasexplosivas.com ha sido actualizada segun tus instrucciones</p>
-      </p>Si tienes alguna duda, dejanos saber de inmediato en https://tarjetasexplosivas.com/soporte/.</p>
+      </p>Si tienes alguna duda, dejanos saber de inmediato en https://www.tarjetasexplosivas.com/soporte/.</p>
       <br> El equipo de tarjetasexplosivas.com ♥
       `
     }

@@ -319,7 +319,8 @@ class DesignsDashboad extends Component {
             loader={'loading'}
             style={{
               display: 'flex',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              width: '100vw'
             }}
           >
             { this.state.designs.map(design => (
