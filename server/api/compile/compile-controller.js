@@ -15,6 +15,8 @@ export default {
       // 1 Obtener el work
       if (!req.decode) return next(ForbiddenError())
 
+      const time1 = Date.now()
+
       const user = await models.User.findById(req.decode.sub)
 
       const work = await models.Work.findById(req.params.id)
@@ -26,17 +28,7 @@ export default {
         return res.json({ error: 'No tienes creditos', code: 11 })
       }
 
-      // Si ya tienen locacion no compilar
-      // if (work.location) {
-      //   return res.json({
-      //     location: work.location,
-      //     processTime: `0ms`,
-      //     uploadTime: `0ms`
-      //   })
-      // }
-
       // 2 Descargar 7 imagenes como base64 lados + sobre
-      const t1 = Date.now()
       const [ img0, img1, img2, img3, img4, img5, envelope ] = await Promise.all([
         getBase64FromUrl(work.side0.src),
         getBase64FromUrl(work.side1.src),
@@ -67,15 +59,14 @@ export default {
       // 7 - Eliminamos la carpeta temporal
       await del([ endPath ])
 
-      const t2 = Date.now()
-      const t3 = Date.now()
-
       // 8 - Subir a S3
       const location = await uploadS3(endPath + '.zip', work.author, work._id)
-      const t4 = Date.now()
+
+      const time2 = Date.now()
 
       // 9- Guardamos la locacion en DB
       work.location = location
+      work.compilationTime = time2 - time1
       await work.save()
 
       // 10 - Eliminar .zip temporal
@@ -86,12 +77,7 @@ export default {
       user.credits = user.credits - 1
 
       user.save()
-
-      res.json({
-        location,
-        processTime: `${t2 - t1}ms`,
-        uploadTime: `${t4 - t3}ms`
-      })
+      res.json({ location })
     } catch (error) {
       console.log(error)
       next(error)

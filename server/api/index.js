@@ -63,6 +63,10 @@ api.get('/api/works', works.getAllSelf)
 
 // Coupons
 api.post('/api/coupon', coupon.create)
+api.get('/api/coupons', coupon.getAll)
+api.put('/api/coupon/:code/apply', coupon.apply)
+api.put('/api/coupon/:id', coupon.put)
+api.delete('/api/coupon/:id', coupon.delete)
 
 // Payments Paypal
 api.get('/api/payment/:workId/:items', paypal.pay)

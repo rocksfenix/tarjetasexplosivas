@@ -244,7 +244,7 @@ const AlbumDesign = {
 
 const Design = {
   // Admin only
-  async getAll (skip = 0) {
+  async getAll (skicop = 0) {
     const res = await axios.get(`/api/designs/?skip=${skip}`)
     return res.data
   },
@@ -327,6 +327,34 @@ const Invoice = {
   }
 }
 
+const Coupon = {
+  // Admin only
+  async getAll (skip = 0) {
+    const res = await axios.get(`/api/coupons/?skip=${skip}`)
+    return res.data
+  },
+
+  async create () {
+    const res = await axios.post(`/api/coupon`)
+    return res.data
+  },
+
+  async update (coupon) {
+    const res = await axios.put(`/api/coupon/${coupon._id}`, { coupon })
+    return res.data
+  },
+
+  async delete (coupon) {
+    const res = await axios.delete(`/api/coupon/${coupon._id}`)
+    return res.data
+  },
+
+  async apply (code) {
+    const res = await axios.put(`/api/coupon/${code}/apply`)
+    return res.data
+  }
+}
+
 export default {
   Auth,
   User,
@@ -336,5 +364,6 @@ export default {
   AlbumDesign,
   Design,
   Envelope,
-  Invoice
+  Invoice,
+  Coupon
 }

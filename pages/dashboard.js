@@ -53,6 +53,7 @@ class App extends Component {
           <Link href='/album-designs' color='blue'>Album Designs</Link>
           <Link href='/textures' color='blue'>Textures</Link>
           <Link href='/envelopes' color='blue'>Envelopes</Link>
+          <Link href='/coupons' color='blue'>Coupons</Link>
           <Link href='/config' color='blue'>Config</Link>
         </div>
       </Panel>

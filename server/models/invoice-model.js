@@ -7,7 +7,8 @@ const InvoiceSchema = new mongoose.Schema({
   paypalPayment: String,
   amount: Number,
   currency: String,
-  credits: Number
+  credits: Number,
+  coupon: String
 }, { timestamps: true })
 
 export default mongoose.model('Invoice', InvoiceSchema)
