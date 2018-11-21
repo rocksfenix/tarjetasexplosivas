@@ -6,6 +6,15 @@ const HOST = process.env.NODE_ENV !== 'production'
   ? 'https://localhost:3000'
   : 'https://morning-everglades-93431.herokuapp.com'
 
+const logout = () => {
+  if (process.browser) {
+    removeCookie('jwt')
+    removeCookie('jwt-rfs')
+    removeCookie(config.user_cookie_key)
+    window.location = '/?expired=true'
+  }
+}
+
 // Se inicializan las configuraciones por defecto
 // de axios
 if (process.browser) {
@@ -21,17 +30,10 @@ if (process.browser) {
 // Revisamos si existen los tokens de expiracion
 // o de rehidrateo de token
 axios.interceptors.response.use((res) => {
-  // console.log(res.headers)
   if (res.headers['x-tn-expired-session']) {
     // Sesion expirada, borrar tokens y redireccionar a  /?expired=true
     console.log('expired')
-    if (process.browser) {
-      removeCookie('jwt')
-      removeCookie('jwt-rfs')
-      removeCookie(config.user_cookie_key)
-      window.alert('EXPIRED')
-      window.location = '/?expired=true'
-    }
+    logout()
   }
 
   if (res.headers['x-rehydrate-tok']) {
@@ -48,8 +50,9 @@ axios.interceptors.response.use((res) => {
 
   return res
 }, (error) => {
-  // Do something with res error
-  return Promise.reject(error)
+  if (error.response.headers['x-tn-expired-session'] === 'true') {
+    logout()
+  }
 })
 
 const getCsrf = () => {

@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import VideoLanding from '../components/Videos/Video-landing'
+import ExpiredNotification from '../components/ExpiredNotification'
 
 const Title = styled.h1`
   color: #30233F;
@@ -136,8 +137,10 @@ const Panel = styled.div`
 
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
+    let query = {}
+    if (req) query = req.query
     const user = getUser(req)
-    return { user }
+    return { user, query }
   }
 
   render () {
@@ -145,6 +148,10 @@ export default class extends Component {
       <Panel>
         <SeoHead />
         <Navegation user={this.props.user} />
+        { this.props.query.expired
+          ? <ExpiredNotification />
+          : null
+        }
         <Section>
           <Title>BUSCAS EL REGALO PERFECTO?</Title>
           <Present src='/static/img/el-regalo-perfecto.png' />

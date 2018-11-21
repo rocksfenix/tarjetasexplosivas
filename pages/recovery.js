@@ -129,7 +129,7 @@ class Forgot extends Component {
           this.state.success
             ? (
               <Wrapper>
-                <h1>Actualizada exitosamente</h1>
+                <h2>Actualizada exitosamente</h2>
                 <Link href='/login'>
                   <a>IR A LOGIN</a>
                 </Link>

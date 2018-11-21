@@ -77,11 +77,16 @@ class App extends Component {
   }
 
   fetch = async () => {
-    const res = await api.Work.getAllSelf(this.state.skip)
-    this.setState({
-      works: [ ...this.state.works, ...res.works ],
-      hasMore: res.hasMore
-    })
+    try {
+      const res = await api.Work.getAllSelf(this.state.skip)
+      this.setState({
+        works: [ ...this.state.works, ...res.works ],
+        hasMore: res.hasMore
+      })
+    } catch (error) {
+      // console.log(error.response.status)
+      // debugger
+    }
   }
 
   render () {
