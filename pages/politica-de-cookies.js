@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { getUser } from '../client-util/session'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
-import Table from '../components/Table'
+import CookiesTable from '../components/CookiesTable'
 import CookiesConsent from '../components/CookiesConsent'
 
 const Title = styled.h1`
@@ -68,6 +68,10 @@ const Panel = styled.div`
   height: 100vh;
 `
 
+const Strong = styled.strong`
+  color: #30233F;
+`
+
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
     const user = getUser(req)
@@ -81,7 +85,7 @@ export default class extends Component {
         <Navegation user={this.props.user} />
         <Section>
           <Title>Política de cookies</Title>
-          <Subtitle>Última actualización el 20 de Octubre del 2018</Subtitle>
+          <Subtitle>Última actualización el 22 de Noviembre del 2018</Subtitle>
           <Parragraph>
             Como responsable de esta web, me he esmerado en cumplir con la normativa referente a las cookies, no obstante, teniendo en cuenta la forma en la que funciona Internet y los sitios web, no siempre es posible contar con información actualizada de las cookies que terceras partes puedan utilizar a través de este sitio web.
           </Parragraph>
@@ -89,7 +93,7 @@ export default class extends Component {
             Esto se aplica especialmente a casos en los que esta página web contiene elementos integrados: es decir, textos, documentos, imágenes o breves películas que se almacenan en otra parte, pero se muestran en nuestro sitio web.
           </Parragraph>
           <Parragraph>
-            Por consiguiente, en caso de que te encuentres con este tipo de cookies en este sitio web y no estén enumeradas en la lista siguiente, te ruego que me lo comuniques. También puedes ponerte en contacto directamente con el tercero para pedirle información sobre las cookies que coloca, la finalidad y la duración de la cookie, y cómo ha garantizado su privacidad.
+            Por consiguiente, en caso de que te encuentres con este tipo de cookies en este sitio web y no estén enumeradas en la lista siguiente, te ruego que me lo comuniques. También puedes ponerte en con nosotros con el tercero para pedirle información sobre las cookies que coloca, la finalidad y la duración de la cookie, y cómo ha garantizado su privacidad en hola@tarjetasexplosivas.com.
           </Parragraph>
 
           <H3>¿QUÉ SON LAS COOKIES?</H3>
@@ -101,15 +105,15 @@ export default class extends Component {
             En esta web se utilizan cookies propias y de terceros para conseguir que tengas una mejor experiencia de navegación, puedas compartir contenido en redes sociales, para mostrarte anuncios en función a tus intereses y para obtener estadísticas de usuarios.
           </Parragraph>
           <Parragraph>
-            Las cookies empleadas en https://tarjetasexplosivas.com/ se asocian únicamente con un Usuario anónimo y su ordenador, no proporcionan referencias que permitan deducir el nombre y apellidos del Usuario y no pueden leer datos de su disco duro ni incluir virus en sus textos. Asimismo, https://tarjetasexplosivas.com/ no puede leer las cookies implantadas en el disco duro del Usuario desde otros servidores.
+            Las cookies empleadas en tarjetasexplosivas.com/ se asocian únicamente con un Usuario anónimo y su ordenador, no proporcionan referencias que permitan deducir el nombre y apellidos del Usuario a excepción de las cookies que usamos para manejar la autorizacion y autentificacion de usuarios logueados, por otro lado las cookies no pueden leer datos de su disco duro ni incluir virus en sus textos. Asimismo, tarjetasexplosivas.com/ no puede leer las cookies implantadas en el disco duro del Usuario desde otros servidores.
             no autorizado.
           </Parragraph>
 
           <Parragraph>
-            El usuario puede libremente decidir acerca de la implantación o no en su disco duro de las cookies empleadas en https://tarjetasexplosivas.com/. En este sentido, el usuario puede configurar su navegador para aceptar o rechazar por defecto todas las cookies o para recibir un aviso en pantalla de la recepción de cada cookie y decidir en ese momento su implantación o no en su disco duro. Para ello le sugerimos consultar la sección de ayuda de su navegador para saber cómo cambiar la configuración que actualmente emplea.
+            El usuario puede libremente decidir acerca de la implantación o no en su disco duro de las cookies empleadas en tarjetasexplosivas.com/ En este sentido, el usuario puede configurar su navegador para aceptar o rechazar por defecto todas las cookies o para recibir un aviso en pantalla de la recepción de cada cookie y decidir en ese momento su implantación o no en su disco duro. Para ello le sugerimos consultar la sección de ayuda de su navegador para saber cómo cambiar la configuración que actualmente emplea.
           </Parragraph>
           <Parragraph>
-            Aun cuando el Usuario configurase su navegador para rechazar todas las cookies o rechazase expresamente las cookies de https://tarjetasexplosivas.com/ podrá navegar por el Portal con el único inconveniente de no poder disfrutar de las funcionalidades del Portal que requieran la instalación de alguna de ellas. En cualquier caso, el Usuario podrá eliminar las cookies implantadas en su disco duro en cualquier momento, siguiendo el procedimiento establecido en la sección de ayuda de su navegador y que posteriormente detallaremos.
+            Aun cuando el Usuario configurase su navegador para rechazar todas las cookies o rechazase expresamente las cookies de tarjetasexplosivas.com/ podrá navegar por el Portal con el único inconveniente de no poder disfrutar de las funcionalidades del Portal que requieran la instalación de alguna de ellas <Strong>como autentificarse para crear tarjetas y diseños.</Strong> En cualquier caso, el Usuario podrá eliminar las cookies implantadas en su disco duro en cualquier momento, siguiendo el procedimiento establecido en la sección de ayuda de su navegador y que posteriormente detallaremos.
           </Parragraph>
           <Parragraph>
             Como usuario, puedes rechazar el tratamiento de los datos o la información bloqueando estas cookies mediante la configuración apropiada de tu navegador. Sin embargo, debes saber que, si lo haces, este sitio no funcione adecuadamente.
@@ -123,7 +127,6 @@ export default class extends Component {
               <li>Permitirte visualizar videos</li>
               <li>Mejorar la velocidad / seguridad del sitio</li>
               <li>Que pueda compartir páginas con redes sociales</li>
-              <li>Mejorar continuamente de este sitio web</li>
               <li>Mostrarte anuncios en función de tus hábitos de navegación</li>
             </ul>
           </Parragraph>
@@ -147,18 +150,18 @@ export default class extends Component {
           <Parragraph>
             Entre las cookies de terceros más estables están:
           </Parragraph>
-          <Parragraph>
-            <ul>
-              <li>
+
+          <ul>
+            <li>
                 Las generadas por servicios de análisis, concretamente, Google Analytics para ayudar al website a analizar el uso que hacen los Usuarios del sitio web y mejorar la usabilidad del mismo, pero en ningún caso se asocian a datos que pudieran llegar a identificar al usuario.
                 Google Analytics, es un servicio analítico de web prestado por Google, Inc., una compañía de Delaware cuya oficina principal está en 1600 Amphitheatre Parkway, Mountain View (California), CA 94043, Estados Unidos (“Google”).
                 El usuario puede consultar aquí el tipo de cookies utilizadas por Google. Cookie de Google+ y Google Maps, según lo dispuesto en su página sobre qué tipo de cookies utilizan.
-              </li>
-              <li>
-                Cookies de redes sociales: Las Cookies de redes sociales pueden almacenarse en su navegador mientras navega por abcoach.com por ejemplo, cuando utiliza el botón de compartir contenidos de abcoach.com en alguna red social.
-              </li>
-            </ul>
-          </Parragraph>
+            </li>
+            <li>
+                Cookies de redes sociales: Las Cookies de redes sociales pueden almacenarse en su navegador mientras navega, cuando utiliza el botón de compartir contenidos de tarjetasExposivas.com/ en alguna red social.
+            </li>
+          </ul>
+
           <Parragraph>
             Las empresas que generan estas cookies correspondientes a las redes sociales que utiliza esta web tienen sus propias políticas de cookies:
             <ul>
@@ -173,7 +176,7 @@ export default class extends Component {
           <Parragraph>
             A continuación, se detallan las cookies que pueden instalarse habitualmente durante la navegación por este sitio web:
           </Parragraph>
-          <Table />
+          <CookiesTable />
 
           <H3>3. ¿CÓMO PUEDO GESTIONAR Y DESACTIVAR ESTAS COOKIES?</H3>
           <Parragraph>
@@ -183,7 +186,9 @@ export default class extends Component {
             Así las cosas, se puede igualmente modificar la configuración del navegador de forma que rechace todas las cookies o únicamente las cookies de terceros. También puedes eliminar cualquiera de las cookies que ya se encuentren en tu equipo. Ten en cuenta que tendrás que adaptar por separado la configuración de cada navegador y equipo que utilices.
           </Parragraph>
           <Parragraph>
-            <strong>https://tarjetasexplosivas.com/</strong> pone a disposición de los usuarios que quieran impedir la instalación de las mencionadas cookies, enlaces facilitados al efecto por navegadores cuyo uso se considera más extendido:
+            <Strong>tarjetasexplosivas.com/</Strong> pone a disposición de los usuarios que quieran impedir la instalación de las mencionadas cookies, enlaces facilitados al efecto por navegadores cuyo uso se considera más extendido:
+          </Parragraph>
+          <ul>
             <li>
               <a href='https://support.google.com/chrome/answer/95647?hl=es-419'>Google Chorome</a>
             </li>
@@ -199,14 +204,16 @@ export default class extends Component {
             <li>
               <a href='http://help.opera.com/Linux/10.60/es-ES/cookies.html'>Opera</a>
             </li>
-          </Parragraph>
+          </ul>
           <Parragraph>
-          Además, también puede gestionar el almacén de cookies en su navegador a través de herramientas como las siguientes
+            Además, también puede gestionar el almacén de cookies en su navegador a través de herramientas como las siguientes
+          </Parragraph>
+          <ul>
             <li>Ghostery: www.ghostery.com/</li>
             <li>Your online choices: www.youronlinechoices.com/es/</li>
-          </Parragraph>
+          </ul>
           <Parragraph>
-          Si tiene alguna pregunta o comentario sobre esta Política de cookies, envíe un correo electrónico a te-privacidad@gmail.com
+            Si tiene alguna pregunta o comentario sobre esta Política de cookies, envíe un correo electrónico a hola@tarjetasExposivas.com
           </Parragraph>
         </Section>
         <CookiesConsent />

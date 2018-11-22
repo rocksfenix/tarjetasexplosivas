@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import _Headroom from 'react-headroom'
 import Link from '../Link'
 import Menu from './Menu'
@@ -16,9 +16,21 @@ const Nav = styled.nav`
   position: relative;
   z-index: 200;
 `
+
+const logoHue = keyframes`
+ 0% {
+   filter: hue-rotate(0deg);
+ }
+ 100% {
+   filter: hue-rotate(365deg);
+ }
+`
+
 const Logo = styled.img`
   width: 187px;
   margin-left: 2em;
+  will-change: filter;
+  animation: ${logoHue} 4s linear infinite;
 `
 
 const Block = styled.div`
