@@ -13,12 +13,12 @@ export const getToken = ({ _id, role, acceptTerms, acceptPolicyPrivacy }) => {
     role,
     acpp: (acceptTerms && acceptPolicyPrivacy) ? 'true' : 'false'
   }
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1m' })
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '5m' })
 }
 
 export const getRefreshToken = ({ _id }) => {
   const payload = { sub: _id }
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '2m' })
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' })
 }
 
 // Aqui no exponemos el id del usuario en su lugar enviamos un hash

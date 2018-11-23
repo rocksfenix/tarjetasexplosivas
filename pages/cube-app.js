@@ -250,7 +250,8 @@ class App extends Component {
   check = () => {
     const { side0, side1, side2, side3, side4, side5 } = this.state.work
     if (side0.src && side1.src && side2.src && side3.src && side4.src && side5.src) {
-      this.setState({ isFinish: true })
+      // TODO habilidar cuando este lista para produccion
+      // this.setState({ isFinish: true })
     }
   }
 
