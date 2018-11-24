@@ -7,6 +7,7 @@ import Input from '../components/Input'
 import Submit from '../components/Submit'
 import Navegation from '../components/Navegation'
 import SeoHead from '../components/SeoHead'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -96,7 +97,7 @@ class Forgot extends Component {
               </Wrapper>
             )
         }
-
+        <CookiesConsent />
       </Panel>
     )
   }

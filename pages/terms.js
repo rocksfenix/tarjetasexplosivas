@@ -5,6 +5,7 @@ import Checkbox from '../components/Checkbox'
 import Navegation from '../components/Navegation'
 import api from '../client-util/api'
 import { setCookie, getUser } from '../client-util/session'
+import CookiesConsent from '../components/CookiesConsent'
 
 const H3 = styled.h3`
   color: #30233F;
@@ -149,6 +150,7 @@ export default class extends Component {
           Aceptar
           </Button>
         </Section>
+        <CookiesConsent />
       </Panel>
     )
   }

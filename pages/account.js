@@ -7,6 +7,7 @@ import Navegation from '../components/Navegation'
 import SeoHead from '../components/SeoHead'
 import moment from 'moment'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import CookiesConsent from '../components/CookiesConsent'
 
 moment.locale('es')
 
@@ -157,6 +158,7 @@ class App extends Component {
 
           </Invoices>
         </Information>
+        <CookiesConsent />
       </Panel>
     )
   }

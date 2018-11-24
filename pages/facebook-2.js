@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import VideoLanding from '../components/Videos/Video-landing'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Title = styled.h1`
   color: #30233F;
@@ -170,6 +171,7 @@ export default class extends Component {
           </Link>
         </Section>
         <Footer />
+        <CookiesConsent />
       </Panel>
     )
   }

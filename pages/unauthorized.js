@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { getUser } from '../client-util/session'
 import Navegation from '../components/Navegation'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ export default class extends React.Component {
       <Panel>
         <Navegation user={this.props.user} />
         <Img src='/static/img/401.svg' />
+        <CookiesConsent />
       </Panel>
     )
   }

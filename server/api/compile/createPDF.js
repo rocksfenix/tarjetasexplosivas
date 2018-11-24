@@ -18,12 +18,12 @@ const createPDF = (endPath, pathSvg) => new Promise((resolve, reject) => {
       }
     })
 
-    pdf.addSVG(svg, 50, 50, {
+    pdf.addSVG(svg, 0, 0, {
       // 0 612 792
-      // width: 612,
-      // height: 792
+      width: 612,
+      height: 792,
+      preserveSpace: true
       // compress: false
-      // preserveSpace: true
     })
 
     // Stream contents to a file

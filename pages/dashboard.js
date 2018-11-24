@@ -5,6 +5,7 @@ import { getUser } from '../client-util/session'
 import Link from '../components/Link'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -56,6 +57,7 @@ class App extends Component {
           <Link href='/coupons' color='blue'>Coupons</Link>
           <Link href='/config' color='blue'>Config</Link>
         </div>
+        <CookiesConsent />
       </Panel>
     )
   }

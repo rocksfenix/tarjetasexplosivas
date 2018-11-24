@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import { getUser } from '../client-util/session'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -34,6 +35,7 @@ class App extends Component {
         <SeoHead title='Ejemplos de Tarjetas Explosivas' />
         <Navegation user={this.props.user} />
         <h1>Ejemplos</h1>
+        <CookiesConsent />
       </Panel>
     )
   }

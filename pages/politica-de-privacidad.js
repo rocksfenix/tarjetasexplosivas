@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { getUser } from '../client-util/session'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Title = styled.h1`
   color: #30233F;
@@ -320,6 +321,7 @@ export default class extends Component {
             Si se declinan es posible que no pueda utilizar algunos de nuestros servicios, puede encontrar mas informacion aqui <a href='/politica-de-cookies'>Politica de Cookies</a>.
           </P>
         </Section>
+        <CookiesConsent />
       </Panel>
     )
   }

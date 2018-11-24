@@ -10,6 +10,7 @@ import Confetii from '../components/Confetti'
 import Notification from '../components/Notification'
 import Input from '../components/Input'
 import config from '../config'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Title = styled.div`
   color: #333;
@@ -227,6 +228,7 @@ export default class extends Component {
             </Subtitle>
           </Form>
         </Wrapper>
+        <CookiesConsent />
       </Panel>
     )
   }

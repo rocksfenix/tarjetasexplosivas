@@ -13,6 +13,7 @@ import Navegation from '../components/Navegation'
 import MenuMobile from '../components/Navegation/Menu/Mobile'
 import PhotoSelect from '../components/PhotoSelect'
 import TexturesGallery from '../components/TexturesGallery'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -251,7 +252,7 @@ class App extends Component {
     const { side0, side1, side2, side3, side4, side5 } = this.state.work
     if (side0.src && side1.src && side2.src && side3.src && side4.src && side5.src) {
       // TODO habilidar cuando este lista para produccion
-      // this.setState({ isFinish: true })
+      this.setState({ isFinish: true })
     }
   }
 
@@ -374,6 +375,7 @@ class App extends Component {
               />
             )
         }
+        <CookiesConsent />
       </Panel>
     )
   }

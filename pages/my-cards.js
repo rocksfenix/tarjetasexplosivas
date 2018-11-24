@@ -7,6 +7,7 @@ import api from '../client-util/api'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import WorkCard from '../components/WorkCard'
+import CookiesConsent from '../components/CookiesConsent'
 
 const Panel = styled.div`
   width: 100%;
@@ -117,6 +118,7 @@ class App extends Component {
             ))}
           </Works>
         </InfiniteScroll>
+        <CookiesConsent />
       </Panel>
     )
   }

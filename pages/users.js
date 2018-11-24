@@ -9,6 +9,7 @@ import Navegation from '../components/Navegation'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import capitalize from 'capitalize'
 import Search from '../components/Search'
+import CookiesConsent from '../components/CookiesConsent'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -391,6 +392,7 @@ class DesignsDashboad extends Component {
             ))}
           </InfiniteScroll>
         </Box>
+        <CookiesConsent />
       </Panel>
     )
   }

@@ -5,8 +5,9 @@ import getA from './templates/sideA'
 import getB from './templates/sideB'
 import getEnvelopeA from './templates/envelopeA'
 import getEnvelopeB from './templates/envelopeB'
+import getPattern from './getPattern'
 
-const createSVG = (endPath, work, img0, img1, img2, img3, img4, img5, envelope) => new Promise((resolve, reject) => {
+const createSVG = (endPath, work, img0, img1, img2, img3, img4, img5, envelope) => new Promise(async (resolve, reject) => {
   const pathSvg1 = path.resolve(endPath, `paper-${work._id}-A.svg`)
   const pathSvg2 = path.resolve(endPath, `paper-${work._id}-B.svg`)
   const pathSvg3 = path.resolve(endPath, `paper-${work._id}-sobre-a.svg`)
@@ -14,8 +15,10 @@ const createSVG = (endPath, work, img0, img1, img2, img3, img4, img5, envelope) 
 
   const sideA = getA(img0, img1, img2, img3, img4, img5)
   const sideB = getB(img0, img1, img2, img3, img4, img5)
+
+  const envelopeInside = await getPattern('Te amo Jirafita Bebe!')
   const envelopeA = getEnvelopeA(envelope)
-  const envelopeB = getEnvelopeB(envelope)
+  const envelopeB = getEnvelopeB(envelopeInside)
 
   mkdirp(endPath, (error) => {
     if (error) return reject(error)

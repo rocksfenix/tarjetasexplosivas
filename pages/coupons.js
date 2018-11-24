@@ -8,6 +8,7 @@ import { getUser } from '../client-util/session'
 import Navegation from '../components/Navegation'
 import Dropzone from 'react-dropzone'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import CookiesConsent from '../components/CookiesConsent'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -300,6 +301,7 @@ class texturesDashboad extends Component {
             ))}
           </InfiniteScroll>
         </Box>
+        <CookiesConsent />
       </Panel>
     )
   }
