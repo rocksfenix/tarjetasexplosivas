@@ -89,7 +89,8 @@ export default {
       'side2',
       'side3',
       'side4',
-      'side5'
+      'side5',
+      'envelopeInsideText'
     ].forEach(field => {
       if (req.body.work[field]) {
         work[field] = req.body.work[field]

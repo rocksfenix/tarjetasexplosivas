@@ -14,6 +14,7 @@ import MenuMobile from '../components/Navegation/Menu/Mobile'
 import PhotoSelect from '../components/PhotoSelect'
 import TexturesGallery from '../components/TexturesGallery'
 import CookiesConsent from '../components/CookiesConsent'
+import party from '../client-util/party'
 
 const Panel = styled.div`
   width: 100%;
@@ -112,6 +113,10 @@ class App extends Component {
       })
       window.addEventListener('resize', this.resize)
       window.addEventListener('popstate', this.popstate)
+
+      if ((this.state.isFinish || this.state.work.location) && !this.state.paymentModal) {
+        party()
+      }
     }
 
     this.props.params.id === 'new'
@@ -253,6 +258,7 @@ class App extends Component {
     if (side0.src && side1.src && side2.src && side3.src && side4.src && side5.src) {
       // TODO habilidar cuando este lista para produccion
       this.setState({ isFinish: true })
+      party()
     }
   }
 
@@ -314,7 +320,7 @@ class App extends Component {
 
   render () {
     const { modal, work, paymentModal } = this.state
-    console.log(this.state.work)
+    // console.log(this.state.work)
     return (
       <Panel height={this.state.height}>
         <SeoHead title='Diseña tu tarjeta Explosiva' />
@@ -372,6 +378,7 @@ class App extends Component {
                 work={work}
                 className={this.state.cubeClassName}
                 showModal={this.state.modal !== ''}
+                isFinish={this.state.isFinish}
               />
             )
         }

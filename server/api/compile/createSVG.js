@@ -16,7 +16,7 @@ const createSVG = (endPath, work, img0, img1, img2, img3, img4, img5, envelope) 
   const sideA = getA(img0, img1, img2, img3, img4, img5)
   const sideB = getB(img0, img1, img2, img3, img4, img5)
 
-  const envelopeInside = await getPattern('Te amo Jirafita Bebe!')
+  const envelopeInside = await getPattern(work.envelopeInsideText)
   const envelopeA = getEnvelopeA(envelope)
   const envelopeB = getEnvelopeB(envelopeInside)
 

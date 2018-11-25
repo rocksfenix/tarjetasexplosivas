@@ -18,7 +18,7 @@ const UserButton = styled.div`
   padding: 0;
   height: 30px;
   width: 30px;
-  background-color: rgba(0,79,30,.4);
+  background-color: rgb(33, 100, 243);
   border-radius: 50%;
   border: 2px solid #FFF;
   outline: none;
@@ -42,17 +42,30 @@ const MenuBox = styled.div`
   display: ${p => p.show ? 'flex' : 'none'};
   flex-direction: column;
   padding: .3em;
+  justify-content: space-around;
+  align-items: baseline;
+  padding-left: 1.5em;
 `
 
 const To = styled.a`
   color: #444654;
   text-decoration: none;
   font-size: 17px;
-  padding: .8em .8em .8em 1.5em;
   transition: color 200ms;
-
+  position: relative;
+  
   :hover {
     color: #01a7e4;
+    
+    :after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #01a7e4;
+    }
   }
 `
 

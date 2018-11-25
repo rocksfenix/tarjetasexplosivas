@@ -15,6 +15,8 @@ const WorkSchema = new mongoose.Schema({
   paymentId: String,
   paymentType: { type: String, default: 'paypal' },
 
+  envelopeInsideText: String,
+
   envelope: String,
 
   compilationTime: Number,
@@ -57,7 +59,8 @@ WorkSchema.methods.toJSON = function () {
     side3: this.side3,
     side4: this.side4,
     side5: this.side5,
-    compilationTime: this.compilationTime
+    compilationTime: this.compilationTime,
+    envelopeInsideText: this.envelopeInsideText
   }
 }
 

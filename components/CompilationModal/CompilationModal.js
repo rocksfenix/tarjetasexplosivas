@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { PacmanLoader } from 'react-spinners'
 import api from '../../client-util/api'
 import Envelopes from '../Envelopes'
+import EnvelopeTextInside from './EnvelopeTextInside'
 
 const Anima = keyframes`
   0% {
@@ -121,10 +122,11 @@ export default class extends React.Component {
 
   onSetEnvelope = (src) => {
     this.props.onSetEnvelope(src)
-    this.setState({ modal: 'compiling' })
-    window.setTimeout(() => {
-      this.compile()
-    }, 200)
+    // this.setState({ modal: 'compiling' })
+    this.setState({ modal: 'envelopeInsideText' })
+    // window.setTimeout(() => {
+    //   this.compile()
+    // }, 200)
   }
 
   onBack = () => {
@@ -169,6 +171,19 @@ export default class extends React.Component {
               <Envelopes
                 onSetPhoto={this.onSetEnvelope}
                 onBack={this.onBack}
+              />
+            )
+            : null
+        }
+
+        {
+          this.state.modal === 'envelopeInsideText'
+            ? (
+              <EnvelopeTextInside
+                onSetPhoto={this.onSetEnvelope}
+                onBack={this.onBack}
+                confirmAndCompile={this.compile}
+                {...this.props}
               />
             )
             : null

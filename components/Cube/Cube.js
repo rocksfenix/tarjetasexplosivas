@@ -28,11 +28,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: #000;
-  background: radial-gradient(#353d44, #010115);
-  background: radial-gradient(#0e0b3c,#000000);
-  background: radial-gradient(#0072b5,#97ecff);
-  background: radial-gradient(#3ab4fb,#ffffff);
-  background: radial-gradient(#beffbe,#ffffff);
+  background: ${p => p.bg};
   user-select: none;
 `
 
@@ -289,14 +285,14 @@ class CubeBlock extends Component {
   render () {
     const { fx, fy } = this.state
     const { side0, side1, side2, side3, side4, side5 } = this.props.work
-    // console.log(this.props.work)
 
     const cubeStyle = {
       transform: `rotateX(${fx}deg) rotateY(${fy}deg)`
     }
-
+    // radial-gradient(#ffffff,#a0fff2)
+    // radial-gradient(#beffbe,#ffffff)
     return (
-      <Wrapper>
+      <Wrapper bg={this.props.isFinish ? 'radial-gradient(#ffffff,#a0fff2)' : 'radial-gradient(#141415,#000000)'}>
         <Current active={this.currentSide} />
         <Viewport size={this.size}>
           <Cube

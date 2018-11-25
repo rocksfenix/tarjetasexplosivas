@@ -38,9 +38,8 @@ const Block = styled.div`
   justify-content: space-between;
   user-select: none;
   position: relative;
-  background-color: #3A31AD;
-  background-color: #291d46;
-  background-color: #212020;
+  background: white;
+  border-bottom: 1px solid whitesmoke;
   height: 55px;
 `
 

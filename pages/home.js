@@ -133,6 +133,7 @@ const ButtonLink = styled.a`
 const Panel = styled.div`
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
 `
 
