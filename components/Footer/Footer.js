@@ -62,7 +62,6 @@ const Legal = styled.div`
 
 export default () => (
   <Panel>
-
     <Link passHref href='/home' target='__blanck'>
       <To><Logo src='/static/img/tarjetas-explosivas3.png' /></To>
     </Link>
