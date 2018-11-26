@@ -5,7 +5,8 @@ import Link from 'next/link'
 const Panel = styled.footer`
   width: 100%;
   height: 60px;
-  background-color: #d6d6d6;
+  background-color: rgb(243, 243, 243);
+  border-top: 1px solid #b5b4b4;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -58,6 +59,7 @@ const Legal = styled.div`
   margin-left: 2em;
   display: flex;
   flex-direction: column;
+  font-size: 14px;
 `
 
 export default () => (
