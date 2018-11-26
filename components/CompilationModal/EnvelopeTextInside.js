@@ -85,7 +85,7 @@ class EnvelopeTextInsideComponent extends React.Component {
     return (
       <Panel>
         <Box>
-          <Image src='/static/img/EnvelopeInsideText.png' />
+          <Image src='https://d39p6dv27gzlaf.cloudfront.net/static/img/EnvelopeInsideText.png' />
           <Text>Escoge el mensaje para el interior del sobre. Entre 6 y 35 caracteres "Ejemplo: <strong>'Te amo preciosa Charlotte'</strong>"</Text>
           <Input onChange={this.update} value={this.state.value} />
           <Remaining>{ this.state.remaining } Restantes (Solo texto NO simbolos ni iconos)</Remaining>

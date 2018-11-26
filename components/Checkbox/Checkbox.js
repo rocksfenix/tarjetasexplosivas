@@ -53,7 +53,7 @@ export default class extends React.Component {
     return (
       <Panel onClick={this.toggleChecked}>
         <Checkbox>
-          <Icon src='/static/img/success2.svg' isChecked={this.state.isChecked} />
+          <Icon src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success2.svg' isChecked={this.state.isChecked} />
         </Checkbox> <Label>{ this.props.children }</Label>
       </Panel>
     )

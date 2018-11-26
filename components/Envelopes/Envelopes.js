@@ -18,7 +18,7 @@ const Photo = styled.img`
   height: ${p => `${p.size}px` || '200px'};
   box-sizing: border-box;
   margin: 2px;
-  background: url('/static/img/default-photo.svg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;

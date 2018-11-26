@@ -13,7 +13,7 @@ const Box = styled.div`
 const Side = styled.div`
   width: 100%;
   height: 100%;
-  background: url('/static/img/default-side.jpg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-side.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -70,11 +70,11 @@ const EditBox = styled.div`
 `
 
 export default ({ name, image }) => {
-  let imgBtn = '/static/img/side-left.svg'
+  let imgBtn = 'https://d39p6dv27gzlaf.cloudfront.net/static/img/side-left.svg'
   let bgColor = 'purple'
 
   if (name === 'side0' || name === 'side5') {
-    imgBtn = '/static/img/side-up.svg'
+    imgBtn = 'https://d39p6dv27gzlaf.cloudfront.net/static/img/side-up.svg'
   }
 
   if (name === 'side0' || name === 'side5') bgColor = '#FFF'

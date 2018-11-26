@@ -171,7 +171,7 @@ class User extends Component {
     // console.log(this.props)
     return (
       <DesignBox>
-        <Avatar src={avatar || '/static/img/user-default.jpg'} />
+        <Avatar src={avatar || 'https://d39p6dv27gzlaf.cloudfront.net/static/img/user-default.jpg'} />
         <Column width='40px'>
           <div>{ credits }</div>
         </Column>

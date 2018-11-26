@@ -19,7 +19,7 @@ const Photo = styled.img`
   width: ${p => `${p.size}px` || '200px'};
   height: ${p => `${p.size}px` || '200px'};
   margin: 2px;
-  background: url('/static/img/default-photo.svg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -38,7 +38,7 @@ const AlbumBox = styled.div`
 const AlbumImage = styled.img`
   width: 100%;
   height: 100%;
-  background: url('/static/img/default-photo.svg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   display: block;

@@ -63,17 +63,17 @@ const Legal = styled.div`
 export default () => (
   <Panel>
     <Link passHref href='/home' target='__blanck'>
-      <To><Logo src='/static/img/tarjetas-explosivas3.png' /></To>
+      <To><Logo src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas3.png' /></To>
     </Link>
     <Socials>
       <a href='https://www.facebook.com/Tarjetas-Explosivas-341585959935818' target='_blank'>
-        <LogoSocial src='/static/img/facebook.svg' alt='facebook' />
+        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/facebook.svg' alt='facebook' />
       </a>
       <a href='https://www.instagram.com/tarjetasexplosivas' target='_blank'>
-        <LogoSocial src='/static/img/instagram.svg' alt='instagram' />
+        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/instagram.svg' alt='instagram' />
       </a>
       <a href='https://twitter.com/ExploTarjetas' target='_blank'>
-        <LogoSocial src='/static/img/twitter.svg' alt='twitter' />
+        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/twitter.svg' alt='twitter' />
       </a>
     </Socials>
     <Legal>

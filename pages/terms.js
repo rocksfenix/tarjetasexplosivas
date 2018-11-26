@@ -126,7 +126,7 @@ export default class extends Component {
       <Panel>
         <SeoHead />
         <Section>
-          <Present src='/static/img/privacy2.svg' />
+          <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/privacy2.svg' />
           <H3>Hola {this.props.user ? this.props.user.fullname : ''} </H3>
           <Parragraph>
               Nos tomamos muy enserio la privacidad de tu informacion. Para poder usar nuestros servicios debes aceptar:

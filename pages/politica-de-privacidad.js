@@ -88,7 +88,7 @@ export default class extends Component {
         <SeoHead />
         <Navegation user={this.props.user} />
         <Section>
-          <Present src='/static/img/privacy.svg' />
+          <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/privacy.svg' />
           <Title>POLÍTICA DE PRIVACIDAD</Title>
           <Subtitle>Última actualización el 22 de Noviembre del 2018</Subtitle>
           <P>

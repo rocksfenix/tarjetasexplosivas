@@ -100,7 +100,7 @@ class Menu extends React.Component {
     return (
       <Box show={this.state.showMenu} onClick={this.toggleMenu}>
         <UserButton >
-          <Img src='/static/img/user.svg' />
+          <Img src='https://d39p6dv27gzlaf.cloudfront.net/static/img/user.svg' />
         </UserButton>
         <MenuBox show={this.state.showMenu}>
           <Link href='/account'>Mi Cuenta</Link>

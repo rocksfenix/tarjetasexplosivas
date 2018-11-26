@@ -185,9 +185,9 @@ export default class extends React.Component {
 
                 <Section>Cumple los requisitos de regalo perfecto:</Section>
                 <List>
-                  <Item><Success src='/static/img/success3.svg' /><span>Ser unico y original</span></Item>
-                  <Item><Success src='/static/img/success3.svg' />Totalmente personalizado</Item>
-                  <Item><Success src='/static/img/success3.svg' />Creado por ti mismo puff.</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success3.svg' /><span>Ser unico y original</span></Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success3.svg' />Totalmente personalizado</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success3.svg' />Creado por ti mismo puff.</Item>
                 </List>
 
                 <Section>
@@ -195,10 +195,10 @@ export default class extends React.Component {
                 Que obtengo por <Big>$4.<Small>99</Small></Big> ?
                 </Section>
                 <List>
-                  <Item><Success src='/static/img/success.svg' />Descarga inmediata de material:</Item>
-                  <Item><Success src='/static/img/success.svg' />Planos en PDF de tu diseño listo para impresion</Item>
-                  <Item><Success src='/static/img/success.svg' />Instrucciones de como construirla</Item>
-                  <Item><Success src='/static/img/success.svg' />Video paso a paso para crearla</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Descarga inmediata de material:</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Planos en PDF de tu diseño listo para impresion</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Instrucciones de como construirla</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Video paso a paso para crearla</Item>
                 </List>
                 <Note>* No esperes mas, regala este precioso y unico regalo.</Note>
                 <Button onClick={this.onShowPricing}>Pagar con Paypal</Button>
@@ -210,7 +210,7 @@ export default class extends React.Component {
                 <ButtonsBlock>
 
                   <Paypal>
-                    <LogoPaypal src='/static/img/paypal-logo-129x32.svg' />
+                    <LogoPaypal src='https://d39p6dv27gzlaf.cloudfront.net/static/img/paypal-logo-129x32.svg' />
                     <PaypalText>* Precios en USD</PaypalText>
                   </Paypal>
 

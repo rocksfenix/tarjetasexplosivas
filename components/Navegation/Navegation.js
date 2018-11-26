@@ -48,7 +48,7 @@ export default ({ user, showCredits }) => {
     <Nav>
       <Headroom>
         <Block>
-          <Link href='/home' as='/'><Logo src='/static/img/tarjetas-explosivas3.png' /></Link>
+          <Link href='/home' as='/'><Logo src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas3.png' /></Link>
           <Menu user={user} showCredits={showCredits} />
         </Block>
       </Headroom>

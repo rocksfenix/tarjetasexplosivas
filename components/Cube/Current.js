@@ -30,12 +30,12 @@ const Side = styled.img`
 export default ({ active }) => {
   return (
     <Panel>
-      { active === 0 ? <Side src='/static/img/cube/side0-active.svg' /> : <Side src='/static/img/cube/side0-inactive.svg' /> }
-      { active === 1 ? <Side src='/static/img/cube/side1-active.svg' /> : <Side src='/static/img/cube/side1-inactive.svg' /> }
-      { active === 2 ? <Side src='/static/img/cube/side2-active.svg' /> : <Side src='/static/img/cube/side2-inactive.svg' /> }
-      { active === 3 ? <Side src='/static/img/cube/side3-active.svg' /> : <Side src='/static/img/cube/side3-inactive.svg' /> }
-      { active === 4 ? <Side src='/static/img/cube/side4-active.svg' /> : <Side src='/static/img/cube/side4-inactive.svg' /> }
-      { active === 5 ? <Side src='/static/img/cube/side5-active.svg' /> : <Side src='/static/img/cube/side5-inactive.svg' /> }
+      { active === 0 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-inactive.svg' /> }
+      { active === 1 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-inactive.svg' /> }
+      { active === 2 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-inactive.svg' /> }
+      { active === 3 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-inactive.svg' /> }
+      { active === 4 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-inactive.svg' /> }
+      { active === 5 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-inactive.svg' /> }
     </Panel>
   )
 }

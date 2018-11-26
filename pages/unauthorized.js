@@ -23,7 +23,7 @@ export default class extends React.Component {
     return (
       <Panel>
         <Navegation user={this.props.user} />
-        <Img src='/static/img/401.svg' />
+        <Img src='https://d39p6dv27gzlaf.cloudfront.net/static/img/401.svg' />
         <CookiesConsent />
       </Panel>
     )

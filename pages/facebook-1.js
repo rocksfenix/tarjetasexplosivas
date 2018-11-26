@@ -67,7 +67,7 @@ const Item = styled.li`
     &:before{
     content:'';
     padding: 0 0 0 1.5em;
-    background:url('/static/img/success.svg') no-repeat 0 3px;
+    background:url('https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg') no-repeat 0 3px;
 }
 `
 
@@ -149,7 +149,7 @@ export default class extends Component {
         <Navegation user={this.props.user} />
         <Section>
           <Title>BUSCAS EL REGALO PERFECTO?</Title>
-          <Present src='/static/img/el-regalo-perfecto.png' />
+          <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/el-regalo-perfecto.png' />
           <Parragraph>
             Ya se que se acerca esa fecha tan especial y no sabes que regalar,
             has buscado por un monton de sitios pero no encuentras nada y aun asi

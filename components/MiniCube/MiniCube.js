@@ -85,7 +85,7 @@ export default class extends Component {
 
     return (
       <Wrapper >
-        <Confetti src='/static/img/confetti.png' />
+        <Confetti src='https://d39p6dv27gzlaf.cloudfront.net/static/img/confetti.png' />
         <Viewport size={this.size}>
           <Cube
             size={this.size}

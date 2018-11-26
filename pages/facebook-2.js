@@ -67,7 +67,7 @@ const Item = styled.li`
     &:before{
     content:'';
     padding: 0 0 0 1.5em;
-    background:url('/static/img/success.svg') no-repeat 0 3px;
+    background:url('https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg') no-repeat 0 3px;
 }
 `
 

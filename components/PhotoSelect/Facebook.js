@@ -25,7 +25,7 @@ const Albums = styled.div`
 const CoverBox = styled.div`
   box-sizing: border-box;
   margin: 2px;
-  background: url('/static/img/default-photo.svg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-photo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -36,7 +36,7 @@ const CoverBox = styled.div`
 const CoverWrap = styled.div`
   width: 100%;
   height: 100%;
-  background: url('/static/img/default-photo.svg');
+  background: url('https://d39p6dv27gzlaf.cloudfront.net/static/img/default-photo.svg');
   overflow: hidden;
   position: relative;
 `
