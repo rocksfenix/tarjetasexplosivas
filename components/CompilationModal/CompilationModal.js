@@ -99,7 +99,8 @@ export default class extends React.Component {
     modal: 'danger'
   }
 
-  compile = async () => {
+  compile = async (work) => {
+    // this.props.setWork(work)
     if (!this.state.isCompiling) {
       this.setState({ isCompiling: true, modal: 'compiling' })
       window.setTimeout(() => this.setState({ status: 'Obteniendo Fotografias' }), 1000)

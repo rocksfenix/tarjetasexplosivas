@@ -21,7 +21,7 @@ const Block = styled.div`
 `
 
 const To = styled.a`
-  color: #FFF;
+  color: #565656;
   text-decoration: none;
   margin: 0 1.5em;
   font-size: 16px;

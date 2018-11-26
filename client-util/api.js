@@ -122,6 +122,11 @@ const User = {
     return res.data
   },
 
+  async deleteAndForgotten () {
+    const res = await axios.post(`/api/user/deleteAndForgotten`)
+    return res.data
+  },
+
   async getAll (skip = 0) {
     const res = await axios.get(`/api/users/?skip=${skip}`)
     return res.data

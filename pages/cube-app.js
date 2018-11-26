@@ -259,6 +259,7 @@ class App extends Component {
       // TODO habilidar cuando este lista para produccion
       this.setState({ isFinish: true })
       party()
+      window.setTimeout(() => party(), 4000)
     }
   }
 

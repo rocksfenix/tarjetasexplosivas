@@ -5,7 +5,7 @@ import authEmail from './auth/auth-email'
 import authGoogle from './auth/auth-google'
 import authFacebook from './auth/auth-facebook'
 import loginOauth from './auth/login-oauth'
-import user from './user/user'
+import user from './user/user-controller'
 import recovery from './auth/recovery-password'
 import invoice from './ticket-invoice'
 import design from './design'
@@ -49,6 +49,8 @@ api.put('/api/user/:id', user.put)
 api.put('/api/user/facebook/accessToken', user.updateFBAccessToken)
 api.post('/api/auth/accept-terms', user.acceptTerms)
 api.get('/api/usersByName', user.getByPartialName)
+api.get('/api/user/datos.csv', user.getSelfDataCSV)
+api.post('/api/user/deleteAndForgotten', user.deleteAndForgotten)
 
 // Photos
 api.post('/api/photo/:workId/:side', photos.upload)

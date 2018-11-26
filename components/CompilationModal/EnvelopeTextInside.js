@@ -29,7 +29,8 @@ const Button = styled.button`
 `
 
 const Text = styled.div`
-
+  padding: .3em 0.3em;
+  margin-bottom: 1em;
 `
 
 const Box = styled.div`
@@ -46,6 +47,7 @@ const Image = styled.img`
 
 const Remaining = styled.div`
  font-size: 20px;
+ padding: .3em 0;
 `
 
 class EnvelopeTextInsideComponent extends React.Component {
@@ -75,11 +77,7 @@ class EnvelopeTextInsideComponent extends React.Component {
       this.setState({ fetching: false })
 
       // TODO this.props.setWork(res.work)
-
-      this.props.confirmAndCompile()
-
-      console.log(res)
-      // alert(this.state.value)
+      this.props.confirmAndCompile(res.work)
     }
   }
 
@@ -90,7 +88,7 @@ class EnvelopeTextInsideComponent extends React.Component {
           <Image src='/static/img/EnvelopeInsideText.png' />
           <Text>Escoge el mensaje para el interior del sobre. Entre 6 y 35 caracteres "Ejemplo: <strong>'Te amo preciosa Charlotte'</strong>"</Text>
           <Input onChange={this.update} value={this.state.value}/>
-          <Remaining>{ this.state.remaining }</Remaining>
+          <Remaining>{ this.state.remaining } Restantes</Remaining>
           <Button onClick={this.onConfirm}>Confirmar y Compilar</Button>
         </Box>
       </Panel>

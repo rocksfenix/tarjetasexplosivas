@@ -82,7 +82,7 @@ class TextFieldComponent extends Component {
     isTouched: false
   }
 
-  componentWillMount () {
+  componentDidMount () {
     if (this.props.value !== '') {
       this.setState({ isActive: true })
     }
