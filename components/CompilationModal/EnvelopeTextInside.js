@@ -46,7 +46,7 @@ const Image = styled.img`
 `
 
 const Remaining = styled.div`
- font-size: 20px;
+ font-size: 15px;
  padding: .3em 0;
 `
 
@@ -87,8 +87,8 @@ class EnvelopeTextInsideComponent extends React.Component {
         <Box>
           <Image src='/static/img/EnvelopeInsideText.png' />
           <Text>Escoge el mensaje para el interior del sobre. Entre 6 y 35 caracteres "Ejemplo: <strong>'Te amo preciosa Charlotte'</strong>"</Text>
-          <Input onChange={this.update} value={this.state.value}/>
-          <Remaining>{ this.state.remaining } Restantes</Remaining>
+          <Input onChange={this.update} value={this.state.value} />
+          <Remaining>{ this.state.remaining } Restantes (Solo texto NO simbolos ni iconos)</Remaining>
           <Button onClick={this.onConfirm}>Confirmar y Compilar</Button>
         </Box>
       </Panel>
