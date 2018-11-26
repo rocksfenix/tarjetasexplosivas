@@ -1,5 +1,6 @@
 export default (envelopeImage) => `
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
 <g id="Layer_1">
@@ -359,8 +360,6 @@ export default (envelopeImage) => `
 				C301.4,708.5,301.4,708.7,301.4,708.9z"/>
 		</g>
 	</g>
-		<image style="overflow:visible;" width="231" height="436" xlink:href="data:image/jpeg;base64,${envelopeImage}"  transform="matrix(0.9998 0 0 0.9998 296.4442 172.2921)">
-	</image>
 	<g>
 		<path d="M529.3,59.9c0.6,0.4,2.1,1,3.7,1c2.9,0,3.8-1.8,3.8-3.2c0-2.3-2.1-3.3-4.3-3.3h-1.3v-1.7h1.3c1.6,0,3.7-0.8,3.7-2.8
 			c0-1.3-0.8-2.5-2.9-2.5c-1.3,0-2.6,0.6-3.3,1.1l-0.6-1.6c0.9-0.6,2.6-1.3,4.3-1.3c3.3,0,4.8,1.9,4.8,4c0,1.7-1,3.2-3.1,3.9v0.1
@@ -762,8 +761,12 @@ export default (envelopeImage) => `
 			</g>
 		</g>
 		<g>
-			<polygon style="fill:none;stroke:#141E2F;stroke-miterlimit:10;" points="289.3,165.1 289.3,384.8 289.3,385.5 289.3,617.8 
-				536.1,617.8 536.1,385.5 536.1,384.8 536.1,165.1 			"/>
+			<g>
+				<polygon style="fill:none;stroke:#141E2F;stroke-miterlimit:10;" points="289.9,164.5 289.9,384.2 289.9,384.9 289.9,617.2 
+					536.7,617.2 536.7,384.9 536.7,384.2 536.7,164.5"/>
+					<image style="overflow:visible;" width="231" height="436" xlink:href="data:image/jpeg;base64,${envelopeImage}"  transform="matrix(0.9998 0 0 0.9998 297.8084 172.8882)">
+				</image>
+			</g>
 			<polygon style="fill:none;stroke:#141E2F;stroke-miterlimit:10;" points="330.9,116.8 412.5,116.8 412.8,116.8 494.4,116.8 
 				536.1,149.8 412.8,149.8 412.5,149.8 289.3,149.8 			"/>
 			<polygon style="fill:none;stroke:#141E2F;stroke-miterlimit:10;" points="584.9,207.4 584.9,378.2 584.9,378.7 584.9,574.7 
