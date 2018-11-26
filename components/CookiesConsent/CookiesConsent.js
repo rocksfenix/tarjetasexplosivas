@@ -4,7 +4,7 @@ import { setCookie, getCookie } from '../../client-util/session'
 
 const Panel = styled.div`
   width: 100vw;
-  height: 60px;
+  height: 70px;
   background-color: #d0871c;
   background-color: rgb(35, 122, 252);
   color: #FFF;
@@ -14,7 +14,15 @@ const Panel = styled.div`
   position: fixed;
   bottom: ${p => p.show ? '0' : '-80px'};
   z-index: 1000;
+  padding: 0 0.5em;
   transition: bottom 250ms ease-out;
+
+  @media(max-width: 900px) {
+    height: 210px;
+    padding: 0 0.5em;
+    flex-direction: column;
+    bottom: ${p => p.show ? '0' : '-210px'};
+  }
 `
 
 const Text = styled.div`
@@ -37,6 +45,7 @@ const Button = styled.button`
   padding: .5em 1em;
   font-size: 17px;
   cursor: pointer;
+  margin: 0 .5em;
 `
 
 class ConcentComponent extends Component {
