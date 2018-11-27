@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import GalleryPanel from '../GalleryPanel'
 
-import Router from 'next/router'
-
 const Editor = styled.div`
   overflow-y: auto;
   width: 100%;
@@ -15,7 +13,6 @@ const Editor = styled.div`
   top: 0;
   background: #FFF;
   z-index: 100;
-
 `
 
 const Tools = styled.div`
@@ -104,16 +101,6 @@ class MessageComponent extends React.Component {
     }
   }
 
-  selectPhoto = () => {
-    console.log(this.state.imageSelectedSource)
-    Router.replace(
-      `/cube-app?id=${this.props.work._id}&modal=photoSelect`,
-      `/cube-app/${this.props.work._id}/photoSelect`
-    )
-    // this.setState({ albumDetails: false })
-    this.props.onSetPhoto(this.state.imageSelectedSource)
-  }
-
   onBack = () => {
     window.history.back()
   }
@@ -121,7 +108,6 @@ class MessageComponent extends React.Component {
   changeText= (e) => {
     this.state.text = e.target.value
     this.forceUpdate()
-    // this.setState({ text: e.target.value })
     this.renderY(e.target.value)
   }
 

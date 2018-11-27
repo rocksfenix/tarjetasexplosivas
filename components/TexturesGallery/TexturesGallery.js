@@ -132,7 +132,7 @@ class ModalComponent extends React.Component {
 
       case 'messaje':
         return (
-          <Message {...this.props} />
+          <Message {...this.props} onUploadPhoto={this.onUploadPhoto} />
         )
 
       default:
@@ -145,13 +145,22 @@ class ModalComponent extends React.Component {
     }
   }
 
+  onUploadPhoto = (props) => {
+    this.props.onUploadPhoto(props)
+    this.closeModal()
+  }
+
+  closeModal = () => this.setState({
+    imageSrc: null,
+    source: '',
+    modal: ''
+  }, this.props.closeModal)
+
   render () {
     if (!this.props.show) return null
-    const { closeModal } = this.props
-
     return (
       <Panel onClick={e => e.stopPropagation()} show>
-        <Close onClick={closeModal}>X</Close>
+        <Close onClick={this.closeModal}>X</Close>
         {
           this.state.imageSrc
             ? (

@@ -106,7 +106,7 @@ class GalleryComponent extends React.Component {
               alignItems: 'center',
               flexWrap: 'wrap',
               paddingTop: '80px',
-              overflowY: 'auto'
+              overflowY: 'hidden'
 
             }}
             loader={'loading'}
