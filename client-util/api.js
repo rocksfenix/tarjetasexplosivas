@@ -139,8 +139,8 @@ const User = {
 }
 
 const Photo = {
-  async upload (workId, side, formData) {
-    const res = await axios.post(`/api/photo/${workId}/${side}`, formData, {
+  async upload (workId, side, type = 'photo', formData) {
+    const res = await axios.post(`/api/photo/${workId}/${side}/${type}`, formData, {
       headers: {
         'Content-Type': `multipart/form-data`
       }

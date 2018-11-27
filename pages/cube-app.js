@@ -228,7 +228,7 @@ class App extends Component {
   }
 
   // el src es el blob de imagen cortada
-  onUploadPhoto = async (resize) => {
+  onUploadPhoto = async (resize, type = 'photo') => {
     this.closeModal()
     const { sideInFocusName } = this.state
 
@@ -241,7 +241,7 @@ class App extends Component {
     // debugger
     const formData = new window.FormData()
     formData.append('image', resize.blob)
-    const res = await api.Photo.upload(this.state.work._id, sideInFocusName, formData)
+    const res = await api.Photo.upload(this.state.work._id, sideInFocusName, type, formData)
     this.check()
     if (this.state.modal === '') {
       // Si no se esta mostrando el modal

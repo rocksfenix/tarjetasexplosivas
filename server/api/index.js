@@ -53,7 +53,7 @@ api.get('/api/user/datos.csv', user.getSelfDataCSV)
 api.post('/api/user/deleteAndForgotten', user.deleteAndForgotten)
 
 // Photos
-api.post('/api/photo/:workId/:side', photos.upload)
+api.post('/api/photo/:workId/:side/:type', photos.upload)
 api.get('/api/photos', photos.getAllSelf)
 
 // Works

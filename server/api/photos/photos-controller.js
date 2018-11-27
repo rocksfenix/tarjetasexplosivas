@@ -12,7 +12,10 @@ export default {
     let skip = 0
     let query = {
       // Solo las imagenes propias
-      author: req.decode.sub
+      author: req.decode.sub,
+
+      // Solo las photos no pattenrs
+      type: 'photo'
     }
 
     if (typeof req.query.skip !== 'undefined') {
@@ -61,7 +64,8 @@ export default {
       author: req.decode.sub,
       work: work._id,
       key: baseLocation.key,
-      location: baseLocation.location
+      location: baseLocation.location,
+      type: req.params.type || 'photo'
     })
 
     await work.save()

@@ -146,7 +146,7 @@ class ModalComponent extends React.Component {
   }
 
   onUploadPhoto = (props) => {
-    this.props.onUploadPhoto(props)
+    this.props.onUploadPhoto(props, 'pattern')
     this.closeModal()
   }
 
