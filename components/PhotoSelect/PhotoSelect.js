@@ -214,13 +214,21 @@ class ModalComponent extends React.Component {
     }
   }
 
+  closeModal = () => {
+    this.setState({
+      source: '',
+      modal: ''
+    })
+    this.props.closeModal()
+  }
+
   render () {
     if (!this.props.show) return null
-    const { closeModal } = this.props
+    // const { closeModal } = this.props
 
     return (
       <Panel onClick={e => e.stopPropagation()} show>
-        <Close onClick={closeModal}>X</Close>
+        <Close onClick={this.closeModal}>X</Close>
         {
           this.state.imageSrc
             ? (

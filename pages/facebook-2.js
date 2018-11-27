@@ -7,6 +7,7 @@ import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import VideoLanding from '../components/Videos/Video-landing'
 import CookiesConsent from '../components/CookiesConsent'
+import CardsPromo1 from '../components/PromosGifs/CardsPromo1'
 
 const Title = styled.h1`
   color: #30233F;
@@ -148,13 +149,14 @@ export default class extends Component {
         <SeoHead />
         <Navegation user={this.props.user} />
         <Section>
-        <VideoLanding />
+          <CardsPromo1 />
           <Parragraph>
             Apoco no estaria hermoso, genial, unico, cool, way, chevere regalar este detalle original,
             personalizado y hecho con el par de manitas lindas que tienes. Asi es, una tarjeta que se hace cubo y explota junto con confeti (inserte cara de wow aqui).
 
             {/* Ya sea para cumpleaños, aniversario o solo porque quieres dar un regalo hermoso */}
           </Parragraph>
+          <VideoLanding />
           <Parragraph>
 
           100% personalizada con tus propias fotos y mensajes, lo haras con tus propias manos, sin ningun

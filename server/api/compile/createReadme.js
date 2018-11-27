@@ -14,12 +14,12 @@ const CONTENT = (work, sub) => `
     \r\n
     Puedes encontrar el video de como realizar la tarjeta\r\n
     en este enlace:\r\n
-    https://bit.ly/2DH9gW3\r\n
+    https://www.tarjetasexplosivas.com/cubo-instrucciones\r\n
 \r\n
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n
   \r\n
   Si tienes cualquier problema no dudes en contactarnos en:\r\n
-  https://bit.ly/2zW0ajZ\r\n
+  hola@tarjetasexplosivas.com\r\n
 
 \r\n
      Datos del projecto:\r\n

@@ -112,8 +112,8 @@ class GalleryComponent extends React.Component {
               justifyContent: 'center',
               alignItems: 'center',
               flexWrap: 'wrap',
-              overflowY: 'auto',
-              'flexGrow': 1
+              overflowY: 'hidden',
+              flexGrow: 1
 
             }}
             loader={'loading'}
