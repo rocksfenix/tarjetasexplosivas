@@ -49,11 +49,6 @@ const Parragraph = styled.p`
   }
 `
 
-const Present = styled.img`
-  display: block;
-  margin: 0 auto;
-`
-
 const List = styled.ul`
   @media (max-width: 900px) {
     padding: 0 .8em;
@@ -137,6 +132,45 @@ const Panel = styled.div`
   height: 100vh;
 `
 
+const Cards = styled.div`
+  display: flex;
+  width: 150%;
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+
+  @media(max-width: 900px) {
+    left: 0%;
+    transform: translateX(0%);
+    width: 100%;
+  }
+`
+
+const Column = styled.div`
+  width: 50%;
+
+  @media(max-width: 900px) {
+    width: 100%;
+  }
+`
+
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  @media(max-width: 900px) {
+    flex-direction: column;
+  }
+`
+
+const Img = styled.img`
+  width: 100%;
+  border: 3px solid #FFF;
+  box-sizing: border-box;
+`
+
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
     let query = {}
@@ -156,7 +190,21 @@ export default class extends Component {
         }
         <Section>
           <Title>BUSCAS EL REGALO PERFECTO?</Title>
-          <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/el-regalo-perfecto.png' />
+          <Cards>
+            <Row>
+              <Column>
+                <Img src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas-de-confeti-1.jpg' />
+              </Column>
+              <Column>
+                <Row>
+                  <Img src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas-de-confeti-2.jpg' />
+                </Row>
+                <Row>
+                  <Img src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas-de-confeti-3.jpg' />
+                </Row>
+              </Column>
+            </Row>
+          </Cards>
           <Parragraph>
             Ya se que se acerca esa fecha tan especial y no sabes que regalar,
             has buscado por un monton de sitios pero no encuentras nada y aun asi
