@@ -77,6 +77,7 @@ class PhotoCut extends Component {
         onResize={this.onResize}
         confirmText='Confirmar'
         backText='Descartar'
+        message='Puedes Mover y Recortar'
       >
         <Albums>
           <EditorPanel>

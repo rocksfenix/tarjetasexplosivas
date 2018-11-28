@@ -4,10 +4,9 @@ import api from '../../client-util/api'
 
 const Panel = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 `
 
 const Input = styled.input`
@@ -20,7 +19,7 @@ const Input = styled.input`
 const Button = styled.button`
   border: 0;
   color: #FFF;
-  background: #a00033;
+  background: #e42c00;
   font-size: 20px;
   padding: 0.6em;
   margin-top: 1em;
@@ -38,6 +37,7 @@ const Box = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 1em auto;
 `
 
 const Image = styled.img`

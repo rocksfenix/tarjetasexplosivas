@@ -258,6 +258,7 @@ class DesignsComponent extends React.Component {
         onConfirm={this.onConfirm}
         confirmActive={this.state.imageSelected}
         onResize={this.onResize}
+        message='Escoge el diseño que mas te guste'
       >
 
         {

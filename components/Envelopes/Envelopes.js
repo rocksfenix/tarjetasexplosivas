@@ -90,6 +90,7 @@ class GalleryComponent extends React.Component {
         onConfirm={this.selectPhoto}
         confirmActive={this.state.imageSelected}
         onResize={this.onResize}
+        message='Escoge el diseño del sobre'
       >
         <Albums id='g-panel'>
           <InfiniteScroll

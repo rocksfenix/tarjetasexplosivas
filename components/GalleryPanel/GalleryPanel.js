@@ -68,6 +68,16 @@ const Buttons = styled.div`
   }
 `
 
+const Message = styled.div`
+  width: 100%;
+  padding: 1em;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  color: #FFF;
+  background-color: #673AB7;
+  text-align: center;
+`
+
 class GalleryPanel extends React.Component {
   static defaultProps = {
     onResize: () => {},
@@ -102,9 +112,15 @@ class GalleryPanel extends React.Component {
     this.calculePhotoSize()
   }
   render () {
-    const { children, onBack, onConfirm, confirmActive } = this.props
+    const { children, onBack, onConfirm, confirmActive, message } = this.props
+    console.log(this.props)
     return (
       <Panel >
+        {
+          message
+            ? <Message>{ message }</Message>
+            : null
+        }
         <Gallery id='scrollableGallery'>
           { children }
         </Gallery>

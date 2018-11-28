@@ -16,7 +16,7 @@ const Panel = styled.div`
   background-color: rgba(0, 0, 0, 0.52);
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
-  padding: 1em;
+  padding: 0em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ const Button = styled.button`
   padding: 0.4em 2em;
   margin: 0.6em 0;
   border: 0;
-  font-size: 25px;
+  font-size: 20px;
   border-radius: 39px;
   cursor: pointer;
   background: linear-gradient(30deg, #2196F3, #9C27B0);
@@ -75,7 +75,7 @@ const ButtonLink = styled.a`
 
 const Text = styled.div`
   color: #291d46;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.8;
 
   @media(max-width: 900px) {
@@ -86,7 +86,7 @@ const Text = styled.div`
 
 const Text2 = styled.div`
   color: #291d46;
-  font-size:20px;
+  font-size: 18px;
   line-height: 1.8;
   font-weight: 100;
   text-align: center;
