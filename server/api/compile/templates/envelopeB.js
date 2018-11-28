@@ -517,7 +517,7 @@ export default (envelopeInside) => `
 			 M546.8,37.2c-0.6-0.1-1.3-0.3-1.9-0.3l0.1-1c0.7,0.1,1.4,0.2,2,0.4L546.8,37.2z M541,36.9l-0.1-1c0.6-0.1,1.2-0.1,1.8-0.1l0.2,0
 			l0,1l-0.2,0C542.2,36.8,541.6,36.8,541,36.9z"/>
 	</g>
-	<rect x="108.5" y="565.4" style="fill:#FFFFFF;" width="175.4" height="5.9"/>
+	<polygon style="fill:#FFFFFF;" points="291.2,571.3 101.3,572.3 116.5,558.7 275.9,558.7 	"/>
 </g>
 <g id="Layer_2">
 	<line style="fill:none;stroke:#070102;stroke-miterlimit:10;" x1="314.3" y1="565.8" x2="284.7" y2="565.8"/>
