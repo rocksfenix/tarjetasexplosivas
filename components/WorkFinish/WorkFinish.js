@@ -131,7 +131,7 @@ export default class extends React.Component {
                 <Text>Hemos completado el proceso de Diseño para esta tarjeta</Text>
                 <ButtonsFinish>
                   <ButtonLink bg='#0057ff' href='/cube-app/new'>Crear Nueva Tarjeta</ButtonLink>
-                  <ButtonLink bg='#0057ff' download href={this.props.work.location}>Descargar Planos</ButtonLink>
+                  <ButtonLink bg='orangered' href={`/cubo-instrucciones?workref=${this.props.work.location}`}>Como Hacerla?</ButtonLink>
                 </ButtonsFinish>
               </Block>
             )

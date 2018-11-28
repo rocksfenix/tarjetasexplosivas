@@ -11,6 +11,7 @@ import CookiesConsent from '../components/CookiesConsent'
 import api from '../client-util/api'
 import Router from 'next/router'
 import VideoInstruccions from '../components/Videos/Video-landing'
+import party from '../client-util/party'
 
 const Title = styled.h1`
   color: #30233F;
@@ -102,31 +103,31 @@ const Text = styled.div`
 
 `
 
-const ButtonLink = styled.a`
-  background-color: #3BBFF2;
-  background: linear-gradient(30deg,#00c2ff,#008ff5);
-  color: #FFF;
-  display: inline-block;
-  line-height: 3;
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  cursor: pointer;
-  margin: 2em auto;
-  font-weight: 500;
-  font-size: 23px;
+// const ButtonLink = styled.a`
+//   background-color: #3BBFF2;
+//   background: linear-gradient(30deg,#00c2ff,#008ff5);
+//   color: #FFF;
+//   display: inline-block;
+//   line-height: 3;
+//   width: 60%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 100px;
+//   cursor: pointer;
+//   margin: 2em auto;
+//   font-weight: 500;
+//   font-size: 23px;
 
-  :hover {
-    background: linear-gradient(250deg,#00c2ff,#008ff5);
-  }
+//   :hover {
+//     background: linear-gradient(250deg,#00c2ff,#008ff5);
+//   }
 
-  @media (max-width: 900px) {
-    width: 90%;
-    margin: 0 auto;
-  }
-`
+//   @media (max-width: 900px) {
+//     width: 90%;
+//     margin: 0 auto;
+//   }
+// `
 
 const Panel = styled.div`
   position: relative;
@@ -168,11 +169,6 @@ const Row = styled.div`
   }
 `
 
-const Img = styled.img`
-  width: 100%;
-  border: 3px solid #FFF;
-  box-sizing: border-box;
-`
 
 const Image = styled.img`
   width: 50%;
@@ -180,7 +176,37 @@ const Image = styled.img`
   display: block;
 `
 
+const ButtonLink = styled.a`
+  background: ${p => p.bg || 'gray'};
+  padding: .9em 2em;
+  border: 0;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 38px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin: 3em auto;
+  max-width: 250px;
+
+  @media(max-width: 900px) {
+    font-size: 16px;
+    padding: .5em 1em;
+  }
+
+  :hover {
+    background: linear-gradient(90deg, #9C27B0, blue);
+  }
+`
+
 export default class extends Component {
+  static getInitialProps ({ req }) {
+    return {
+      query: req.query
+    }
+  }
+
   state = {
     user: {},
     isAuthorized: false,
@@ -201,16 +227,25 @@ export default class extends Component {
     }
 
     this.setState({ isAuthorized, status, user })
+
+    if (process.browser) {
+      window.setTimeout(() => {
+        party()
+      }, 2000)
+    }
   }
 
   render () {
+    console.log(this.props)
     return (
       <Panel>
         <SeoHead />
-        <Navegation user={this.props.user} />
+        <Navegation user={this.state.user} />
         <Section>
           <Title>Has tomado la decicion correcta</Title>
           <H3>Un regalo tan perfecto, barato y hermoso no es todos los dias</H3>
+
+          <ButtonLink bg='#0057ff' download href={this.props.query.workref}>Descargar Materiales</ButtonLink>
 
           <Parragraph>
             En esta parte de abajo encontraras el video con las instrucciones a detalle de como crear esa hermosa tarjeta, tambien mas abajo del video tienes las instrucciones en texto paso a paso de como contruila por si te pierdes, si ya has visto el video y las instrucciones y aun tienes problemas puedes contactarnos en <strong>hola@tarjetasexplosivas.com</strong> estamos para ayudarte con cualquier problema en el proceso, nuestra motivacion es que puedas regalar algo increible y puedas generar una hermosa experiencia.
@@ -225,7 +260,7 @@ export default class extends Component {
             <li>1 Regla</li>
             <li>1 Liga de 6cm</li>
             <li>Impresora a color</li>
-            <li>4 Hojas Tamaño carta de papel opalina o papel fotografico (de minimo 200 Gramos ya que si es inferior la tarjeta podria doblarse y no funcionar bien).</li>
+            <li>4 Hojas Tamaño carta de papel opalina o papel fotografico (de minimo 200 Gramos ya que si es inferior la tarjeta se doblara y no funcionara bien).</li>
           </ul>
 
           <VideoInstruccions />
@@ -260,6 +295,10 @@ export default class extends Component {
 
           <Parragraph>
             Una vez doblado pueder ver que ya tomaa forma de medio cubo,
+          </Parragraph>
+
+          <Parragraph>
+            Para los lados marcados en Morado se doblaran hacia adentro y los anaranjados hacia afuera
           </Parragraph>
 
           <Parragraph>

@@ -95,36 +95,42 @@ export default class extends Component {
             <Side
               size={this.size}
               image={side0.src}
+              side={side0}
               transform={this.transforms.side0}
               name='side0'
             />
             <Side
               size={this.size}
               image={side1.src}
+              side={side1}
               transform={this.transforms.side1}
               name='side1'
             />
             <Side
               size={this.size}
               image={side2.src}
+              side={side2}
               transform={this.transforms.side2}
               name='side2'
             />
             <Side
               size={this.size}
               image={side3.src}
+              side={side3}
               transform={this.transforms.side3}
               name='side3'
             />
             <Side
               size={this.size}
               image={side4.src}
+              side={side4}
               transform={this.transforms.side4}
               name='side4'
             />
             <Side
               size={this.size}
               image={side5.src}
+              side={side5}
               transform={this.transforms.side5}
               name='side5'
             />
