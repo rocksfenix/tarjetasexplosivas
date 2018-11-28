@@ -1,20 +1,19 @@
 export default (envelopeInside) => `
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
 <g id="Layer_1">
 	<g>
 		<defs>
-			<polygon id="SVGID_1_" points="564.9,381 564.9,354.1 564.9,353.5 564.9,177.7 329.6,177.7 314.7,177.7 314.3,177.7 314.3,113.1 
+			<polygon id="SVGID_1_" points="564.9,473 564.9,354.1 564.9,353.5 564.9,177.7 329.6,177.7 314.7,177.7 314.3,177.7 314.3,113.1 
 				305.2,106.5 88.4,106.5 79.3,113.2 79.3,318.2 79.3,318.9 79.3,565.8 314.3,565.8 314.7,565.8 314.7,566.5 329,566.5 
-				329.5,580.1 329.5,598.2 329.6,598.2 564.9,598.2 564.9,580.8 564.9,565.9 579.8,565.9 579.8,415 			"/>
+				329.5,580.1 329.5,581.2 329.6,581.2 564.9,581.2 564.9,580.8 564.9,565.9 579.8,565.9 579.8,490 			"/>
 		</defs>
 		<clipPath id="SVGID_2_">
 			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 		</clipPath>
 		<g style="clip-path:url(#SVGID_2_);">
-				<image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,${envelopeInside}"  transform="matrix(1.001 0 0 1.001 79.3064 99.6946)">
+				<image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,${envelopeInside}" transform="matrix(1.001 0 0 1.001 79.3064 82.6946)">
 			</image>
 		</g>
 		<circle style="clip-path:url(#SVGID_2_);fill:#FFFFFF;stroke:#0A0400;stroke-miterlimit:10;" cx="196.4" cy="625.5" r="106.8"/>
@@ -80,13 +79,13 @@ export default (envelopeInside) => `
 	</g>
 	<polyline style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" points="314.7,177.7 329.6,177.7 329.6,566.5 314.7,566.5 	"/>
 	<polyline style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" points="314.7,177.7 329.6,177.7 329.6,580.8 	"/>
-	<polyline style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" points="564.9,381 579.8,415 579.8,565.9 564.9,565.9 	"/>
+	<polyline style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" points="564.9,472 579.8,489 579.8,565.9 564.9,565.9 	"/>
 	<path style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" d="M314.3,565.9"/>
 	<polyline style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" points="564.9,565.9 564.9,580.8 329.6,580.8 	"/>
 	<line style="fill:none;stroke:#070102;stroke-miterlimit:10;" x1="314.7" y1="113.1" x2="79.3" y2="113.1"/>
 	<polygon style="fill:none;stroke:#070102;stroke-miterlimit:10;" points="314.3,177.7 314.3,353.5 314.3,354.1 314.3,565.8 
 		564.9,565.8 564.9,354.1 564.9,353.5 564.9,177.7 	"/>
-	<rect x="329.6" y="580.8" style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" width="235.4" height="17.4"/>
+	<rect x="329.6" y="580.8" style="fill:none;stroke:#0A0908;stroke-miterlimit:10;" width="235.4" height="0.4"/>
 	<g>
 		<path d="M365.3,726.4c-0.2-0.2-0.3-0.4-0.3-0.7c0-0.3,0.1-0.5,0.3-0.7c0.2-0.2,0.4-0.3,0.7-0.3c0.2,0,0.4,0.1,0.6,0.3
 			c0.2,0.2,0.3,0.4,0.3,0.7c0,0.3-0.1,0.5-0.3,0.7c-0.2,0.2-0.4,0.3-0.6,0.3C365.7,726.7,365.5,726.6,365.3,726.4z"/>
@@ -518,6 +517,7 @@ export default (envelopeInside) => `
 			 M546.8,37.2c-0.6-0.1-1.3-0.3-1.9-0.3l0.1-1c0.7,0.1,1.4,0.2,2,0.4L546.8,37.2z M541,36.9l-0.1-1c0.6-0.1,1.2-0.1,1.8-0.1l0.2,0
 			l0,1l-0.2,0C542.2,36.8,541.6,36.8,541,36.9z"/>
 	</g>
+	<rect x="108.5" y="565.4" style="fill:#FFFFFF;" width="175.4" height="5.9"/>
 </g>
 <g id="Layer_2">
 	<line style="fill:none;stroke:#070102;stroke-miterlimit:10;" x1="314.3" y1="565.8" x2="284.7" y2="565.8"/>
@@ -528,5 +528,4 @@ export default (envelopeInside) => `
 		-1527.3,218.6 -1527.8,218.2 -1673.7,72.2 	"/>
 </g>
 </svg>
-
 `
