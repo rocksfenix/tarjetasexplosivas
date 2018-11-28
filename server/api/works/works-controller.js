@@ -67,8 +67,16 @@ export default {
     if (!work) return next(NotFound())
     if (req.decode.sub !== work.author) return next(ForbiddenError())
 
+    const isCompleted = (typeof work.side0.src === 'string') &&
+      (typeof work.side1.src === 'string') &&
+      (typeof work.side2.src === 'string') &&
+      (typeof work.side3.src === 'string') &&
+      (typeof work.side4.src === 'string') &&
+      (typeof work.side5.src === 'string')
+
     res.json({
       work: work.toJSON(),
+      isCompleted,
       error: null
     })
   },

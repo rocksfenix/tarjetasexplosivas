@@ -55,6 +55,9 @@ api.post('/api/user/deleteAndForgotten', user.deleteAndForgotten)
 // Photos
 api.post('/api/photo/:workId/:side/:type', photos.upload)
 api.get('/api/photos', photos.getAllSelf)
+api.post('/api/saveSide/:workId/:side', photos.saveSideDB)
+api.post('/api/saveEnvelope/:workId', photos.saveEnvelopeDB)
+api.post('/api/saveTextEnvelopeDB/:workId', photos.saveTextEnvelopeDB)
 
 // Works
 api.post('/api/work', works.post)

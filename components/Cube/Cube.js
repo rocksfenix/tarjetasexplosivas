@@ -309,6 +309,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side0.src}
+              side={side0}
               transform={this.transforms.side0}
               mouseUp={this.handleClick}
               name='side0'
@@ -316,6 +317,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side1.src}
+              side={side1}
               transform={this.transforms.side1}
               mouseUp={this.handleClick}
               name='side1'
@@ -323,6 +325,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side2.src}
+              side={side2}
               transform={this.transforms.side2}
               mouseUp={this.handleClick}
               name='side2'
@@ -330,6 +333,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side3.src}
+              side={side3}
               transform={this.transforms.side3}
               mouseUp={this.handleClick}
               name='side3'
@@ -337,6 +341,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side4.src}
+              side={side4}
               transform={this.transforms.side4}
               mouseUp={this.handleClick}
               name='side4'
@@ -344,6 +349,7 @@ class CubeBlock extends Component {
             <Side
               size={this.size}
               image={side5.src}
+              side={side5}
               transform={this.transforms.side5}
               mouseUp={this.handleClick}
               name='side5'

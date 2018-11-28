@@ -148,6 +148,21 @@ const Photo = {
     return res.data
   },
 
+  async saveSide (workId, side, sideSrc) {
+    const res = await axios.post(`/api/saveSide/${workId}/${side}`, { sideSrc })
+    return res.data
+  },
+
+  async saveEnvelopeDB (workId, envelopeSrc) {
+    const res = await axios.post(`/api/saveEnvelope/${workId}`, { envelopeSrc })
+    return res.data
+  },
+
+  async saveTextEnvelopeDB (workId, envelopeInsideText) {
+    const res = await axios.post(`/api/saveTextEnvelopeDB/${workId}`, { envelopeInsideText })
+    return res.data
+  },
+
   async getAll (skip = 0) {
     const res = await axios.get(`/api/photos?skip=${skip}`)
     return res.data

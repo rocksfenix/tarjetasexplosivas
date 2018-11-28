@@ -37,7 +37,7 @@ export default class extends React.Component {
         src={this.props.image}
         onMouseUp={this.click}
       >
-        <Image name={this.props.name} image={this.props.image} />
+        <Image name={this.props.name} image={this.props.image} side={this.props.side} />
       </Side>
     )
   }

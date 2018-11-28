@@ -104,7 +104,7 @@ class App extends Component {
     const { user } = await api.User.get()
     this.setState({ user })
 
-    console.log(user)
+    // console.log(user)
     // const user = {}
     if (process.browser) {
       this.setState({
@@ -163,14 +163,15 @@ class App extends Component {
     const res = await api.Work.post()
     Router.push(`/cube-app?id=${res.work._id}`, `/cube-app/${res.work._id}`)
     this.setState({ work: res.work }, () => {
-      this.check()
+      this.check(false)
     })
   }
 
   load = async () => {
     const res = await api.Work.getById(this.props.params.id)
+    console.log(res)
     this.setState({ work: res.work }, () => {
-      this.check()
+      this.check(res.isCompleted)
     })
   }
 
@@ -222,9 +223,12 @@ class App extends Component {
 
     // solo actualizar en db
     // console.log(work)
-    const res = await api.Work.update(work)
-    this.check()
+    const res = await api.Photo.saveSide(work._id, sideInFocusName, src)
+    // Work.update(work)
+
+    // workId, side, sideSrc
     console.log(res)
+    this.check(res.isCompleted)
   }
 
   // el src es el blob de imagen cortada
@@ -236,26 +240,29 @@ class App extends Component {
       ...this.state.work,
       [sideInFocusName]: { src: resize.imgURL, uploading: true }
     }
-    this.setState({ work, modal: '' })
+    this.setState({ work })
 
     // debugger
     const formData = new window.FormData()
     formData.append('image', resize.blob)
     const res = await api.Photo.upload(this.state.work._id, sideInFocusName, type, formData)
-    this.check()
-    if (this.state.modal === '') {
-      // Si no se esta mostrando el modal
-      // actualiza el uploading
-      console.log(res)
 
-      this.setState({ work, modal: '' })
+    // Si no se esta mostrando el modal
+    // actualiza el uploading
+    console.log(res)
+    work[sideInFocusName] = {
+      srcReal: res.photo.location,
+      uploading: false,
+      src: resize.imgURL
     }
-    work[sideInFocusName] = { src: res.photo.location, uploading: false }
+    this.check(res.isCompleted)
   }
 
-  check = () => {
-    const { side0, side1, side2, side3, side4, side5 } = this.state.work
-    if (side0.src && side1.src && side2.src && side3.src && side4.src && side5.src) {
+  check = (isCompleted) => {
+    console.log('isCOmpleted', isCompleted)
+    // debugger
+    // const { side0, side1, side2, side3, side4, side5 } = work
+    if (isCompleted) {
       // TODO habilidar cuando este lista para produccion
       this.setState({ isFinish: true })
       party()
@@ -302,17 +309,17 @@ class App extends Component {
   }
 
   onSetEnvelope = async (src) => {
-    const work = {
-      ...this.state.work,
-      envelope: src
-    }
+    // const work = {
+    //   ...this.state.work,
+    //   envelope: src
+    // }
 
-    this.setState({ work })
+    // this.setState({ work })
 
     // solo actualizar en db
-    const res = await api.Work.update(work)
-    this.check()
+    const res = await api.Photo.saveEnvelopeDB(this.state.work._id, src)
     console.log(res)
+    this.check()
   }
 
   closeNotificationPayment = () => this.setState({

@@ -69,10 +69,8 @@ class EnvelopeTextInsideComponent extends React.Component {
   onConfirm = async () => {
     if (!this.state.fetching) {
       this.setState({ fetching: true })
-      const res = await api.Work.update({
-        ...this.props.work,
-        envelopeInsideText: this.state.value
-      })
+
+      const res = await api.Photo.saveTextEnvelopeDB(this.props.work._id, this.state.value)
 
       this.setState({ fetching: false })
 

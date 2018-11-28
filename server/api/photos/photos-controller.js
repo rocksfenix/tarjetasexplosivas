@@ -43,6 +43,94 @@ export default {
     })
   },
 
+  saveSideDB: async (req, res, next) => {
+    if (!req.decode) return next(ForbiddenError())
+    // Obtenemos el work para revisar si es de ese usuario
+    const work = await models.Work.findById(req.params.workId)
+
+    if (!work) return next(NotFound())
+
+    if (work.author !== req.decode.sub) return next(ForbiddenError())
+
+    work[req.params.side] = {
+      src: req.body.sideSrc
+    }
+
+    await work.save()
+
+    const workReview = await models.Work.findById(work._id)
+
+    const isCompleted = (typeof workReview.side0.src === 'string') &&
+      (typeof workReview.side1.src === 'string') &&
+      (typeof workReview.side2.src === 'string') &&
+      (typeof workReview.side3.src === 'string') &&
+      (typeof workReview.side4.src === 'string') &&
+      (typeof workReview.side5.src === 'string')
+
+    res.json({
+      work: work.toJSON(),
+      photo: req.body.sideSrc,
+      isCompleted
+    })
+  },
+
+  saveEnvelopeDB: async (req, res, next) => {
+    if (!req.decode) return next(ForbiddenError())
+    // Obtenemos el work para revisar si es de ese usuario
+    const work = await models.Work.findById(req.params.workId)
+
+    if (!work) return next(NotFound())
+
+    if (work.author !== req.decode.sub) return next(ForbiddenError())
+
+    work.envelope = req.body.envelopeSrc
+
+    await work.save()
+
+    const workReview = await models.Work.findById(work._id)
+
+    const isCompleted = (typeof workReview.side0.src === 'string') &&
+      (typeof workReview.side1.src === 'string') &&
+      (typeof workReview.side2.src === 'string') &&
+      (typeof workReview.side3.src === 'string') &&
+      (typeof workReview.side4.src === 'string') &&
+      (typeof workReview.side5.src === 'string')
+
+    res.json({
+      work: work.toJSON(),
+      photo: req.body.sideSrc,
+      isCompleted
+    })
+  },
+
+  saveTextEnvelopeDB: async (req, res, next) => {
+    if (!req.decode) return next(ForbiddenError())
+    // Obtenemos el work para revisar si es de ese usuario
+    const work = await models.Work.findById(req.params.workId)
+
+    if (!work) return next(NotFound())
+
+    if (work.author !== req.decode.sub) return next(ForbiddenError())
+
+    work.envelopeInsideText = req.body.envelopeInsideText
+
+    await work.save()
+
+    const workReview = await models.Work.findById(work._id)
+
+    const isCompleted = (typeof workReview.side0.src === 'string') &&
+      (typeof workReview.side1.src === 'string') &&
+      (typeof workReview.side2.src === 'string') &&
+      (typeof workReview.side3.src === 'string') &&
+      (typeof workReview.side4.src === 'string') &&
+      (typeof workReview.side5.src === 'string')
+
+    res.json({
+      work: work.toJSON(),
+      isCompleted
+    })
+  },
+
   upload: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
 
@@ -75,9 +163,19 @@ export default {
       { size: 260, suffix: 'thumbnail' }
     ])
 
+    const workReview = await models.Work.findById(work._id)
+
+    const isCompleted = (typeof workReview.side0.src === 'string') &&
+      (typeof workReview.side1.src === 'string') &&
+      (typeof workReview.side2.src === 'string') &&
+      (typeof workReview.side3.src === 'string') &&
+      (typeof workReview.side4.src === 'string') &&
+      (typeof workReview.side5.src === 'string')
+
     res.json({
       work: work.toJSON(),
-      photo: photo.toJSON()
+      photo: photo.toJSON(),
+      isCompleted
     })
   }
 }

@@ -69,7 +69,7 @@ const EditBox = styled.div`
   }
 `
 
-export default ({ name, image }) => {
+export default ({ name, image, side }) => {
   let imgBtn = 'https://d39p6dv27gzlaf.cloudfront.net/static/img/side-left.svg'
   let bgColor = 'purple'
 
@@ -89,7 +89,8 @@ export default ({ name, image }) => {
       <Side />
       <ImageButton src={imgBtn} />
       { image ? <Image src={image} /> : null }
-      { image ? <EditBox></EditBox> : null }
+      { side.srcReal ? <Image src={side.srcReal} /> : null }
+      {/* { image ? <EditBox></EditBox> : null } */}
     </Box>
   )
 }
