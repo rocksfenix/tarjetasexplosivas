@@ -146,7 +146,8 @@ class DesignsComponent extends React.Component {
   // esta se selecciona
   focusPhoto = (e) => {
     this.setState({
-      imageSelected: e.target.getAttribute('data-location')
+      imageSelected: e.target.getAttribute('data-location'),
+      thumbnail: e.target.getAttribute('data-thumbnail')
     })
   }
 
@@ -159,7 +160,7 @@ class DesignsComponent extends React.Component {
         `/cube-app?id=${this.props.work._id}`,
         `/cube-app/${this.props.work._id}`
       )
-      this.props.onConfirm(this.state.imageSelected)
+      this.props.onConfirm(this.state.imageSelected, this.state.thumbnail)
       this.setState({ albumTitle: false, imageSelected: null })
     } else {
       window.alert('Selecciona una imagen primero')
@@ -280,6 +281,7 @@ class DesignsComponent extends React.Component {
                       data-title={photo.title}
                       onClick={this.focusPhoto}
                       data-location={photo.location}
+                      data-thumbnail={photo.thumbnail}
                       isSelected={imageSelected === photo.location}
                       size={photoSize}
                     />

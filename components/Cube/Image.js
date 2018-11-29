@@ -88,9 +88,9 @@ export default ({ name, image, side }) => {
       <Gradient bgColor={bgColor} />
       <Side />
       <ImageButton src={imgBtn} />
+      { side.preview ? <Image src={side.preview} /> : null }
       { image ? <Image src={image} /> : null }
       { side.srcReal ? <Image src={side.srcReal} /> : null }
-      {/* { image ? <EditBox></EditBox> : null } */}
     </Box>
   )
 }

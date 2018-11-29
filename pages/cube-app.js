@@ -213,11 +213,11 @@ class App extends Component {
     this.setState({ modal: '' })
   }
 
-  updateDB = async (src) => {
+  updateDB = async (src, thumbnail) => {
     const { sideInFocusName } = this.state
     const work = {
       ...this.state.work,
-      [sideInFocusName]: { src }
+      [sideInFocusName]: { src, preview: thumbnail }
     }
     this.setState({ work, modal: '' })
 

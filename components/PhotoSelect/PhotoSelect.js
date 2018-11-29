@@ -174,11 +174,11 @@ class ModalComponent extends React.Component {
     }
   }
 
-  onlySave = (imageSrc) => {
+  onlySave = (imageSrc, thumbnail) => {
     console.log('Only Save', imageSrc)
     this.setState({ modal: 'options' })
     this.props.closeModal()
-    this.props.updateDB(imageSrc)
+    this.props.updateDB(imageSrc, thumbnail)
   }
 
   // Se usa para setear el src de la
