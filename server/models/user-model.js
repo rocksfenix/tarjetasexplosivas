@@ -55,7 +55,9 @@ const UserSchema = new mongoose.Schema({
   // Cards
   cards: { type: Number, default: 0 },
 
-  purchaseCredits: { type: Number, default: 0 }
+  purchaseCredits: { type: Number, default: 0 },
+
+  isCompiling: { type: Boolean, default: false }
 
 }, { timestamps: true })
 

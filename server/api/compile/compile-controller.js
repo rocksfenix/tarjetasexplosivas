@@ -17,9 +17,19 @@ export default {
 
       const time1 = Date.now()
 
-      const user = await models.User.findById(req.decode.sub)
+      const [ user, work ] = await Promise.all([
+        models.User.findById(req.decode.sub),
+        models.Work.findById(req.params.id)
+      ])
 
-      const work = await models.Work.findById(req.params.id)
+      if (user.isCompiling) {
+        return res.json({
+          error: 'Solo se puede compilar un proyecto por vez, intenta nuevamente mas tarde'
+        })
+      }
+
+      user.isCompiling = true
+      user.save()
 
       if (!work) return next(NotFound())
       if (req.decode.sub !== work.author) return next(ForbiddenError())
@@ -75,11 +85,15 @@ export default {
       // 11 - Enviar al cliente
       // 12 Quitamos el credito
       user.credits = user.credits - 1
+      user.isCompiling = false
 
       user.save()
       res.json({ location })
     } catch (error) {
       console.log(error)
+      const user = await models.User.findById(req.decode.sub)
+      user.isCompiling = false
+      user.save()
       next(error)
     }
   }

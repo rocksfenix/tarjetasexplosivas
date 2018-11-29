@@ -110,6 +110,11 @@ export default class extends React.Component {
 
       const res = await api.Work.compile(this.props.work)
 
+      if (res.error) {
+        this.setState({ isCompiling: false, modal: 'danger', status: '' })
+        return window.alert(res.error)
+      }
+
       if (res.location) {
         this.setState({ location: res.location, isCompiling: false, modal: '' })
         this.props.onCompiled(res.location)
