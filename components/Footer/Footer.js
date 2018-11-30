@@ -6,6 +6,7 @@ const Panel = styled.footer`
   width: 100%;
   height: 60px;
   background-color: rgb(243, 243, 243);
+  background-color: rgb(41, 40, 40);
   border-top: 1px solid #b5b4b4;
   display: flex;
   justify-content: space-around;
@@ -61,22 +62,39 @@ const Legal = styled.div`
   flex-direction: column;
   font-size: 14px;
 `
+const Icon = styled.i`
+  font-size: 40px;
+  margin: 0 0.2em;
+  color: #6a7579;
 
+  :hover {
+    color: #009af7;
+    animation: ${logoHue} 1.5s linear infinite;
+  }
+`
+const A = styled.a`
+  text-decoration: none;
+`
 export default () => (
   <Panel>
     <Link passHref href='/home' target='__blanck'>
-      <To><Logo src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas3.png' /></To>
+      <To>
+        <Logo src='https://d39p6dv27gzlaf.cloudfront.net/static/img/tarjetas-explosivas3.png' />
+      </To>
     </Link>
     <Socials>
-      <a href='https://www.facebook.com/Tarjetas-Explosivas-341585959935818' target='_blank'>
-        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/facebook.svg' alt='facebook' />
-      </a>
-      <a href='https://www.instagram.com/tarjetasexplosivas' target='_blank'>
-        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/instagram.svg' alt='instagram' />
-      </a>
-      <a href='https://twitter.com/ExploTarjetas' target='_blank'>
-        <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/twitter.svg' alt='twitter' />
-      </a>
+      <A href='https://www.facebook.com/Tarjetas-Explosivas-341585959935818' target='_blank'>
+        <Icon className='icon-facebook' />
+        {/* <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/facebook.svg' alt='facebook' /> */}
+      </A>
+      <A href='https://www.instagram.com/tarjetasexplosivas' target='_blank'>
+        <Icon className='icon-instagram' />
+        {/* /<LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/instagram.svg' alt='instagram' /> */}
+      </A>
+      <A href='https://twitter.com/ExploTarjetas' target='_blank'>
+        <Icon className='icon-twitter' />
+        {/* <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/twitter.svg' alt='twitter' /> */}
+      </A>
     </Socials>
     <Legal>
       <Link passHref href='/politica-de-privacidad'>
