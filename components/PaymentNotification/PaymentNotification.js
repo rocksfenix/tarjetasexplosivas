@@ -10,7 +10,7 @@ const Notification = styled.div`
   align-items: center;
   top: ${p => p.show ? '0px' : '-150px'};
   transition: top 200ms ease-out;
-  min-height: 50px;
+  min-height: 55px;
   background-color: ${p => p.bg || 'black'};
   font-size: 18px;
   z-index: 8000;
@@ -23,13 +23,26 @@ const Content = styled.div`
   align-items: center;
 `
 
+const Button = styled.button`
+  height: 100%;
+  width: 75px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+`
+
+const Icon = styled.i`
+  font-size: 20px;
+  color: #FFF;
+`
+
 export default class extends Component {
   state = {
     show: false
   }
 
   static getDerivedStateFromProps (nextProps) {
-    if (nextProps.query && nextProps.show  && nextProps.user) {
+    if (nextProps.query && nextProps.show && nextProps.user) {
       const credits = nextProps.user.credits
       const isSuccess = nextProps.query.payment === 'success'
       const plural = credits > 1 ? 's' : ''
@@ -60,7 +73,7 @@ export default class extends Component {
     return (
       <Notification show={this.state.show} bg={this.state.bgColor}>
         <Content>
-          { this.state.message } <button onClick={this.props.closeNotificationPayment}>X</button>
+          { this.state.message } <Button onClick={this.props.closeNotificationPayment}> <Icon className='icon-cross' /></Button>
         </Content>
       </Notification>
     )
