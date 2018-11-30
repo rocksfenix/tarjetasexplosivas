@@ -25,9 +25,29 @@ const Range = styled.input`
   width: 100%;
 `
 
+const Tools = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Icon = styled.i`
+  font-size: ${p => p.size || '18px'};
+  color: ${p => p.color || '#673ab7'};
+`
+
+const Button = styled.button`
+  background: #673ab7;
+  border: 0;
+  padding: 0.3em 2em;
+  border-radius: 3px;
+  cursor: pointer;
+`
+
 class PhotoCut extends Component {
   state = {
-    scale: 1
+    scale: 1,
+    rotate: 0
   }
   setEditorRef = (editor) => { this.editor = editor }
 
@@ -65,6 +85,13 @@ class PhotoCut extends Component {
     })
   }
 
+  rotateRight = () => {
+    this.setState(state => ({
+      ...state,
+      rotate: state.rotate + 90
+    }))
+  }
+
   render () {
     const crossOrigin = this.props.source === 'facebook'
       ? 'anonymous'
@@ -89,18 +116,28 @@ class PhotoCut extends Component {
               height={250}
               border={30}
               color={[0, 0, 0, 0.8]}
-              // scale={1}
-              rotate={0}
+              rotate={this.state.rotate}
               scale={this.state.scale}
             />
-            <Range
-              value={this.state.scale}
-              type='range'
-              step='0.1'
-              min='1'
-              max='4'
-              onChange={this.changeScale}
-            />
+            <Tools>
+              <Icon className='icon-gallery2' size='15px' />
+
+              <Range
+                value={this.state.scale}
+                type='range'
+                step='0.1'
+                min='1'
+                max='5'
+                onChange={this.changeScale}
+              />
+              <Icon className='icon-gallery2' size='30px' />
+            </Tools>
+            <Tools>
+
+              <Button onClick={this.rotateRight}>
+                <Icon className='icon-rotate' color='#FFF' size='18px' />
+              </Button>
+            </Tools>
           </EditorPanel>
         </Albums>
       </GalleryPanel>
