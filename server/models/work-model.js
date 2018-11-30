@@ -21,6 +21,8 @@ const WorkSchema = new mongoose.Schema({
 
   compilationTime: Number,
 
+  compiledAt: Date,
+
   // Para Locacion de imagenes
   side0: {
     src: String
@@ -60,7 +62,8 @@ WorkSchema.methods.toJSON = function () {
     side4: this.side4,
     side5: this.side5,
     compilationTime: this.compilationTime,
-    envelopeInsideText: this.envelopeInsideText
+    envelopeInsideText: this.envelopeInsideText,
+    compiledAt: this.compiledAt
   }
 }
 

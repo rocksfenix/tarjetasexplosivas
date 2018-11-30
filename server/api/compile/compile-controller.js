@@ -77,6 +77,7 @@ export default {
       // 9- Guardamos la locacion en DB
       work.location = location
       work.compilationTime = time2 - time1
+      work.compiledAt = Date()
       await work.save()
 
       // 10 - Eliminar .zip temporal

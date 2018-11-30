@@ -11,7 +11,8 @@ import api from '../client-util/api'
 const Panel = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 `
 
 class App extends Component {
@@ -43,27 +44,45 @@ class App extends Component {
   }
 
   state = {
-    average: 0,
-    responseTime: 0
+    statistics: {
+      today: {},
+      last3: {}
+    }
   }
 
   componentDidMount = async () => {
-    
-    const { average, responseTime } = await api.Statistics.getAverageCompilationTime()
 
-    this.setState({ average, responseTime })
+    const statistics = await api.Statistics.getAverageCompilationTime()
+    console.log(statistics)
+    if (!statistics.error) {
+      this.setState({
+        statistics
+      })
+    }
   }
 
   render () {
-    console.log(this.props)
+    console.log(this.state)
     return (
       <Panel>
         <SeoHead title='Dashbaord' />
         <Navegation user={this.props.user} />
         <h1>Statistics y links para otros recursos</h1>
-        <h2>Promedio de Compilacion {this.state.average / 1000}s</h2>
-        <h2>Tiempo de respuesta {this.state.responseTime / 1000}s</h2>
-
+        <h2>Estadisticas HOY</h2>
+        <h3>Compilacion Promedio: {this.state.statistics.today.average / 1000}s</h3>
+        <h3>Tarjetas Compiladas: {this.state.statistics.today.count}</h3>
+        <h3>Ventas Totales: ${this.state.statistics.today.amount}</h3>
+        <h3>Tarjetas Creadas: {this.state.statistics.today.works}</h3>
+        <hr />
+        <h2>Estadisticas Ultimos 3 Dias</h2>
+        <h3>Compilacion Promedio: {this.state.statistics.last3.average / 1000}s</h3>
+        <h3>Tarjetas Compiladas: {this.state.statistics.last3.count}</h3>
+        <h3>Ventas Totales: ${this.state.statistics.last3.amount}</h3>
+        <h3>Tarjetas Creadas: {this.state.statistics.last3.works}</h3>
+        <hr />
+        <h2>Total</h2>
+        <h2>Tiempo de respuesta {this.state.statistics.responseTime}</h2>
+        <h1>Monto total: ${this.state.statistics.amount}</h1>
         <div>
           <Link href='/users' color='blue'>Usuarios</Link>
           <Link href='/designs' color='blue'>Designs</Link>
