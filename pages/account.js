@@ -212,7 +212,8 @@ class App extends Component {
     user: {},
     invoices: [],
     hasMoreInvoices: false,
-    skipInvoices: 0
+    skipInvoices: 0,
+    hasFetched: false
   }
 
   componentDidMount () {
@@ -224,7 +225,7 @@ class App extends Component {
     // console.log(user)
     const { invoices, hasMore } = await api.Invoice.getAll()
 
-    this.setState({ user, invoices, hasMoreInvoices: hasMore })
+    this.setState({ user, invoices, hasMoreInvoices: hasMore, hasFetched: true })
   }
 
   loadMore = () => {
@@ -337,7 +338,11 @@ class App extends Component {
               scrollableTarget='scrollableInvoices'
               loader={'loading'}
             >
-              { !this.state.invoices.length ? <span>Wops! Aun no tienes ningun ticket</span> : null }
+              {
+                !this.state.invoices.length && this.state.hasFetched
+                  ? <span>Wops! Aun no tienes ningun ticket</span>
+                  : <span>Cargando...</span>
+              }
               {
                 this.state.invoices.map(invoice => (
                   <Invoice key={invoice._id} invoice={invoice} />

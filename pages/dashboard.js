@@ -6,6 +6,7 @@ import Link from '../components/Link'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import CookiesConsent from '../components/CookiesConsent'
+import api from '../client-util/api'
 
 const Panel = styled.div`
   width: 100%;
@@ -41,6 +42,18 @@ class App extends Component {
     return { user }
   }
 
+  state = {
+    average: 0,
+    responseTime: 0
+  }
+
+  componentDidMount = async () => {
+    
+    const { average, responseTime } = await api.Statistics.getAverageCompilationTime()
+
+    this.setState({ average, responseTime })
+  }
+
   render () {
     console.log(this.props)
     return (
@@ -48,6 +61,9 @@ class App extends Component {
         <SeoHead title='Dashbaord' />
         <Navegation user={this.props.user} />
         <h1>Statistics y links para otros recursos</h1>
+        <h2>Promedio de Compilacion {this.state.average / 1000}s</h2>
+        <h2>Tiempo de respuesta {this.state.responseTime / 1000}s</h2>
+
         <div>
           <Link href='/users' color='blue'>Usuarios</Link>
           <Link href='/designs' color='blue'>Designs</Link>

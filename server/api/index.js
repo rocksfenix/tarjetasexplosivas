@@ -17,6 +17,7 @@ import paypal from './paypal'
 import texture from './texture'
 import albumnDesign from './album-design'
 import envelope from './envelope'
+import statistics from './statistics'
 
 var csrfProtection = csrf({ cookie: true })
 
@@ -111,6 +112,9 @@ api.put('/api/envelope/:id', envelope.put)
 api.post('/api/envelope/:id/image', envelope.uploadImage)
 api.post('/api/envelope/:id/cover', envelope.uploadCover)
 api.delete('/api/envelope/:id', envelope.delete)
+
+// Statistics
+api.get('/api/statistics/compiledTime', statistics.getAverageCompiledTime)
 
 // Error Handler
 api.use(errorHandler)

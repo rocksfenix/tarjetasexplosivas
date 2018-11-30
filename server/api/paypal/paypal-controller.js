@@ -168,8 +168,6 @@ export default {
           const credits = Number(items)
           const author = req.params.sub
 
-          console.log(payment.transactions[0])
-
           if (payment.state === 'approved') {
             const [ work, user ] = await Promise.all([
               models.Work.findById(req.params.workId),

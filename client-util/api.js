@@ -378,6 +378,13 @@ const Coupon = {
   }
 }
 
+const Statistics = {
+  async getAverageCompilationTime () {
+    const res = await axios.get(`/api/statistics/compiledTime`)
+    return res.data
+  }
+}
+
 export default {
   Auth,
   User,
@@ -388,5 +395,6 @@ export default {
   Design,
   Envelope,
   Invoice,
-  Coupon
+  Coupon,
+  Statistics
 }
