@@ -23,7 +23,7 @@ const Button = styled.button`
   cursor: pointer;
   position: relative;
   z-index: 100;
-  color: #01a7e4;
+  /* color: #01a7e4; */
 `
 
 const Options = styled.div`
@@ -66,6 +66,13 @@ const Block = styled.div`
   top: 60px;
 `
 
+const Icon = styled.i`
+  color: red;
+  margin: 0 3px;
+  font-size: 20px;
+  color: #717171;
+`
+
 class MobileComponent extends React.Component {
   state = {
     showMenu: false
@@ -91,7 +98,11 @@ class MobileComponent extends React.Component {
     return (
       <Mobile>
         <Button onClick={this.toggleMenu}>
-          { this.state.showMenu ? 'X' : '=' }
+          {
+            this.state.showMenu
+              ? <Icon className='icon-cross' />
+              : <Icon className='icon-menu2' />
+          }
         </Button>
         <Options show={this.state.showMenu}>
           { this.props.user

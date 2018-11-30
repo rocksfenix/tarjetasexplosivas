@@ -137,6 +137,11 @@ const Panel = styled.div`
   overflow-x: hidden;
 `
 
+const Icon = styled.i`
+  margin: 0 0 0 10px;
+  font-size: 25px;
+`
+
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
     const user = getUser(req)
@@ -169,7 +174,7 @@ export default class extends Component {
             como debe ser ohh amigo mio.
           </Parragraph>
           <Link href='/crear-cuenta'>
-            <ButtonLink>Crear nueva tarjeta</ButtonLink>
+            <ButtonLink>Crear nueva tarjeta <Icon className='icon-star' /></ButtonLink>
           </Link>
         </Section>
         <Footer />

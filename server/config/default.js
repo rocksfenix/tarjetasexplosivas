@@ -14,7 +14,7 @@ const defaultConfig = {
       'https://www.google.com/recaptcha/api.js',
       'https://www.gstatic.com',
       'fast.wistia.com',
-      'googletagmanager.com',
+      'googletagmanager.com'
       // Tool GDRP
       // 't.sharethis.com'
     ],
@@ -22,7 +22,12 @@ const defaultConfig = {
       'data:'
     ],
     defaultSrc: [],
-    fontSrc: ['fonts.googleapis.com/css', 'fonts.gstatic.com'],
+    fontSrc: [
+      'fonts.googleapis.com/css',
+      'fonts.gstatic.com',
+      'd39p6dv27gzlaf.cloudfront.net',
+      's3.amazonaws.com'
+    ],
     imgSrc: [
       'fast.wistia.com',
       'embedwistia-a.akamaihd.net',
@@ -65,7 +70,9 @@ const defaultConfig = {
       't.sharethis.com'
     ],
     styleSrc: [
-      'fonts.googleapis.com/css'
+      'fonts.googleapis.com/css',
+      'd39p6dv27gzlaf.cloudfront.net',
+      's3.amazonaws.com'
     ]
   }
 }

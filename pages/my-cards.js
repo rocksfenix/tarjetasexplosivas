@@ -41,11 +41,17 @@ const Button = styled.a`
   border-radius: 55px;
   cursor: pointer;
   text-decoration: none;
+  display: flex;
 
   :hover {
     background-color: #2196f3;
     color: #FFF;
   }
+`
+
+const Icon = styled.i`
+  margin: 0 0 0 10px;
+  font-size: 25px;
 `
 
 class App extends Component {
@@ -111,7 +117,10 @@ class App extends Component {
         >
           <Works>
             <LastPanel>
-              <Button href='/cube-app/new'>Crear Nueva</Button>
+              <Button href='/cube-app/new'>
+                Crear Nueva
+                <Icon className='icon-star' />
+              </Button>
             </LastPanel>
             {this.state.works.map(work => (
               <WorkCard key={work._id} work={work} />

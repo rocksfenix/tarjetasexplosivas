@@ -87,6 +87,12 @@ const Box = styled.div`
   flex-direction: column;
 `
 
+const Icon = styled.i`
+  margin: 0 3px;
+  font-size: 25px;
+  color: #717171;
+`
+
 class ModalComponent extends React.Component {
   state = {
     imageSrc: null,
@@ -228,7 +234,9 @@ class ModalComponent extends React.Component {
 
     return (
       <Panel onClick={e => e.stopPropagation()} show>
-        <Close onClick={this.closeModal}>X</Close>
+        <Close onClick={this.closeModal}>
+          <Icon className='icon-cross' />
+        </Close>
         {
           this.state.imageSrc
             ? (

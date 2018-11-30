@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,500,900');
+@import url('/static/css/style.css');
+
 
 html, body {
   margin: 0;

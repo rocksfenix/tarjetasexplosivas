@@ -133,6 +133,10 @@ const Panel = styled.div`
   height: 100vh;
 `
 
+const Icon = styled.i`
+  margin: 0 0 0 10px;
+  font-size: 25px;
+`
 
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
@@ -228,7 +232,7 @@ export default class extends Component {
             como debe ser ohh amigo mio.
           </Parragraph>
           <Link href='/cube-app/new'>
-            <ButtonLink>Crear nueva tarjeta</ButtonLink>
+            <ButtonLink>Crear nueva tarjeta <Icon className='icon-star' /></ButtonLink>
           </Link>
         </Section>
         <Footer />
