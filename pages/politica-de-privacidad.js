@@ -4,6 +4,7 @@ import { getUser } from '../client-util/session'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import CookiesConsent from '../components/CookiesConsent'
+import Footer from '../components/Footer'
 
 const Title = styled.h1`
   color: #30233F;
@@ -44,9 +45,11 @@ const Section = styled.section`
   line-height: 1.58;
   padding-bottom: 5em;
   overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 900px) {
     width: 100%;
+    margin: 1em;
   }
 `
 const P = styled.p`
@@ -64,6 +67,7 @@ const Present = styled.img`
 const Panel = styled.div`
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
 `
 
@@ -85,7 +89,7 @@ export default class extends Component {
   render () {
     return (
       <Panel>
-        <SeoHead />
+        <SeoHead title='politica de privacidad' />
         <Navegation user={this.props.user} />
         <Section>
           <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/privacy.svg' />
@@ -322,6 +326,7 @@ export default class extends Component {
           </P>
         </Section>
         <CookiesConsent />
+        <Footer />
       </Panel>
     )
   }

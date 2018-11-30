@@ -5,6 +5,7 @@ import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import CookiesTable from '../components/CookiesTable'
 import CookiesConsent from '../components/CookiesConsent'
+import Footer from '../components/Footer'
 
 const Title = styled.h1`
   color: #30233F;
@@ -50,9 +51,11 @@ const Section = styled.section`
   line-height: 1.58;
   padding-bottom: 5em;
   overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 900px) {
     width: 100%;
+    margin: 1em;
   }
 `
 const Parragraph = styled.p`
@@ -66,6 +69,7 @@ const Panel = styled.div`
   position: relative;
   overflow-y: auto;
   height: 100vh;
+  overflow-x: hidden;
 `
 
 const Strong = styled.strong`
@@ -81,7 +85,7 @@ export default class extends Component {
   render () {
     return (
       <Panel>
-        <SeoHead />
+        <SeoHead title='politica de cookies' />
         <Navegation user={this.props.user} />
         <Section>
           <Title>Política de cookies</Title>
@@ -216,6 +220,7 @@ export default class extends Component {
             Si tiene alguna pregunta o comentario sobre esta Política de cookies, envíe un correo electrónico a hola@tarjetasExposivas.com
           </Parragraph>
         </Section>
+        <Footer />
         <CookiesConsent />
       </Panel>
     )

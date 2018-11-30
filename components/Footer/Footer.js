@@ -43,18 +43,6 @@ const Socials = styled.div`
 
 `
 
-const LogoSocial = styled.img`
-  width: 40px;
-  margin-left: 2em;
-  opacity: 0.5;
-  transition: 150ms linear;
-  cursor: pointer;
-
-  :hover {
-    opacity: 1;
-  }
-`
-
 const Legal = styled.div`
   width: 200px;
   margin-left: 2em;
@@ -85,15 +73,12 @@ export default () => (
     <Socials>
       <A href='https://www.facebook.com/Tarjetas-Explosivas-341585959935818' target='_blank'>
         <Icon className='icon-facebook' />
-        {/* <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/facebook.svg' alt='facebook' /> */}
       </A>
       <A href='https://www.instagram.com/tarjetasexplosivas' target='_blank'>
         <Icon className='icon-instagram' />
-        {/* /<LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/instagram.svg' alt='instagram' /> */}
       </A>
       <A href='https://twitter.com/ExploTarjetas' target='_blank'>
         <Icon className='icon-twitter' />
-        {/* <LogoSocial src='https://d39p6dv27gzlaf.cloudfront.net/static/img/twitter.svg' alt='twitter' /> */}
       </A>
     </Socials>
     <Legal>

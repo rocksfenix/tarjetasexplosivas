@@ -4,6 +4,7 @@ import { getUser } from '../client-util/session'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import CookiesConsent from '../components/CookiesConsent'
+import Footer from '../components/Footer'
 
 const Title = styled.h1`
   color: #30233F;
@@ -40,9 +41,11 @@ const Section = styled.section`
   font-weight: 300;
   line-height: 1.58;
   padding-bottom: 5em;
+  overflow-x: hidden;
 
   @media (max-width: 900px) {
     width: 100%;
+    margin: 1em;
   }
 `
 
@@ -50,6 +53,7 @@ const Panel = styled.div`
   position: relative;
   overflow-y: auto;
   height: 100vh;
+  overflow-x: hidden;
 `
 
 const Subtitle = styled.div`
@@ -66,7 +70,7 @@ export default class extends Component {
   render () {
     return (
       <Panel>
-        <SeoHead />
+        <SeoHead title='terminos de servicio' />
         <Navegation user={this.props.user} />
         <Section>
           <Title>Terminos y Condiciones de Uso</Title>
@@ -175,6 +179,7 @@ export default class extends Component {
             Este sitio web tarjetasExplosivas.com/ garantiza que la información personal que usted envía cuenta con la seguridad necesaria, si desea saber mas puede consultar nuestra <a href='/politica-de-privacidad'>Politica de Privacidad</a>
           </P>
         </Section>
+        <Footer></Footer>
         <CookiesConsent />
       </Panel>
     )
