@@ -71,17 +71,23 @@ class App extends Component {
         <h2>Estadisticas HOY</h2>
         <h3>Compilacion Promedio: {this.state.statistics.today.average / 1000}s</h3>
         <h3>Tarjetas Compiladas: {this.state.statistics.today.count}</h3>
-        <h3>Ventas Totales: ${this.state.statistics.today.amount}</h3>
+        <h3>Monto Recaudado: ${this.state.statistics.today.amount}</h3>
         <h3>Tarjetas Creadas: {this.state.statistics.today.works}</h3>
+        <h3>Usuarios Registrados: {this.state.statistics.today.users}</h3>
+
         <hr />
         <h2>Estadisticas Ultimos 3 Dias</h2>
         <h3>Compilacion Promedio: {this.state.statistics.last3.average / 1000}s</h3>
         <h3>Tarjetas Compiladas: {this.state.statistics.last3.count}</h3>
-        <h3>Ventas Totales: ${this.state.statistics.last3.amount}</h3>
+        <h3>Monto Recaudado: ${this.state.statistics.last3.amount}</h3>
         <h3>Tarjetas Creadas: {this.state.statistics.last3.works}</h3>
+        <h3>Usuarios Registrados: {this.state.statistics.last3.users}</h3>
+
         <hr />
         <h2>Total</h2>
         <h2>Tiempo de respuesta {this.state.statistics.responseTime}</h2>
+        <h2>Usuarios Registrados: {this.state.statistics.users}</h2>
+
         <h1>Monto total: ${this.state.statistics.amount}</h1>
         <div>
           <Link href='/users' color='blue'>Usuarios</Link>
