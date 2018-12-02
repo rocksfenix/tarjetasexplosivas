@@ -1,10 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import moment from 'moment'
+import { BitlyClient } from 'bitly'
 
 moment.locale('es')
 
-const CONTENT = (work, sub) => `
+const CONTENT = (work, sub, workLink) => `
 \r\n
 \r\n
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n
@@ -14,7 +15,7 @@ const CONTENT = (work, sub) => `
     \r\n
     Puedes encontrar el video de como realizar la tarjeta\r\n
     en este enlace:\r\n
-    https://www.tarjetasexplosivas.com/cubo-instrucciones\r\n
+    ${workLink}\r\n
 \r\n
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n
   \r\n
@@ -35,9 +36,23 @@ const CONTENT = (work, sub) => `
    ╩ ┴ ┴┴└─└┘└─┘ ┴ ┴ ┴└─┘╚═╝┴ └─┴  ┴─┘└─┘└─┘┴ └┘ ┴ ┴└─┘o└─┘└─┘┴ ┴\r\n
 \r\n
 `
-const createReadme = (endPath, filename, work, sub) => new Promise((resolve, reject) => {
+const createReadme = (endPath, filename, work, sub) => new Promise(async (resolve, reject) => {
+  let workLink = `https://www.tarjetasexplosivas.com/cubo-instrucciones?workref=https://d39p6dv27gzlaf.cloudfront.net/works/${sub}/${work._id}.zip`
+  try {
+    console.log(workLink)
+    const bitly = new BitlyClient(process.env.BITLY_TOKEN, {})
+    const res = await bitly.shorten(workLink)
+    console.log(res)
+
+    if (res.url) {
+      workLink = res.url
+    }
+  } catch (e) {
+    throw e
+  }
+
   const location = path.resolve(endPath, filename)
-  fs.writeFile(location, CONTENT(work, sub), { encoding: 'utf8' }, (error) => {
+  fs.writeFile(location, CONTENT(work, sub, workLink), { encoding: 'utf8' }, (error) => {
     if (error) return reject(error)
     resolve()
   })

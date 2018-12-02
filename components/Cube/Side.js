@@ -26,7 +26,9 @@ const Side = styled.div`
 
 export default class extends React.Component {
   click = () => {
-    this.props.mouseUp(this.props.name)
+    if (this.props.mouseUp) {
+      this.props.mouseUp(this.props.name)
+    }
   }
 
   render () {
@@ -37,7 +39,12 @@ export default class extends React.Component {
         src={this.props.image}
         onMouseUp={this.click}
       >
-        <Image name={this.props.name} image={this.props.image} side={this.props.side} />
+        <Image
+          name={this.props.name}
+          image={this.props.image}
+          side={this.props.side}
+          small={this.props.small}
+        />
       </Side>
     )
   }
