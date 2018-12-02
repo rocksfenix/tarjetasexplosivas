@@ -43,8 +43,8 @@ const createPDF = (endPath, pathSvg) => new Promise((resolve, reject) => {
 export default (work, endPath, pathSvg1, pathSvg2, pathSvg3, pathSvg4) => new Promise(async (resolve, reject) => {
   // creamos pdfs
   await Promise.all([
-    createPDF(path.resolve(endPath, `Lado-A.pdf`), pathSvg1),
-    createPDF(path.resolve(endPath, `Lado-B.pdf`), pathSvg2),
+    createPDF(path.resolve(endPath, `Tarjeta-A.pdf`), pathSvg1),
+    createPDF(path.resolve(endPath, `Tarjeta-B.pdf`), pathSvg2),
     createPDF(path.resolve(endPath, `Sobre-A.pdf`), pathSvg3),
     createPDF(path.resolve(endPath, `Sobre-B.pdf`), pathSvg4)
   ])

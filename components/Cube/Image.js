@@ -69,7 +69,13 @@ const EditBox = styled.div`
   }
 `
 
-export default ({ name, image, side }) => {
+var getThumbnail = (url) => {
+  const splited = url.split('.')
+  const ext = `.${splited[splited.length - 1]}`
+  return url.replace(ext, `-thumbnail${ext}`)
+}
+
+export default ({ name, image, side, small }) => {
   let imgBtn = 'https://d39p6dv27gzlaf.cloudfront.net/static/img/side-left.svg'
   let bgColor = 'purple'
 
@@ -89,7 +95,7 @@ export default ({ name, image, side }) => {
       <Side />
       <ImageButton src={imgBtn} />
       { side.preview ? <Image src={side.preview} /> : null }
-      { image ? <Image src={image} /> : null }
+      { image ? <Image src={small ? getThumbnail(image) : image } /> : null }
       { side.srcReal ? <Image src={side.srcReal} /> : null }
     </Box>
   )

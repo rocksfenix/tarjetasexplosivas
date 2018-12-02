@@ -25,22 +25,28 @@ const WorkSchema = new mongoose.Schema({
 
   // Para Locacion de imagenes
   side0: {
-    src: String
+    src: String,
+    thumbnail: String
   },
   side1: {
-    src: String
+    src: String,
+    thumbnail: String
   },
   side2: {
-    src: String
+    src: String,
+    thumbnail: String
   },
   side3: {
-    src: String
+    src: String,
+    thumbnail: String
   },
   side4: {
-    src: String
+    src: String,
+    thumbnail: String
   },
   side5: {
-    src: String
+    src: String,
+    thumbnail: String
   }
 
 }, { timestamps: true })
