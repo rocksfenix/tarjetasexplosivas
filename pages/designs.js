@@ -305,7 +305,7 @@ class DesignsDashboad extends Component {
   }
 
   loadMore = () => {
-    this.setState({ skip: this.state.skip + 15 }, this.fetchDesigns)
+    this.setState({ skip: this.state.skip + 9 }, this.fetchDesigns)
   }
 
   fetchDesigns = async () => {
