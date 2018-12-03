@@ -33,10 +33,12 @@ const DownloadImage = (location, localPath) => new Promise(async (resolve, rejec
 // Redimencionar
 const resize = (localPath, ext, suffix, size) => new Promise(async (resolve, reject) => {
   const location = `${localPath}-${suffix}.${ext}`
-  gm(localPath).resize(size).write(location, (error) => {
-    if (error) reject(error)
-    resolve(location)
-  })
+  gm(localPath)
+    .compress('JPEG-2000')
+    .resize(size).write(location, (error) => {
+      if (error) reject(error)
+      resolve(location)
+    })
 })
 
 // Subir a S3
