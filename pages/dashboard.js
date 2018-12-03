@@ -7,12 +7,17 @@ import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 import CookiesConsent from '../components/CookiesConsent'
 import api from '../client-util/api'
+import CompileCard from '../components/CompileCard'
 
 const Panel = styled.div`
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+`
+
+const Card = styled.div`
+  width: 40%;
 `
 
 class App extends Component {
@@ -51,7 +56,6 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-
     const statistics = await api.Statistics.getAverageCompilationTime()
     console.log(statistics)
     if (!statistics.error) {
@@ -69,19 +73,24 @@ class App extends Component {
         <Navegation user={this.props.user} />
         <h1>Statistics y links para otros recursos</h1>
         <h2>Estadisticas HOY</h2>
-        <h3>Compilacion Promedio: {this.state.statistics.today.average / 1000}s</h3>
-        <h3>Tarjetas Compiladas: {this.state.statistics.today.count}</h3>
-        <h3>Monto Recaudado: ${this.state.statistics.today.amount}</h3>
-        <h3>Tarjetas Creadas: {this.state.statistics.today.works}</h3>
-        <h3>Usuarios Registrados: {this.state.statistics.today.users}</h3>
+
+        <Card>
+          <h3>Tarjetas Compiladas: {this.state.statistics.today.count}</h3>
+          <h3>Monto Recaudado: ${this.state.statistics.today.amount}</h3>
+          <h3>Tarjetas Creadas: {this.state.statistics.today.works}</h3>
+          <h3>Usuarios Registrados: {this.state.statistics.today.users}</h3>
+          <CompileCard time={this.state.statistics.today.average} />
+        </Card>
 
         <hr />
         <h2>Estadisticas Ultimos 3 Dias</h2>
-        <h3>Compilacion Promedio: {this.state.statistics.last3.average / 1000}s</h3>
-        <h3>Tarjetas Compiladas: {this.state.statistics.last3.count}</h3>
-        <h3>Monto Recaudado: ${this.state.statistics.last3.amount}</h3>
-        <h3>Tarjetas Creadas: {this.state.statistics.last3.works}</h3>
-        <h3>Usuarios Registrados: {this.state.statistics.last3.users}</h3>
+        <Card>
+          <h3>Tarjetas Compiladas: {this.state.statistics.last3.count}</h3>
+          <h3>Monto Recaudado: ${this.state.statistics.last3.amount}</h3>
+          <h3>Tarjetas Creadas: {this.state.statistics.last3.works}</h3>
+          <h3>Usuarios Registrados: {this.state.statistics.last3.users}</h3>
+          <CompileCard time={this.state.statistics.last3.average} />
+        </Card>
 
         <hr />
         <h2>Total</h2>

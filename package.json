@@ -67,6 +67,7 @@
     "react-select": "^2.1.1",
     "react-spinners": "^0.4.7",
     "react-table": "^6.8.6",
+    "round-to": "^3.0.0",
     "serve-favicon": "^2.5.0",
     "shortid": "^2.2.14",
     "slugify": "^1.3.3",
