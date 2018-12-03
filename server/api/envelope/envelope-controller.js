@@ -8,9 +8,15 @@ export default {
   getAll: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
 
+    const isAdmin = req.decode.role === 'admin'
+
     let limit = 15
     let skip = 0
     let query = {}
+
+    if (!isAdmin) {
+      query.active = true
+    }
 
     if (typeof req.query.skip !== 'undefined') {
       skip = Number(req.query.skip)

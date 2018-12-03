@@ -29,7 +29,8 @@ Envelope.methods.toJSON = function () {
     position: this.position,
     active: this.active,
     coverThumbnail: this.coverThumbnail,
-    coverThumbnailKey: this.coverThumbnailKey
+    coverThumbnailKey: this.coverThumbnailKey,
+    imageThumbnail: this.imageThumbnail
   }
 }
 

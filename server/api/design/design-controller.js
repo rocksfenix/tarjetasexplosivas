@@ -13,6 +13,10 @@ export default {
     let skip = 0
     let query = {}
 
+    if (req.decode.role !== 'admin') {
+      query.active = true
+    }
+
     if (typeof req.query.skip !== 'undefined') {
       skip = Number(req.query.skip)
     }
@@ -44,7 +48,7 @@ export default {
     let limit = 15
     let skip = 0
     let query = {
-      // published: true,
+      active: true,
       category: req.query.category
     }
 
@@ -92,7 +96,7 @@ export default {
     [
       'title',
       'category',
-      'published'
+      'active'
     ].forEach(key => {
       if (req.body.design[key]) {
         design[key] = req.body.design[key]

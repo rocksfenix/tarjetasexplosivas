@@ -113,7 +113,7 @@ class GalleryComponent extends React.Component {
             { this.state.envelopes.map(photo => (
               <Photo
                 key={photo.key}
-                src={photo.coverLocation}
+                src={photo.coverThumbnail || photo.coverLocation}
                 onClick={this.focusPhoto}
                 isSelected={this.state.imageSelected === photo.imageLocation}
                 size={this.state.photoSize}

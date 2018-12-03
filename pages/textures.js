@@ -6,9 +6,10 @@ import moment from 'moment'
 import api from '../client-util/api'
 import { getUser } from '../client-util/session'
 import Navegation from '../components/Navegation'
-import Dropzone from 'react-dropzone'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CookiesConsent from '../components/CookiesConsent'
+import ImageDrop from '../components/ImageDrop'
+import Checkbox from '../components/Checkbox'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -88,16 +89,6 @@ const CategoryBox = styled.div`
   border-bottom: 1px solid #EEE;
 `
 
-const CategoryImage = styled(Dropzone)`
-  width: 70px;
-  height: 70px;
-  background: gray;
-  background: ${p => `url(${p.src})`};
-  background-size: cover;
-  background-position: center;
-  border: 1px solid gray;
-`
-
 const Column = styled.div`
   width: 180px;
   height: 100%;
@@ -108,28 +99,46 @@ const Column = styled.div`
 `
 
 class Category extends Component {
-  state = { category: {} }
-
-  componentDidMount () {
-    this.setState({ category: this.props.category })
+  state = {
+    texture: {},
+    isUploading: false,
+    preview: ''
   }
 
-  onDrop = (files) => {
-    this.props.onDrop(this.props.category, files[0])
+  componentDidMount () {
+    this.setState({ texture: this.props.texture })
+  }
+
+  onDrop = async (files) => {
+    this.setState({
+      isUploading: true,
+      preview: window.URL.createObjectURL(files[0])
+    })
+
+    const formData = new window.FormData()
+    formData.append('image', files[0])
+    const res = await api.Texture.upload(this.state.texture._id, formData)
+
+    this.props.setTexture(res.texture)
+
+    this.setState({
+      isUploading: false,
+      preview: ''
+    })
   }
 
   update = () => {
-    this.props.onUpdate(this.state.category)
+    this.props.onUpdate(this.state.texture)
   }
 
   delete = () => {
-    this.props.onDelete(this.props.category)
+    this.props.onDelete(this.props.texture)
   }
 
   setTitle = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      texture: {
+        ...this.state.texture,
         title: e.target.value
       }
     })
@@ -137,23 +146,38 @@ class Category extends Component {
 
   setPosition = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      texture: {
+        ...this.state.texture,
         position: e.target.value
       }
     })
   }
 
+  toggleActive = (a, value) => {
+    this.setState({
+      texture: {
+        ...this.state.texture,
+        active: value
+      }
+    })
+  }
+
   render () {
-    const { title, active, createdAt, location, position } = this.props.category
+    const { isUploading, preview } = this.state
+    const { title, active, createdAt, location, thumbnail, position } = this.props.texture
     return (
       <CategoryBox>
-        <CategoryImage onDrop={this.onDrop} accept='image/*' src={location} />
+        <ImageDrop
+          onDrop={this.onDrop}
+          accept='image/*'
+          isUploading={isUploading}
+          src={isUploading ? preview : (thumbnail || location)}
+        />
         <Column>
           <input type='text' defaultValue={title} onChange={this.setTitle} />
         </Column>
         <Column>
-          <input type='checkbox' defaultValue={active} />
+          <Checkbox defaultValue={active} onCheck={this.toggleActive} />
         </Column>
         <Column>
           <input type='text' defaultValue={position} onChange={this.setPosition} />
@@ -207,17 +231,13 @@ class texturesDashboad extends Component {
     this.setState({ textures, hasMore })
   }
 
-  onDrop = async (texture, image) => {
-    const formData = new window.FormData()
-    formData.append('image', image)
-    const res = await api.Texture.upload(texture._id, formData)
-
+  setTexture = async (texture) => {
     this.setState({
-      textures: this.state.textures.map(texture => {
-        if (texture._id === res.texture._id) {
-          return res.texture
+      textures: this.state.textures.map(t => {
+        if (t._id === texture._id) {
+          return texture
         }
-        return texture
+        return t
       })
     })
   }
@@ -292,8 +312,8 @@ class texturesDashboad extends Component {
             { this.state.textures.map(texture => (
               <Category
                 key={texture._id}
-                category={texture}
-                onDrop={this.onDrop}
+                texture={texture}
+                setTexture={this.setTexture}
                 onDelete={this.delete}
                 onUpdate={this.update}
               />

@@ -6,9 +6,10 @@ import moment from 'moment'
 import api from '../client-util/api'
 import { getUser } from '../client-util/session'
 import Navegation from '../components/Navegation'
-import Dropzone from 'react-dropzone'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CookiesConsent from '../components/CookiesConsent'
+import Checkbox from '../components/Checkbox'
+import ImageDrop from '../components/ImageDrop'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -18,13 +19,6 @@ const SearchBox = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #0f141b;
-`
-
-const Center = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const Panel = styled.div`
@@ -95,15 +89,6 @@ const CategoryBox = styled.div`
   border-bottom: 1px solid #EEE;
 `
 
-const CategoryImage = styled(Dropzone)`
-  width: 70px;
-  height: 70px;
-  background: gray;
-  background: ${p => `url(${p.src})`};
-  background-size: cover;
-  background-position: center;
-  border: 1px solid gray;
-`
 
 const Column = styled.div`
   width: 180px;
@@ -114,33 +99,56 @@ const Column = styled.div`
   align-items: center;
 `
 
-class Category extends Component {
-  state = { category: {} }
+class Envelope extends Component {
+  state = {
+    envelope: {},
+    uploadingCover: false,
+    uploadingImage: false,
+    imagePreview: '',
+    coverPreview: ''
+  }
 
   componentDidMount () {
-    this.setState({ category: this.props.category })
+    this.setState({ envelope: this.props.envelope })
   }
 
-  onDropImage = (files) => {
-    this.props.onDropImage(this.props.category, files[0])
+  onDropImage = async (files) => {
+    this.setState({
+      uploadingImage: true,
+      imagePreview: window.URL.createObjectURL(files[0])
+    })
+
+    const formData = new window.FormData()
+    formData.append('image', files[0])
+    const res = await api.Envelope.uploadImage(this.state.envelope._id, formData)
+    this.setState({ uploadingImage: false })
+    this.props.setEnvelope(res.envelope)
   }
 
-  onDropCover = (files) => {
-    this.props.onDropCover(this.props.category, files[0])
+  onDropCover = async (files) => {
+    this.setState({
+      uploadingCover: true,
+      coverPreview: window.URL.createObjectURL(files[0])
+    })
+    const formData = new window.FormData()
+    formData.append('image', files[0])
+    const res = await api.Envelope.uploadCover(this.state.envelope._id, formData)
+    this.setState({ uploadingCover: false })
+    this.props.setEnvelope(res.envelope)
   }
 
   update = () => {
-    this.props.onUpdate(this.state.category)
+    this.props.onUpdate(this.state.envelope)
   }
 
   delete = () => {
-    this.props.onDelete(this.props.category)
+    this.props.onDelete(this.props.envelope)
   }
 
   setTitle = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      envelope: {
+        ...this.state.envelope,
         title: e.target.value
       }
     })
@@ -148,25 +156,49 @@ class Category extends Component {
 
   setPosition = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      envelope: {
+        ...this.state.envelope,
         position: e.target.value
       }
     })
   }
 
+  toggleActive = (a, value) => {
+    this.setState({
+      envelope: {
+        ...this.state.envelope,
+        active: value
+      }
+    })
+  }
+
   render () {
-    const { title, active, createdAt, imageLocation, coverLocation, position } = this.props.category
+    const { uploadingCover, uploadingImage, coverPreview, imagePreview } = this.state
+    const { title, active, createdAt, imageLocation, imageThumbnail, coverLocation, coverThumbnail, position } = this.props.envelope
     return (
       <CategoryBox>
-        <CategoryImage onDrop={this.onDropCover} accept='image/*' src={coverLocation} />
-        <CategoryImage onDrop={this.onDropImage} accept='image/*' src={imageLocation} />
+        <ImageDrop
+          onDrop={this.onDropCover}
+          accept='image/*'
+          isUploading={uploadingCover}
+          src={uploadingCover ? coverPreview : (coverThumbnail || coverLocation)}
+        />
+        <ImageDrop
+          onDrop={this.onDropImage}
+          accept='image/*'
+          isUploading={uploadingImage}
+          src={uploadingImage ? imagePreview : (imageThumbnail || imageLocation)}
+        />
 
         <Column>
           <input type='text' defaultValue={title} onChange={this.setTitle} />
         </Column>
         <Column>
-          <input type='checkbox' defaultValue={active} />
+          <Checkbox
+            defaultValue={active}
+            label='active'
+            onCheck={this.toggleActive}
+          />
         </Column>
         <Column>
           <input type='text' defaultValue={position} onChange={this.setPosition} />
@@ -220,35 +252,15 @@ class texturesDashboad extends Component {
     this.setState({ envelopes, hasMore })
   }
 
-  onDropImage = async (envelope, image) => {
-    const formData = new window.FormData()
-    formData.append('image', image)
-    const res = await api.Envelope.uploadImage(envelope._id, formData)
-
+  setEnvelope = (envelope) => {
     this.setState({
-      envelopes: this.state.envelopes.map(envelope => {
-        if (envelope._id === res.envelope._id) {
-          return res.envelope
+      envelopes: this.state.envelopes.map(env => {
+        if (env._id === envelope._id) {
+          return envelope
         }
-        return envelope
+        return env
       })
     })
-  }
-
-  onDropCover= async (envelope, image) => {
-    const formData = new window.FormData()
-    formData.append('image', image)
-    const res = await api.Envelope.uploadCover(envelope._id, formData)
-
-    this.setState({
-      envelopes: this.state.envelopes.map(envelope => {
-        if (envelope._id === res.envelope._id) {
-          return res.envelope
-        }
-        return envelope
-      })
-    })
-    console.log(res)
   }
 
   updateTitle = (e) => {
@@ -319,14 +331,13 @@ class texturesDashboad extends Component {
             }}
           >
 
-            { this.state.envelopes.map(category => (
-              <Category
-                key={category._id}
-                category={category}
-                onDropImage={this.onDropImage}
-                onDropCover={this.onDropCover}
+            { this.state.envelopes.map(envelope => (
+              <Envelope
+                key={envelope._id}
+                envelope={envelope}
                 onDelete={this.delete}
                 onUpdate={this.update}
+                setEnvelope={this.setEnvelope}
               />
             ))}
           </InfiniteScroll>

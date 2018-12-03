@@ -1,4 +1,3 @@
-// He sido partidario de 2 cosas  creer y crear, creer en tus sueños y crear algo increible con esos sueños
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Router from 'next/router'
@@ -7,9 +6,10 @@ import Select from 'react-select'
 import api from '../client-util/api'
 import { getUser } from '../client-util/session'
 import Navegation from '../components/Navegation'
-import Dropzone from 'react-dropzone'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CookiesConsent from '../components/CookiesConsent'
+import ImageDrop from '../components/ImageDrop'
+import Checkbox from '../components/Checkbox'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -19,13 +19,6 @@ const SearchBox = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #0f141b;
-`
-
-const Center = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const Panel = styled.div`
@@ -48,7 +41,7 @@ const Box = styled.div`
 `
 
 const Button = styled.button`
-margin: 0.4em 0;
+  margin: 0.4em 0;
   font-family: 'Poppins', sans-serif;
   font-size: 25px;
   cursor: pointer;
@@ -96,16 +89,6 @@ const DesignBox = styled.div`
   border-bottom: 1px solid #EEE;
 `
 
-const DesignImage = styled(Dropzone)`
-  width: 70px;
-  height: 70px;
-  background: gray;
-  background: ${p => `url(${p.src})`};
-  background-size: cover;
-  background-position: center;
-  border: 1px solid gray;
-`
-
 const Column = styled.div`
   width: ${p => p.width || '180px'};
   height: 100%;
@@ -123,14 +106,14 @@ const SelectBox = styled.div`
 `
 
 class Design extends Component {
-  state = { design: {} }
+  state = {
+    design: {},
+    isUploading: false,
+    preview: ''
+  }
 
   componentDidMount () {
     this.setState({ design: this.props.design })
-  }
-
-  onDrop = (files) => {
-    this.props.onDrop(this.props.design, files[0])
   }
 
   update = () => {
@@ -168,16 +151,53 @@ class Design extends Component {
     })
   }
 
+  onDrop = async (files) => {
+    this.setState({
+      isUploading: true,
+      preview: window.URL.createObjectURL(files[0])
+    })
+
+    const formData = new window.FormData()
+    formData.append('image', files[0])
+    const res = await api.Design.upload(this.state.design._id, formData)
+
+    this.props.setDesign(res.design)
+
+    this.setState({
+      isUploading: false,
+      preview: ''
+    })
+  }
+
+  toggleActive = (a, value) => {
+    this.setState({
+      design: {
+        ...this.state.design,
+        active: value
+      }
+    })
+  }
+
   render () {
-    const { title, active, createdAt, location, category } = this.props.design
+    const { isUploading, preview } = this.state
+    const { title, active, createdAt, location, thumbnail, category } = this.props.design
     return (
       <DesignBox>
-        <DesignImage onDrop={this.onDrop} accept='image/*' src={location} />
+        <ImageDrop
+          onDrop={this.onDrop}
+          accept='image/*'
+          isUploading={isUploading}
+          src={isUploading ? preview : (thumbnail || location)}
+        />
         <Column>
           <input type='text' defaultValue={title} onChange={this.setTitle} />
         </Column>
         <Column>
-          <input type='checkbox' defaultValue={active} />
+          <Checkbox
+            label='active'
+            defaultValue={active}
+            onCheck={this.toggleActive}
+          />
         </Column>
         <Column width='300px'>
           <SelectBox width='300px'>
@@ -241,20 +261,15 @@ class DesignsDashboad extends Component {
     })
   }
 
-  onDrop = async (design, image) => {
-    const formData = new window.FormData()
-    formData.append('image', image)
-    const res = await api.Design.upload(design._id, formData)
-
+  setDesign = (design) => {
     this.setState({
-      designs: this.state.designs.map(design => {
-        if (design._id === res.design._id) {
-          return res.design
+      designs: this.state.designs.map(de => {
+        if (de._id === design._id) {
+          return design
         }
-        return design
+        return de
       })
     })
-    console.log(res)
   }
 
   updateTitle = (e) => {
@@ -328,7 +343,8 @@ class DesignsDashboad extends Component {
               <Design
                 key={design._id}
                 design={design}
-                onDrop={this.onDrop}
+                // onDrop={this.onDrop}
+                setDesign={this.setDesign}
                 onDelete={this.delete}
                 onUpdate={this.update}
                 options={this.state.albumsDesigns}

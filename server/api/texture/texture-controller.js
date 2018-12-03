@@ -12,6 +12,10 @@ export default {
     let skip = 0
     let query = {}
 
+    if (req.decode.role !== 'admin') {
+      query.active = true
+    }
+
     if (typeof req.query.skip !== 'undefined') {
       skip = Number(req.query.skip)
     }

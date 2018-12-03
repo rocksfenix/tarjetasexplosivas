@@ -9,6 +9,8 @@ import Navegation from '../components/Navegation'
 import Dropzone from 'react-dropzone'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CookiesConsent from '../components/CookiesConsent'
+import ImageDrop from '../components/ImageDrop'
+import Checkbox from '../components/Checkbox'
 
 const SearchBox = styled.div`
   flex-shrink: 0;
@@ -108,28 +110,42 @@ const Column = styled.div`
 `
 
 class Category extends Component {
-  state = { category: {} }
+  state = { album: {} }
 
   componentDidMount () {
-    this.setState({ category: this.props.category })
+    this.setState({ album: this.props.album })
   }
 
-  onDrop = (files) => {
-    this.props.onDrop(this.props.category, files[0])
+  onDrop = async (files) => {
+    this.setState({
+      isUploading: true,
+      preview: window.URL.createObjectURL(files[0])
+    })
+
+    const formData = new window.FormData()
+    formData.append('image', files[0])
+    const res = await api.AlbumDesign.upload(this.state.album._id, formData)
+
+    this.props.setAlbum(res.albumDesign)
+
+    this.setState({
+      isUploading: false,
+      preview: ''
+    })
   }
 
   update = () => {
-    this.props.onUpdate(this.state.category)
+    this.props.onUpdate(this.state.album)
   }
 
   delete = () => {
-    this.props.onDelete(this.props.category)
+    this.props.onDelete(this.props.album)
   }
 
   setTitle = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      album: {
+        ...this.state.album,
         title: e.target.value
       }
     })
@@ -137,23 +153,38 @@ class Category extends Component {
 
   setPosition = (e) => {
     this.setState({
-      category: {
-        ...this.state.category,
+      album: {
+        ...this.state.album,
         position: e.target.value
       }
     })
   }
 
+  toggleActive = (a, value) => {
+    this.setState({
+      album: {
+        ...this.state.album,
+        active: value
+      }
+    })
+  }
+
   render () {
-    const { title, active, createdAt, location, position } = this.props.category
+    const { isUploading, preview } = this.state
+    const { title, active, createdAt, location, thumbnail, position } = this.props.album
     return (
       <CategoryBox>
-        <CategoryImage onDrop={this.onDrop} accept='image/*' src={location} />
+        <ImageDrop
+          onDrop={this.onDrop}
+          accept='image/*'
+          isUploading={isUploading}
+          src={isUploading ? preview : (thumbnail || location)}
+        />
         <Column>
           <input type='text' defaultValue={title} onChange={this.setTitle} />
         </Column>
         <Column>
-          <input type='checkbox' defaultValue={active} />
+          <Checkbox defaultValue={active} onCheck={this.toggleActive} />
         </Column>
         <Column>
           <input type='text' defaultValue={position} onChange={this.setPosition} />
@@ -207,17 +238,13 @@ class texturesDashboad extends Component {
     this.setState({ albumsDesigns, hasMore })
   }
 
-  onDrop = async (category, image) => {
-    const formData = new window.FormData()
-    formData.append('image', image)
-    const res = await api.AlbumDesign.upload(category._id, formData)
-
+  setAlbum = (albumDesign) => {
     this.setState({
-      albumsDesigns: this.state.albumsDesigns.map(albumDesign => {
-        if (albumDesign._id === res.albumDesign._id) {
-          return res.albumDesign
+      albumsDesigns: this.state.albumsDesigns.map(a => {
+        if (a._id === albumDesign._id) {
+          return albumDesign
         }
-        return albumDesign
+        return a
       })
     })
   }
@@ -290,10 +317,11 @@ class texturesDashboad extends Component {
             }}
           >
 
-            { this.state.albumsDesigns.map(category => (
+            { this.state.albumsDesigns.map(album => (
               <Category
-                key={category._id}
-                category={category}
+                key={album._id}
+                album={album}
+                setAlbum={this.setAlbum}
                 onDrop={this.onDrop}
                 onDelete={this.delete}
                 onUpdate={this.update}

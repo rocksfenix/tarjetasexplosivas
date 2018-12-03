@@ -32,6 +32,10 @@ export default {
     let skip = 0
     let query = {}
 
+    if (req.decode.role !== 'admin') {
+      query.active = true
+    }
+
     if (typeof req.query.skip !== 'undefined') {
       skip = Number(req.query.skip)
     }
@@ -79,7 +83,7 @@ export default {
       'position',
       'active'
     ].forEach(key => {
-      if (req.body.albumDesign[key]) {
+      if (typeof req.body.albumDesign[key] !== 'undefined') {
         album[key] = req.body.albumDesign[key]
       }
     })

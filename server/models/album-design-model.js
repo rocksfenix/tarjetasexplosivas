@@ -13,7 +13,7 @@ const AlbumDesignSchema = new mongoose.Schema({
   position: Number,
   // Solo mostrar las activas util para
   // para mostrar diseños tematicos de epoca
-  active: Boolean
+  active: { type: Boolean, default: false }
 }, { timestamps: true })
 
 AlbumDesignSchema.methods.toJSON = function () {
