@@ -51,7 +51,7 @@ class GalleryComponent extends React.Component {
   }
 
   loadMore = () => {
-    this.setState({ skip: this.state.skip + 15 }, this.fetchPhotos)
+    this.setState({ skip: this.state.skip + 9 }, this.fetchPhotos)
   }
 
   fetchPhotos = async () => {

@@ -284,7 +284,7 @@ class texturesDashboad extends Component {
   }
 
   loadMore = () => {
-    this.setState({ skip: this.state.skip + 15 }, this.fetch)
+    this.setState({ skip: this.state.skip + 9 }, this.fetch)
   }
 
   fetch = async () => {

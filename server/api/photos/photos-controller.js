@@ -8,7 +8,7 @@ export default {
   getAllSelf: async (req, res, next) => {
     if (!req.decode) return next(ForbiddenError())
 
-    let limit = 15
+    let limit = 9
     let skip = 0
     let query = {
       // Solo las imagenes propias

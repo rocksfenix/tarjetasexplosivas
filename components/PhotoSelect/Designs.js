@@ -129,7 +129,7 @@ class DesignsComponent extends React.Component {
   // y el scroll llega abajo
   loadMoreAlbums = () => {
     this.setState({
-      skipAlbums: this.state.skipAlbums + 15
+      skipAlbums: this.state.skipAlbums + 9
     }, this.fetchAlbums)
   }
 
@@ -217,7 +217,7 @@ class DesignsComponent extends React.Component {
   // agregan  a ese album
   loadMoreDesigns = async () => {
     const { albums, currentAlbumID, albumTitle } = this.state
-    const skip = albums[currentAlbumID].skip + 15
+    const skip = albums[currentAlbumID].skip + 9
     this.state.albums[currentAlbumID].skip = skip
     const id = currentAlbumID
     const res = await api.Design.getByCategory(albumTitle, skip)
