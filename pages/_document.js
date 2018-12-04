@@ -29,10 +29,9 @@ export default class MyDocument extends Document {
           {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
           <script async src='https://www.googletagmanager.com/gtag/js?id=UA-129457225-1' />
           <script src='/static/js/gtag.js' />
-          <noscript><img height='1' width='1' style='display:none'
+          <noscript><img height='1' width='1' style={{ display: 'none' }}
             src='https://www.facebook.com/tr?id=935365103327627&ev=PageView&noscript=1'
           /></noscript>
-
         </Head>
         <body>
           <Main />
