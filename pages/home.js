@@ -193,7 +193,7 @@ export default class extends Component {
             Aqui hay un pero, si es una tarjeta que explota confeti la cosa cambia o no? Revisa este video:
           </Parragraph>
 
-          <VideoLanding />
+          <VideoLanding videoId='hcr56y3zbh' />
 
           <Parragraph>
             Apoco no esta hermoso, genial, unico, cool, way, chevere!!! Bueno lo mejor de todo que sera
