@@ -195,6 +195,13 @@ class MessageComponent extends React.Component {
 
   getRandomSize = () => `${getRandomInt(20, 45)}px`
 
+  keyPress = (e) => {
+    if (e.keyCode === 13) {
+      const input = document.getElementById('messageInputText')
+      input.blur()
+    }
+  }
+
   render () {
     const { colorType } = this.state
     return (
@@ -210,7 +217,9 @@ class MessageComponent extends React.Component {
               <canvas width='500' height='500' style={{ width: '100%' }} ref={this.canvasEl} />
             </CanvasBox>
             <Tools>
-              <Input value={this.state.text} type='text' onChange={this.changeText} />
+              <Input
+                id='messageInputText'
+                value={this.state.text} type='text' onChange={this.changeText} onKeyDown={this.keyPress}/>
               <ColorType onChange={this.onChangeColorType} colorType={colorType} />
               {
                 colorType === 'multicolor'
