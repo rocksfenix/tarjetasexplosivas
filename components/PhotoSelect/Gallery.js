@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import api from '../../client-util/api'
 import GalleryPanel from '../GalleryPanel'
-// import { setCookie } from '../../client-util/session'
+import Loading from '../Loading'
 
 const Albums = styled.div`
   width: 100%;
@@ -13,7 +13,6 @@ const Albums = styled.div`
   top: 0;
   background: #FFF;
   z-index: 100;
-
 `
 const Photo = styled.img`
   width: ${p => `${p.size}px` || '200px'};
@@ -43,7 +42,8 @@ class GalleryComponent extends React.Component {
     noPhotos: false,
     skip: 0,
     imageSelected: null,
-    photoSize: 0
+    photoSize: 0,
+    isFetching: true
   }
 
   async componentDidMount () {
@@ -59,7 +59,8 @@ class GalleryComponent extends React.Component {
     this.setState({
       photos: [ ...this.state.photos, ...res.photos ],
       hasMore: res.hasMore,
-      noPhotos: res.photos.length === 0
+      noPhotos: res.photos.length === 0,
+      isFetching: false
     })
   }
 
@@ -116,8 +117,9 @@ class GalleryComponent extends React.Component {
               flexGrow: 1
 
             }}
-            loader={'loading'}
+            loader={<Loading />}
           >
+            { this.state.isFetching ? <Loading /> : null }
             { !this.state.photos ? <Text>Wops! Aun no tienes ninguna foto.</Text> : null }
             { this.state.photos.map(photo => (
               <Photo

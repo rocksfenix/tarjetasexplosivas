@@ -10,6 +10,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import CookiesConsent from '../components/CookiesConsent'
 import InfoAccount from '../components/Account/InfoAccount'
 import RemoveModal from '../components/Account/RemoveModal'
+import Loading from '../components/Loading'
 
 moment.locale('es')
 
@@ -213,7 +214,8 @@ class App extends Component {
     invoices: [],
     hasMoreInvoices: false,
     skipInvoices: 0,
-    hasFetched: false
+    hasFetched: false,
+    isFetching: true
   }
 
   componentDidMount () {
@@ -225,7 +227,7 @@ class App extends Component {
     // console.log(user)
     const { invoices, hasMore } = await api.Invoice.getAll()
 
-    this.setState({ user, invoices, hasMoreInvoices: hasMore, hasFetched: true })
+    this.setState({ user, invoices, hasMoreInvoices: hasMore, hasFetched: true, isFetching: false })
   }
 
   loadMore = () => {
@@ -336,7 +338,7 @@ class App extends Component {
               next={this.loadMore}
               hasMore={this.state.hasMoreInvoices}
               scrollableTarget='scrollableInvoices'
-              loader={'loading'}
+              loader={<Loading />}
             >
               {
                 !this.state.invoices.length && this.state.hasFetched

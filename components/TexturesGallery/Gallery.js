@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import api from '../../client-util/api'
 import Router from 'next/router'
 import GalleryPanel from '../GalleryPanel'
+import Loading from '../Loading'
 
 const Albums = styled.div`
   width: 100%;
@@ -38,7 +39,8 @@ class GalleryComponent extends React.Component {
     hasMore: true,
     noPhotos: false,
     skip: 0,
-    imageSelected: null
+    imageSelected: null,
+    isFetching: true
     // imageSelectedSource: 'source'
   }
 
@@ -55,7 +57,8 @@ class GalleryComponent extends React.Component {
     this.setState({
       textures: [ ...this.state.textures, ...res.textures ],
       hasMore: res.hasMore,
-      noPhotos: res.textures.length === 0
+      noPhotos: res.textures.length === 0,
+      isFetching: false
     })
   }
 
@@ -109,8 +112,9 @@ class GalleryComponent extends React.Component {
               overflowY: 'hidden'
 
             }}
-            loader={'loading'}
+            loader={<Loading />}
           >
+            { this.state.isFetching ? <Loading /> : null }
             { this.state.noPhotos ? <Text>Wops! Aun no tienes ninguna foto.</Text> : null }
             { this.state.textures.map(texture => (
               <Photo

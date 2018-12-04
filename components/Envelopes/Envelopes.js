@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import api from '../../client-util/api'
 import GalleryPanel from '../GalleryPanel'
+import Loading from '../Loading'
 
 const Albums = styled.div`
   width: 100%;
@@ -42,7 +43,8 @@ class GalleryComponent extends React.Component {
     noPhotos: false,
     skip: 0,
     imageSelected: null,
-    photoSize: 0
+    photoSize: 0,
+    isFetching: true
   }
 
   async componentDidMount () {
@@ -58,7 +60,8 @@ class GalleryComponent extends React.Component {
     this.setState({
       envelopes: [ ...this.state.envelopes, ...res.envelopes ],
       hasMore: res.hasMore,
-      noPhotos: res.envelopes.length === 0
+      noPhotos: res.envelopes.length === 0,
+      isFetching: false
     })
   }
 
@@ -107,8 +110,9 @@ class GalleryComponent extends React.Component {
               'flexGrow': 1
 
             }}
-            loader={'loading'}
+            loader={<Loading />}
           >
+            { this.state.isFetching ? <Loading /> : null }
             { !this.state.envelopes ? <Text>Wops! Aun no tienes ninguna foto.</Text> : null }
             { this.state.envelopes.map(photo => (
               <Photo

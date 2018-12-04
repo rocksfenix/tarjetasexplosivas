@@ -23,6 +23,9 @@ const Tools = styled.div`
   border: 1px solid #e6e6e6;
   border-radius: 3px;
   padding: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (max-width: 900px) {
     width: 100%;
@@ -247,7 +250,6 @@ class MessageComponent extends React.Component {
             </Tools>
           </View>
         </Editor>
-
       </GalleryPanel>
     )
   }

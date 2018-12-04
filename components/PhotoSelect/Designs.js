@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import Router from 'next/router'
 import api from '../../client-util/api'
 import GalleryPanel from '../GalleryPanel'
+import Loading from '../Loading'
 
 const Albums = styled.div`
   width: 100%;
@@ -85,7 +86,8 @@ class DesignsComponent extends React.Component {
     albumsDesigns: [],
     hasMoreAlbums: true,
     skipAlbums: 0,
-    imageSelected: null
+    imageSelected: null,
+    isFetching: true
   }
 
   async componentDidMount () {
@@ -94,7 +96,7 @@ class DesignsComponent extends React.Component {
       window.addEventListener('popstate', this.popstate)
     }
 
-    this.setState({ albumsDesigns, hasMoreAlbums: hasMore })
+    this.setState({ albumsDesigns, hasMoreAlbums: hasMore, isFetching: false })
   }
 
   componentWillUnmount () {
@@ -272,7 +274,7 @@ class DesignsComponent extends React.Component {
                   hasMore={currentAlbum.hasMore}
                   scrollableTarget='scphotos'
                   style={this.scrollStyle}
-                  loader={'loading'}
+                  loader={<Loading />}
                 >
                   { currentAlbum.designs.map(photo => (
                     <Photo
@@ -298,8 +300,9 @@ class DesignsComponent extends React.Component {
                   hasMore={hasMoreAlbums}
                   scrollableTarget='scrollableGallery'
                   style={this.scrollStyle}
-                  loader={'loading'}
+                  loader={<Loading />}
                 >
+                  { this.state.isFetching ? <Loading /> : null }
                   { !albumsDesigns.length ? <Text>Wops! No hay ninguna foto en este album.</Text> : null }
                   { albumsDesigns.map(category => (
                     <Album
