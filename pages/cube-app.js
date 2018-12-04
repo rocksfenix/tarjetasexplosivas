@@ -114,6 +114,11 @@ class App extends Component {
       window.addEventListener('resize', this.resize)
       window.addEventListener('popstate', this.popstate)
 
+      // FB Pixel
+      window.fbq('track', 'ViewContent', {
+        content_ids: 'showCube'
+      })
+
       if ((this.state.isFinish || this.state.work.location) && !this.state.paymentModal) {
         party()
       }
@@ -259,11 +264,11 @@ class App extends Component {
   }
 
   check = (isCompleted) => {
-    console.log('isCOmpleted', isCompleted)
-    // debugger
-    // const { side0, side1, side2, side3, side4, side5 } = work
     if (isCompleted) {
-      // TODO habilidar cuando este lista para produccion
+      // FB Pixel
+      window.fbq('track', 'ViewContent', {
+        content_ids: 'cubeCompleted'
+      })
       this.setState({ isFinish: true })
       party()
       window.setTimeout(() => party(), 4000)

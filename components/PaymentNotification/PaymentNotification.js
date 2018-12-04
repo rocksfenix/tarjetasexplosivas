@@ -38,32 +38,47 @@ const Icon = styled.i`
 
 export default class extends Component {
   state = {
-    show: false
+    show: false,
+    showed: false
   }
 
-  static getDerivedStateFromProps (nextProps) {
-    if (nextProps.query && nextProps.show && nextProps.user) {
-      const credits = nextProps.user.credits
-      const isSuccess = nextProps.query.payment === 'success'
-      const plural = credits > 1 ? 's' : ''
-      const bgColor = isSuccess
-        ? '#27bf3f'
-        : 'orangered'
-      const message = isSuccess
-        ? `El pago fue realizado y ahora tienes ${credits} credito${plural} disponible${plural}`
-        : 'Wops no se pudo completar tu pago'
+  componentDidUpdate () {
+    if (this.props.query && this.props.show && this.props.user) {
+      if (!this.state.showed) {
+        this.state.showed = true
+        const credits = this.props.user.credits
+        const isSuccess = this.props.query.payment === 'success'
+        const plural = credits > 1 ? 's' : ''
+        const bgColor = isSuccess
+          ? '#27bf3f'
+          : 'orangered'
+        const message = isSuccess
+          ? `El pago fue realizado y ahora tienes ${credits} credito${plural} disponible${plural}`
+          : 'Wops no se pudo completar tu pago'
 
-      // Si el success y tiene creditos
-      let show = isSuccess && credits > 0
+        // Si el success y tiene creditos
+        let show = isSuccess && credits > 0
 
-      // Si no es success y no tiene creditos
-      if (!isSuccess && credits === 0) show = true
-      // SI no hay nada
-      if (!nextProps.query.payment) show = false
+        // Si no es success y no tiene creditos
+        if (!isSuccess && credits === 0) show = true
+        // SI no hay nada
+        if (!this.props.query.payment) show = false
+        this.setState({ show, message, bgColor })
 
-      return { show, message, bgColor }
-    } else {
-      return { show: false }
+        let value = 0
+
+        if (credits === 1) value = 4.99
+        if (credits === 2) value = 7.99
+        if (credits >= 4) value = 9.99
+
+        // FB Pixel
+        window.fbq('track', 'Purchase', {
+          value,
+          currency: 'USD'
+        })
+
+        console.log('Pucharse Completed')
+      }
     }
   }
 

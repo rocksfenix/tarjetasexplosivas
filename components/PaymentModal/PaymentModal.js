@@ -14,7 +14,6 @@ const Panel = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  /* padding: 0.5em; */
   padding-top: 1em;
   padding-bottom: 3em;
   top: 0;
@@ -167,6 +166,10 @@ export default class extends React.Component {
     showPricing: true
   })
 
+  clickPaypal = () => {
+    window.fbq('track', 'InitiateCheckout')
+  }
+
   render () {
     // console.log('this.props.how', this.props.show)
     // href={`/api/payment/${this.props.work._id}`}
@@ -214,9 +217,9 @@ export default class extends React.Component {
                     <PaypalText>* Precios en USD</PaypalText>
                   </Paypal>
 
-                  <ButtonPricing href={`/api/payment/${this.props.work._id}/1`}>1 Diseño por $ 4.<Small normal>99</Small></ButtonPricing>
-                  <ButtonPricing href={`/api/payment/${this.props.work._id}/2`}>2 Diseños por $ 7.<Small normal>99</Small></ButtonPricing>
-                  <ButtonPricing href={`/api/payment/${this.props.work._id}/4`}>4 Diseños por $ 9.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/1`}>1 Diseño por $ 4.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/2`}>2 Diseños por $ 7.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/4`}>4 Diseños por $ 9.<Small normal>99</Small></ButtonPricing>
                 </ButtonsBlock>
               </Information>
             )

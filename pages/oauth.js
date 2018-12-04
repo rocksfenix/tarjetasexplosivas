@@ -43,6 +43,8 @@ export default class extends Component {
         setCookie('jwt', this.props.token)
         setCookie('jwt-rfs', this.props.refreshToken)
         setCookie(config.user_cookie_key, this.props.user)
+        // FB Pixel
+        window.fbq('track', 'CompleteRegistration')
         if (jwtDecode(this.props.token).acpp === 'false') {
           window.location = '/terms'
         } else {
