@@ -60,6 +60,7 @@
     "react": "^16.6.3",
     "react-avatar-editor": "^11.0.4",
     "react-click-outside": "^3.0.1",
+    "react-color": "^2.14.1",
     "react-dom": "^16.6.3",
     "react-dropzone": "^7.0.1",
     "react-headroom": "^2.2.4",
