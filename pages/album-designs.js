@@ -255,12 +255,10 @@ class texturesDashboad extends Component {
 
   createNew = async () => {
     const res = await api.AlbumDesign.post({ title: this.state.title })
-    console.log(res)
     this.setState({ albumsDesigns: [ res.albumDesign, ...this.state.albumsDesigns ], title: '' })
   }
 
   update = async (albumDesign) => {
-    console.log(albumDesign)
     const res = await api.AlbumDesign.update(albumDesign)
 
     this.setState({
@@ -271,7 +269,6 @@ class texturesDashboad extends Component {
         return albumDesign
       })
     })
-    console.log(res)
   }
 
   delete = async (albumDesign) => {
@@ -280,7 +277,6 @@ class texturesDashboad extends Component {
     this.setState({
       albumsDesigns: this.state.albumsDesigns.filter(albumDesign => albumDesign._id !== res.albumDesign._id)
     })
-    console.log(res)
   }
 
   loadMore = () => {

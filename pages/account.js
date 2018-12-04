@@ -224,7 +224,6 @@ class App extends Component {
 
   loadData = async () => {
     const { user } = await api.User.get()
-    // console.log(user)
     const { invoices, hasMore } = await api.Invoice.getAll()
 
     this.setState({ user, invoices, hasMoreInvoices: hasMore, hasFetched: true, isFetching: false })
@@ -236,7 +235,6 @@ class App extends Component {
 
   fetchTickets = async () => {
     const res = await api.Invoice.getAll(this.state.skipInvoices)
-    console.log(res)
     this.setState({
       invoices: [ ...this.state.invoices, ...res.invoices ],
       hasMoreInvoices: res.hasMore
@@ -285,14 +283,12 @@ class App extends Component {
       ...this.state.user,
       ...userData
     }
-    const res = await api.User.update(data)
+    await api.User.update(data)
 
     this.setState({ user: data })
-    console.log(res)
   }
 
   render () {
-    console.log(this.state)
     return (
       <Panel>
         <SeoHead title='Cuenta' />

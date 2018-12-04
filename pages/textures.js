@@ -248,7 +248,6 @@ class texturesDashboad extends Component {
 
   createNew = async () => {
     const res = await api.Texture.post({ title: this.state.title })
-    console.log(res)
     this.setState({ textures: [ res.texture, ...this.state.textures ], title: '' })
   }
 
@@ -263,7 +262,6 @@ class texturesDashboad extends Component {
         return texture
       })
     })
-    console.log(res)
   }
 
   delete = async (texture) => {
@@ -272,7 +270,6 @@ class texturesDashboad extends Component {
     this.setState({
       textures: this.state.textures.filter(texture => texture._id !== res.texture._id)
     })
-    console.log(res)
   }
 
   loadMore = () => {

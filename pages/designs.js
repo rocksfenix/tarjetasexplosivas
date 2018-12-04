@@ -278,7 +278,6 @@ class DesignsDashboad extends Component {
 
   createNew = async () => {
     const res = await api.Design.post({ title: this.state.title })
-    console.log(res)
     this.setState({ designs: [ res.design, ...this.state.designs ], title: '' })
   }
 
@@ -293,7 +292,6 @@ class DesignsDashboad extends Component {
         return design
       })
     })
-    console.log(res)
   }
 
   delete = async (design) => {
@@ -310,7 +308,6 @@ class DesignsDashboad extends Component {
 
   fetchDesigns = async () => {
     const res = await api.Design.getAll(this.state.skip)
-    console.log(res)
     this.setState({
       designs: [ ...this.state.designs, ...res.designs ],
       hasMore: res.hasMore
@@ -318,7 +315,6 @@ class DesignsDashboad extends Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <Panel>
         <Navegation user={this.props.user} />

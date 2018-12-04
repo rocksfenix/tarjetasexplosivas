@@ -130,7 +130,6 @@ class FacebookComponent extends React.Component {
       source: url[6], // facebook designs gallery
       subId: url[7]
     }
-    console.log()
 
     if (!params.subId) {
       this.setState({ albumDetails: false, imageSelected: null })
@@ -154,7 +153,6 @@ class FacebookComponent extends React.Component {
   authorize = () => {
     window.FB.login(async (res) => {
       if (res.authResponse) {
-        console.log(res)
         const response = await api.User.updateFBAccessToken(res.authResponse.accessToken)
         // TODO IMPORTANTE REVISAR QUE OBTENEMOS DE AKI EN BACKEND
         // setCookie('jwt', response.token)
@@ -173,7 +171,7 @@ class FacebookComponent extends React.Component {
 
   getAlbums = () => {
     this.setState({ loading: true })
-    console.log(this.props.user.facebook_access_token)
+
     window.FB.api(
       '/me',
       'GET',
@@ -185,10 +183,8 @@ class FacebookComponent extends React.Component {
         // Insert your code here
         if (res.error) {
           // show authorize button here
-          console.log(res)
           this.setState({ requiredFBToken: true, loading: false })
         } else {
-          console.log(res)
           this.setState({ albums: res.albums, loading: false })
         }
       }

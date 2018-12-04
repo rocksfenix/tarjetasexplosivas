@@ -91,13 +91,10 @@ class App extends Component {
         hasMore: res.hasMore
       })
     } catch (error) {
-      // console.log(error.response.status)
-      // debugger
     }
   }
 
   render () {
-    console.log(this.props)
     return (
       <Panel id='scrollableWorks'>
         <SeoHead title='Tus Diseños' />

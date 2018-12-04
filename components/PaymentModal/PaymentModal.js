@@ -171,8 +171,6 @@ export default class extends React.Component {
   }
 
   render () {
-    // console.log('this.props.how', this.props.show)
-    // href={`/api/payment/${this.props.work._id}`}
     if (!this.props.show) return null
     return (
       <Panel>

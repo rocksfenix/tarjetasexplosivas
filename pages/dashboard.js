@@ -57,7 +57,6 @@ class App extends Component {
 
   componentDidMount = async () => {
     const statistics = await api.Statistics.getAverageCompilationTime()
-    console.log(statistics)
     if (!statistics.error) {
       this.setState({
         statistics
@@ -66,7 +65,6 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <Panel>
         <SeoHead title='Dashbaord' />

@@ -113,7 +113,6 @@ class GalleryPanel extends React.Component {
   }
   render () {
     const { children, onBack, onConfirm, confirmActive, message } = this.props
-    console.log(this.props)
     return (
       <Panel >
         {

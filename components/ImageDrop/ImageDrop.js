@@ -34,7 +34,6 @@ const Preloading = styled.div`
 `
 
 export default ({ src, onDrop, isUploading }) => {
-  console.log(isUploading, src)
   return (
     <DropBoxPanel>
       { isUploading ? <Preloading><RotateLoader color='#0057ff' /></Preloading> : null }

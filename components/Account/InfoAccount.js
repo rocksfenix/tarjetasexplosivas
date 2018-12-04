@@ -52,7 +52,6 @@ class InfoAccountComponent extends Component {
   }
 
   componentWillMount () {
-    console.log(this.props)
     this.setState({
       data: { ...this.props.user }
     })

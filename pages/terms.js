@@ -111,7 +111,6 @@ export default class extends Component {
   submit = async () => {
     if (this.getChecked()) {
       const res = await api.User.acceptTerms()
-      console.log(res)
       if (res.token) {
         setCookie('jwt', res.token)
         setCookie('jwt-rfs', res.refreshToken)

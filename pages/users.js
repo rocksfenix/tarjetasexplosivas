@@ -168,7 +168,7 @@ class User extends Component {
 
   render () {
     const { fullname, status, createdAt, email, role, avatar, credits, cards, purchaseCredits } = this.props.user
-    // console.log(this.props)
+
     return (
       <DesignBox>
         <Avatar src={avatar || 'https://d39p6dv27gzlaf.cloudfront.net/static/img/user-default.jpg'} />
@@ -312,8 +312,6 @@ class DesignsDashboad extends Component {
   }
 
   update = async (user) => {
-    console.log(user)
-
     const res = await api.User.update(user)
 
     this.setState({
@@ -324,7 +322,6 @@ class DesignsDashboad extends Component {
         return user
       })
     })
-    console.log(res)
   }
 
   delete = async (user) => {
@@ -341,7 +338,6 @@ class DesignsDashboad extends Component {
 
   fetch = async () => {
     const res = await api.User.getAll(this.state.skip)
-    console.log(res)
     this.setState({
       users: [ ...this.state.users, ...res.users ],
       hasMore: res.hasMore
@@ -349,15 +345,12 @@ class DesignsDashboad extends Component {
   }
 
   searchUser = async (name) => {
-    console.log(name)
     const res = await api.User.findByName(name)
-    console.log(res)
 
     this.setState({ users: res.users })
   }
 
   render () {
-    // console.log(this.state)
     return (
       <Panel>
         <Navegation user={this.props.user} />

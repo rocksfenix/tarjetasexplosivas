@@ -214,7 +214,6 @@ export default class extends Component {
                 : null
             }
 
-            
             <Subtitle>No tienes cuenta?
               <Link href='/crear-cuenta' passHref>
                 <a> Registrate</a>

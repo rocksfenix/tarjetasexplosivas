@@ -50,7 +50,6 @@ export default class extends Component {
   }
 
   apply = async () => {
-    console.log('APPLYING', this.state)
     const res = await api.Coupon.apply(this.state.code)
 
     console.log(res)

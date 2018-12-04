@@ -104,8 +104,6 @@ class App extends Component {
     const { user } = await api.User.get()
     this.setState({ user })
 
-    // console.log(user)
-    // const user = {}
     if (process.browser) {
       this.setState({
         height: window.innerHeight,
@@ -174,7 +172,6 @@ class App extends Component {
 
   load = async () => {
     const res = await api.Work.getById(this.props.params.id)
-    console.log(res)
     this.setState({ work: res.work }, () => {
       this.check(res.isCompleted)
     })
@@ -227,12 +224,10 @@ class App extends Component {
     this.setState({ work, modal: '' })
 
     // solo actualizar en db
-    // console.log(work)
     const res = await api.Photo.saveSide(work._id, sideInFocusName, src)
     // Work.update(work)
 
     // workId, side, sideSrc
-    console.log(res)
     this.check(res.isCompleted)
   }
 
@@ -254,7 +249,6 @@ class App extends Component {
 
     // Si no se esta mostrando el modal
     // actualiza el uploading
-    console.log(res)
     work[sideInFocusName] = {
       srcReal: res.photo.location,
       uploading: false,
@@ -323,7 +317,6 @@ class App extends Component {
 
     // solo actualizar en db
     const res = await api.Photo.saveEnvelopeDB(this.state.work._id, src)
-    console.log(res)
     this.check()
   }
 
@@ -333,7 +326,7 @@ class App extends Component {
 
   render () {
     const { modal, work, paymentModal } = this.state
-    // console.log(this.state.work)
+
     return (
       <Panel height={this.state.height}>
         <SeoHead title='Diseña tu tarjeta Explosiva' />

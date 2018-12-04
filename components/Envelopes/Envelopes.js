@@ -86,7 +86,6 @@ class GalleryComponent extends React.Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <GalleryPanel
         onBack={this.props.onBack}

@@ -254,7 +254,7 @@ class DesignsComponent extends React.Component {
   render () {
     const { albumTitle, albums, currentAlbumID, imageSelected, albumsDesigns, hasMoreAlbums, photoSize } = this.state
     const currentAlbum = albums[currentAlbumID]
-    console.log(albumsDesigns)
+
     return (
       <GalleryPanel
         onBack={this.onBack}

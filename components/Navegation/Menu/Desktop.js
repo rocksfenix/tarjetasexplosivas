@@ -59,7 +59,7 @@ export default class extends React.Component {
           : (
             <Block>
               <Link href='/cube-app/new'>Crear</Link>
-              <Link href='/ejemplos'>Ejemplos</Link>
+              {/* <Link href='/ejemplos'>Ejemplos</Link> */}
               <Link href='/login'>Login</Link>
               <Link href='/crear-cuenta'>Registro</Link>
             </Block>

@@ -55,7 +55,6 @@ class ConcentComponent extends Component {
   componentDidMount () {
     if (process.browser) {
       const consent = getCookie('cookieConsent')
-      console.log(consent)
       this.setState({ show: !consent })
     }
   }

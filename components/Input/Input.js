@@ -202,7 +202,6 @@ class TextFieldComponent extends Component {
       border = '1px solid #2ac84f'
       color = '#2ac84f'
     }
-    // console.log(border)
 
     const styles = {
       Input: {

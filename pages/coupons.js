@@ -228,7 +228,6 @@ class texturesDashboad extends Component {
 
   createNew = async () => {
     const res = await api.Coupon.create()
-    console.log(res)
     this.setState({ coupons: [ res.coupon, ...this.state.coupons ], title: '' })
   }
 
@@ -244,7 +243,6 @@ class texturesDashboad extends Component {
         return coupon
       })
     })
-    console.log(res)
   }
 
   delete = async (coupon) => {
@@ -253,7 +251,6 @@ class texturesDashboad extends Component {
     this.setState({
       coupons: this.state.coupons.filter(coupon => coupon._id !== res.coupon._id)
     })
-    console.log(res)
   }
 
   loadMore = () => {

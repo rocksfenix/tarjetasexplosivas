@@ -134,7 +134,6 @@ export default class extends Component {
         status = 'Authorized'
       }
     }
-    console.log(isAuthorized)
 
     this.setState({ isAuthorized, status, user, isFetching: false })
 

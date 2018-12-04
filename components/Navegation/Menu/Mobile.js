@@ -112,7 +112,7 @@ class MobileComponent extends React.Component {
                 <Link href='/my-cards'>Mis Tarjetas</Link>
                 <Link href='/cube-app/new'>Crear Nueva Tarjeta</Link>
                 <Link href='/account'>Mi Cuenta</Link>
-                <Link href='/ejemplos'>Ejemplos</Link>
+                {/* <Link href='/ejemplos'>Ejemplos</Link> */}
                 { this.props.user.role === 'admin'
                   ? <Link href='/dashboard'>Dashboard</Link>
                   : null
@@ -122,7 +122,7 @@ class MobileComponent extends React.Component {
             )
             : (
               <Block>
-                <Link href='/ejemplos'>Ejemplos</Link>
+                {/* <Link href='/ejemplos'>Ejemplos</Link> */}
                 <Link href='/cube-app/new'>Crear Nueva</Link>
                 <Link href='/crear-cuenta'>Registrate</Link>
                 <Link href='/login'>Login</Link>

@@ -79,7 +79,7 @@ class PhotoCut extends Component {
               this.props.onCutPhoto(imgResized)
             })
         } catch (error) {
-          console.log(error)
+          // console.log(error)
         }
       }
     })

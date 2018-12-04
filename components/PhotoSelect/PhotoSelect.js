@@ -119,10 +119,6 @@ class ModalComponent extends React.Component {
       subId: url[7]
     }
 
-    // console.log(params)
-
-    // this.setState({ params })
-
     // Si no existe modal se cierra
     if (!params.modal) {
       this.props.closeModal()
@@ -169,7 +165,6 @@ class ModalComponent extends React.Component {
     )
     const { source } = this.state
 
-    console.log(resize.imgURL, source, resize)
     if (source === 'local' || source === 'facebook') {
       // Subir imagen
       this.props.onUploadPhoto(resize)
@@ -181,7 +176,6 @@ class ModalComponent extends React.Component {
   }
 
   onlySave = (imageSrc, thumbnail) => {
-    console.log('Only Save', imageSrc)
     this.setState({ modal: 'options' })
     this.props.closeModal()
     this.props.updateDB(imageSrc, thumbnail)

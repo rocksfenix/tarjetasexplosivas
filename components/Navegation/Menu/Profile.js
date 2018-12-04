@@ -110,7 +110,7 @@ class Menu extends React.Component {
           }
           <Link href='/my-cards'>Mis Tarjetas</Link>
           <Link href='/cube-app/new'>Crear Nueva Tarjeta</Link>
-          <Link href='/ejemplos'>Ejemplos</Link>
+          {/* <Link href='/ejemplos'>Ejemplos</Link> */}
           <Link href='/logout'>Logout</Link>
         </MenuBox>
       </Box>
