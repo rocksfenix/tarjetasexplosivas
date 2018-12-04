@@ -123,7 +123,7 @@ class MobileComponent extends React.Component {
             : (
               <Block>
                 <Link href='/ejemplos'>Ejemplos</Link>
-                <Link href='/app/new'>Crear Nueva</Link>
+                <Link href='/cube-app/new'>Crear Nueva</Link>
                 <Link href='/crear-cuenta'>Registrate</Link>
                 <Link href='/login'>Login</Link>
               </Block>

@@ -26,6 +26,7 @@ const Tools = styled.div`
 
   @media (max-width: 900px) {
     width: 100%;
+    border: 1px solid transparent;
   }
 `
 
@@ -35,8 +36,8 @@ const CanvasBox = styled.div`
   background: rebeccapurplel;
 
   @media (max-width: 900px) {
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 230px;
     margin: 0 auto;
   }
 `
@@ -50,7 +51,8 @@ const View = styled.div`
   justify-content: space-around;
 
   @media (max-width: 900px) {
-    width: 98%;
+    width: 95%;
+    margin: 0 auto;
     flex-direction: column;
   }
 `
@@ -83,9 +85,9 @@ const BG = styled.div`
   width: 98%;
   align-items: center;
   margin: 0 auto 2em auto;
-  border: 1px solid #b1b1b1;
+  border: 1px solid #d6d6d6;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 18px;
 `
 
 class MessageComponent extends React.Component {
