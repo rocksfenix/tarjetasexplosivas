@@ -217,7 +217,6 @@ export default class extends React.Component {
                   <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />1 Hoja en PDF del sobre exterior</Item>
                   <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />1 Hoja en PDF del sobre interior con mensaje personalizado</Item>
                   <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Video Instrucciones paso a paso para crearla</Item>
-                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Soporte Prioritario si tienes dudas</Item>
                 </List>
                 <Note>* No esperes mas, regala este precioso y unico regalo, sin pagar envio, creala hoy con tus propias manos.</Note>
                 <Button onClick={this.onShowPricing}>Lo quiero ♥</Button>
