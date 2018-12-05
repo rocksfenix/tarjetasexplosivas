@@ -160,7 +160,8 @@ export default class extends Component {
       window.fbq('track', 'CompleteRegistration')
 
       if (jwtDecode(res.token).acpp === 'false') {
-        window.location = '/terms'
+        // /terms
+        window.location = '/cube-app/new'
       } else {
         window.location = '/cube-app/new'
       }

@@ -45,7 +45,7 @@ axios.interceptors.response.use((res) => {
 
   if (res.headers['x-no-acpp']) {
     // Se caduco el JWT se rehidratara
-    window.location = '/terms'
+    // window.location = '/terms'
   }
 
   return res

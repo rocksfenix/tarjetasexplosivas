@@ -46,9 +46,11 @@ export default class extends Component {
         // FB Pixel
         window.fbq('track', 'CompleteRegistration')
         if (jwtDecode(this.props.token).acpp === 'false') {
-          window.location = '/terms'
+          // /terms
+          window.location = '/cube-app/new'
         } else {
-          window.location = '/my-cards'
+          // /my-cards
+          window.location = '/cube-app/new'
         }
       }
     }
