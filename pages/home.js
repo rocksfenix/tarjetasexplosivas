@@ -5,7 +5,7 @@ import { getUser } from '../client-util/session'
 import Footer from '../components/Footer'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
-import VideoLanding from '../components/Videos/Video-landing'
+import VideoLanding from '../components/Videos/Video-promo2'
 import ExpiredNotification from '../components/ExpiredNotification'
 import CookiesConsent from '../components/CookiesConsent'
 import CardsPromo1 from '../components/PromosGifs/CardsPromo1'
@@ -138,6 +138,11 @@ const Icon = styled.i`
   font-size: 25px;
 `
 
+const VideoBox = styled.div`
+  width: 70%;
+  margin: 0 auto;
+`
+
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
     let query = {}
@@ -193,7 +198,9 @@ export default class extends Component {
             Aqui hay un pero, si es una tarjeta que explota confeti la cosa cambia o no? Revisa este video:
           </Parragraph>
 
-          <VideoLanding videoId='hcr56y3zbh' />
+          <VideoBox>
+            <VideoLanding videoId='hcr56y3zbh' />
+          </VideoBox>
 
           <Parragraph>
             Apoco no esta hermoso, genial, unico, cool, way, chevere!!! Bueno lo mejor de todo que sera

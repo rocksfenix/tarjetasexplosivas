@@ -164,7 +164,7 @@ export default class extends Component {
           {/* <VideoLanding videoId='2zpj3qxauv' /> */}
           <Parragraph>
 
-          100% personalizada con tus propias fotos y mensajes, lo haras con tus propias manos, sin ningun
+          100% personalizada con tus propias fotos y mensajes, sin ningun
           software especial y sobre todo a un super precio, enserio, gastaras mas en una caja de chocolates
           que en este precioso regalo.
           </Parragraph>
