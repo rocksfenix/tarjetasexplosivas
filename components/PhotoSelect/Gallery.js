@@ -119,7 +119,7 @@ class GalleryComponent extends React.Component {
             loader={<Loading />}
           >
             { this.state.isFetching ? <Loading /> : null }
-            { !this.state.photos ? <Text>Wops! Aun no tienes ninguna foto.</Text> : null }
+            { !this.state.photos.length && !this.state.isFetching ? <Text>Wops! Aun no tienes ninguna foto.</Text> : null }
             { this.state.photos.map(photo => (
               <Photo
                 key={photo.key}
