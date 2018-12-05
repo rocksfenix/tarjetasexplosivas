@@ -27,15 +27,15 @@ const Side = styled.img`
   }
 `
 
-export default ({ active }) => {
+export default ({ active, work: { side0, side1, side2, side3, side4, side5 } }) => {
   return (
     <Panel>
-      { active === 0 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-inactive.svg' /> }
-      { active === 1 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-inactive.svg' /> }
-      { active === 2 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-inactive.svg' /> }
-      { active === 3 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-inactive.svg' /> }
-      { active === 4 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-inactive.svg' /> }
-      { active === 5 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-inactive.svg' /> }
+      { side0.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-completed.svg' /> : (active === 0 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side0-inactive.svg' />) }
+      { side1.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-completed.svg' /> : (active === 1 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side1-inactive.svg' />) }
+      { side2.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-completed.svg' /> : (active === 2 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side2-inactive.svg' />) }
+      { side3.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-completed.svg' /> : (active === 3 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side3-inactive.svg' />) }
+      { side4.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-completed.svg' /> : (active === 4 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side4-inactive.svg' />) }
+      { side5.src ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-completed.svg' /> : (active === 5 ? <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-active.svg' /> : <Side src='https://d39p6dv27gzlaf.cloudfront.net/static/img/cube/side5-inactive.svg' />) }
     </Panel>
   )
 }

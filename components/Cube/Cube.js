@@ -293,7 +293,7 @@ class CubeBlock extends Component {
     // radial-gradient(#beffbe,#ffffff)
     return (
       <Wrapper bg={this.props.isFinish ? 'radial-gradient(#2196F3,#a0fff2)' : 'radial-gradient(#141415,#000000)'}>
-        <Current active={this.currentSide} />
+        <Current active={this.currentSide} work={this.props.work} />
         <Viewport size={this.size}>
           <Cube
             size={this.size}

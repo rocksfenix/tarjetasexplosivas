@@ -96,7 +96,6 @@ export default class extends Component {
   }
 
   state = {
-    terms: false,
     privacy: false
   }
 
@@ -106,7 +105,7 @@ export default class extends Component {
   }
 
   getChecked = () => {
-    return this.state.privacy && this.state.terms
+    return this.state.privacy
   }
 
   submit = async () => {
@@ -118,6 +117,8 @@ export default class extends Component {
         setCookie(config.user_cookie_key, res.user)
         window.location = '/cube-app/new'
       }
+    } else {
+      window.alert('Tienes que aceptar la Politica de Privacidad y terminos de servicio')
     }
   }
 
@@ -129,18 +130,18 @@ export default class extends Component {
           <Present src='https://d39p6dv27gzlaf.cloudfront.net/static/img/privacy2.svg' />
           <H3>Hola {this.props.user ? this.props.user.fullname : ''} </H3>
           <Parragraph>
-              Nos tomamos muy enserio la privacidad de tu informacion. Para poder usar nuestros servicios debes aceptar:
+              Nos tomamos muy enserio la privacidad de tu informacion. Por favor revisa:
             <Checks>
               <Checkbox onCheck={this.onChange} label='privacy'>
                 <PrivacyLink href='/politica-de-privacidad' target='_blank'>
-                  Politica de Privacidad
+                  Politica de Privacidad y terminos de servicio
                 </PrivacyLink>
               </Checkbox>
-              <Checkbox onCheck={this.onChange} label='terms'>
+              {/* <Checkbox onCheck={this.onChange} label='terms'>
                 <PrivacyLink href='/terminos-de-servicio' target='_blank'>
                   Terminos de Servicio
                 </PrivacyLink>
-              </Checkbox>
+              </Checkbox> */}
             </Checks>
           </Parragraph>
           <Button

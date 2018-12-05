@@ -160,6 +160,14 @@ const WowImage = styled.img`
   width: 40px;
 `
 
+const OffBanner = styled.div`
+  background-color: orangered;
+  background: linear-gradient(106deg, #ff8843, #d41aa3);
+  padding: 10px;
+  color: #FFF;
+  border-radius: 7px;
+`
+
 export default class extends React.Component {
   state = {
     showPricing: false
@@ -179,13 +187,12 @@ export default class extends React.Component {
       <Panel>
         {
           !this.state.showPricing
-
             ? (
               <Information>
-                <Section>
+                {/* <Section>
                 El mejor regalo no cuesta <Big>$1000</Big>  USD ni siquiera <Big>$100 </Big> USD<br />
                 Tu puedes crear este regalo unico por solo <Big>$4.<Small>99</Small> </Big>USD
-                </Section>
+                </Section> */}
 
                 <Section>Cumple los requisitos de regalo perfecto:</Section>
                 <List>
@@ -195,8 +202,14 @@ export default class extends React.Component {
                 </List>
 
                 <Section>
+                  <OffBanner>
+
+                  Solo por HOY a solo <Big>$ 3.<Small>99</Small></Big>
+                  </OffBanner>
+                </Section>
+                <Section>
                 Creala en 10 minutos aproximadamente <br />
-                Que obtengo por <Big>$4.<Small>99</Small></Big> ?
+                Que obtengo por los <Big>$3.<Small>99</Small></Big> ?
                 </Section>
                 <List>
                   <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Descarga inmediata de material listo para impresion:</Item>
@@ -207,7 +220,7 @@ export default class extends React.Component {
                   <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Soporte Prioritario si tienes dudas</Item>
                 </List>
                 <Note>* No esperes mas, regala este precioso y unico regalo, sin pagar envio, creala hoy con tus propias manos.</Note>
-                <Button onClick={this.onShowPricing}>Pagar con Paypal</Button>
+                <Button onClick={this.onShowPricing}>Lo quiero ♥</Button>
               </Information>
             )
             : (
@@ -225,9 +238,9 @@ export default class extends React.Component {
                     <PaypalText>* Precios en USD</PaypalText>
                   </Paypal>
 
-                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/1`}>1 Diseño por $ 4.<Small normal>99</Small></ButtonPricing>
-                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/2`}>2 Diseños por $ 7.<Small normal>99</Small></ButtonPricing>
-                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/4`}>4 Diseños por $ 9.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/1`}>1 Diseño por $ 3.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/2`}>2 Diseños por $ 6.<Small normal>99</Small></ButtonPricing>
+                  <ButtonPricing onClick={this.clickPaypal}href={`/api/payment/${this.props.work._id}/4`}>4 Diseños por $ 8.<Small normal>99</Small></ButtonPricing>
                 </ButtonsBlock>
               </Information>
             )
