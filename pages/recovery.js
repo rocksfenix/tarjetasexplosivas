@@ -62,11 +62,11 @@ class Forgot extends Component {
     if (user) {
       if (res) {
         res.writeHead(302, {
-          Location: '/app'
+          Location: '/cube-app'
         })
         res.end()
       } else {
-        Router.push('/app')
+        Router.push('/cube-app')
       }
     }
     return { user, token: req.params.token }
