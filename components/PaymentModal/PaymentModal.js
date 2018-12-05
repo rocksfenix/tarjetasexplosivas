@@ -18,7 +18,7 @@ const Panel = styled.div`
   padding-bottom: 3em;
   top: 0;
   z-index: 30000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.75);
   display: flex;
   animation: ${Anima} ease-out 200ms forwards;
   /* justify-content: center;
@@ -156,6 +156,9 @@ const PaypalText = styled.div`
   font-size: 16px;
   font-weight: 100;
 `
+const WowImage = styled.img`
+  width: 40px;
+`
 
 export default class extends React.Component {
   state = {
@@ -196,20 +199,27 @@ export default class extends React.Component {
                 Que obtengo por <Big>$4.<Small>99</Small></Big> ?
                 </Section>
                 <List>
-                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Descarga inmediata de material:</Item>
-                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Planos en PDF de tu diseño listo para impresion</Item>
-                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Instrucciones de como construirla</Item>
-                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Video paso a paso para crearla</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Descarga inmediata de material listo para impresion:</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />2 Hojas en PDF de tu diseño personalizado para tu tarjeta</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />1 Hoja en PDF del sobre exterior</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />1 Hoja en PDF del sobre interior con mensaje personalizado</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Video Instrucciones paso a paso para crearla</Item>
+                  <Item><Success src='https://d39p6dv27gzlaf.cloudfront.net/static/img/success.svg' />Soporte Prioritario si tienes dudas</Item>
                 </List>
-                <Note>* No esperes mas, regala este precioso y unico regalo.</Note>
+                <Note>* No esperes mas, regala este precioso y unico regalo, sin pagar envio, creala hoy con tus propias manos.</Note>
                 <Button onClick={this.onShowPricing}>Pagar con Paypal</Button>
               </Information>
             )
             : (
               <Information>
-                <Title>Aprobecha y obten descuento por varios diseños de Tarjetas</Title>
+                <Title>
+                  Una es genial pero puedes meter hasta 2 tarjetas en cada sobre WOW
+                  <WowImage
+                    src='http://d39p6dv27gzlaf.cloudfront.net/static/img/wow-increibles-tarjetas-personalizadas.svg' alt='imagen emoticon enamorado'
+                  />
+                  y aprobecha descuento.
+                </Title>
                 <ButtonsBlock>
-
                   <Paypal>
                     <LogoPaypal src='https://d39p6dv27gzlaf.cloudfront.net/static/img/paypal-logo-129x32.svg' />
                     <PaypalText>* Precios en USD</PaypalText>

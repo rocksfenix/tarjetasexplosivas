@@ -72,7 +72,8 @@ class App extends Component {
   }
 
   state = {
-    works: []
+    works: [],
+    skip: 0
   }
 
   componentDidMount () {
@@ -80,7 +81,7 @@ class App extends Component {
   }
 
   loadMore = () => {
-    this.setState({ skip: this.state.skip + 15 }, this.fetch)
+    this.setState({ skip: this.state.skip + 9 }, this.fetch)
   }
 
   fetch = async () => {

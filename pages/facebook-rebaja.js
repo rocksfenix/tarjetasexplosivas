@@ -5,7 +5,7 @@ import { getUser } from '../client-util/session'
 import Footer from '../components/Footer'
 import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
-import VideoLanding from '../components/Videos/Video-landing'
+// import VideoLanding from '../components/Videos/Video-landing'
 import CookiesConsent from '../components/CookiesConsent'
 import CardsPromo1 from '../components/PromosGifs/CardsPromo1'
 
@@ -161,7 +161,7 @@ export default class extends Component {
 
             {/* Ya sea para cumpleaños, aniversario o solo porque quieres dar un regalo hermoso */}
           </Parragraph>
-          <VideoLanding />
+          {/* <VideoLanding videoId='2zpj3qxauv' /> */}
           <Parragraph>
 
           100% personalizada con tus propias fotos y mensajes, lo haras con tus propias manos, sin ningun
