@@ -45,14 +45,14 @@ export default {
             'items': [{
               'name': '1 Diseño Imprimible de Tarjeta Explosiva',
               'sku': '001',
-              'price': '4.99',
+              'price': '3.99',
               'currency': 'USD',
               'quantity': 1
             }]
           },
           'amount': {
             'currency': 'USD',
-            'total': '4.99'
+            'total': '3.99'
           },
           'description': '1 Diseño / planos imprimibles personalizados para Tarjeta Explosiva'
         }]
@@ -64,14 +64,14 @@ export default {
             'items': [{
               'name': '2 Diseños Imprimibles de Tarjetas Explosivas',
               'sku': '002',
-              'price': '7.99',
+              'price': '6.99',
               'currency': 'USD',
               'quantity': 1
             }]
           },
           'amount': {
             'currency': 'USD',
-            'total': '7.99'
+            'total': '6.99'
           },
           'description': '2 Diseños / planos imprimibles personalizados para Tarjetas Explosivas'
         }]
@@ -83,14 +83,14 @@ export default {
             'items': [{
               'name': '4 Diseños Imprimibles de Tarjetas Explosivas',
               'sku': '004',
-              'price': '9.99',
+              'price': '8.99',
               'currency': 'USD',
               'quantity': 1
             }]
           },
           'amount': {
             'currency': 'USD',
-            'total': '9.99'
+            'total': '8.99'
           },
           'description': '4 Diseños / planos imprimibles personalizados para Tarjetas Explosivas'
         }]
@@ -129,7 +129,7 @@ export default {
           'transactions': [{
             'amount': {
               'currency': 'USD',
-              'total': '4.99'
+              'total': '3.99'
             }
           }]
         }
@@ -141,7 +141,7 @@ export default {
           'transactions': [{
             'amount': {
               'currency': 'USD',
-              'total': '7.99'
+              'total': '6.99'
             }
           }]
         }
@@ -153,7 +153,7 @@ export default {
           'transactions': [{
             'amount': {
               'currency': 'USD',
-              'total': '9.99'
+              'total': '8.99'
             }
           }]
         }
