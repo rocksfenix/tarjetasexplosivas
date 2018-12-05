@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import SeoHead from '../components/SeoHead'
 import Checkbox from '../components/Checkbox'
-import Navegation from '../components/Navegation'
+// import Navegation from '../components/Navegation'
 import api from '../client-util/api'
 import { setCookie, getUser } from '../client-util/session'
 import CookiesConsent from '../components/CookiesConsent'
+import config from '../config'
 
 const H3 = styled.h3`
   color: #30233F;
@@ -114,7 +115,7 @@ export default class extends Component {
       if (res.token) {
         setCookie('jwt', res.token)
         setCookie('jwt-rfs', res.refreshToken)
-        setCookie('user', res.user)
+        setCookie(config.user_cookie_key, res.user)
         window.location = '/cube-app/new'
       }
     }
