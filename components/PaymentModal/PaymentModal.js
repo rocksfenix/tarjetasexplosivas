@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import Countdown from 'react-countdown-now'
 
 const Anima = keyframes`
   0% {
@@ -166,6 +167,20 @@ const OffBanner = styled.div`
   padding: 10px;
   color: #FFF;
   border-radius: 7px;
+  font-size: 25px;
+`
+
+const Count = styled.div`
+  border: 1px solid #FFF;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 30px;
+  margin: 15px;
+`
+
+const Muscle = styled.div`
+  font-size: 35px;
+  font-weight: 400;
 `
 
 export default class extends React.Component {
@@ -204,7 +219,16 @@ export default class extends React.Component {
                 <Section>
                   <OffBanner>
 
-                  Solo por HOY a solo <Big>$ 3.<Small>99</Small></Big>
+                  Solo por HOY a solo <Muscle>$ 3.<Small>99</Small></Muscle>
+
+                    <Count>
+                      <Countdown
+                        date={Date.now() + 1000000}
+                        renderer={({ hours, minutes, seconds, completed }) => (
+                          <span>{hours}:{minutes}:{seconds}</span>
+                        )}
+                      />
+                    </Count>
                   </OffBanner>
                 </Section>
                 <Section>
