@@ -264,8 +264,11 @@ class App extends Component {
         content_ids: 'cubeCompleted'
       })
       this.setState({ isFinish: true })
-      party()
-      window.setTimeout(() => party(), 4000)
+
+      if (window.innerWidth >= 900) {
+        party()
+        window.setTimeout(() => party(), 4000)
+      }
     }
   }
 

@@ -7,7 +7,7 @@ import SeoHead from '../components/SeoHead'
 import Navegation from '../components/Navegation'
 // import VideoLanding from '../components/Videos/Video-landing'
 import CookiesConsent from '../components/CookiesConsent'
-import CardsPromo1 from '../components/PromosGifs/CardsPromo1'
+import CardsPromo2 from '../components/PromosGifs/CardsPromo2'
 
 const Title = styled.h1`
   color: #30233F;
@@ -154,27 +154,25 @@ export default class extends Component {
         <SeoHead />
         <Navegation user={this.props.user} />
         <Section>
-          <CardsPromo1 />
+          <CardsPromo2 />
           <Parragraph>
-            Apoco no estaria hermoso, genial, unico, cool, way, chevere regalar este detalle original,
-            personalizado y hecho con el par de manitas lindas que tienes. Asi es, una tarjeta que se hace cubo y explota junto con confeti (inserte cara de wow aqui).
+            {/* Apoco no estaria hermoso, genial, unico, cool, way, chevere regalar este detalle original,
+            personalizado y hecho con el par de manitas lindas que tienes. Asi es, una tarjeta que se hace cubo y explota junto con confeti (inserte cara de wow aqui). */}
 
-            {/* Ya sea para cumpleaños, aniversario o solo porque quieres dar un regalo hermoso */}
           </Parragraph>
           {/* <VideoLanding videoId='2zpj3qxauv' /> */}
-          <Parragraph>
+          {/* <Parragraph>
 
           100% personalizada con tus propias fotos y mensajes, sin ningun
           software especial y sobre todo a un super precio, enserio, gastaras mas en una caja de chocolates
           que en este precioso regalo.
-          </Parragraph>
+          </Parragraph> */}
 
           <Parragraph>
-            * Sin compromiso puedes crear una tarjeta y solo pagas si te gusta el resultado asi
-            como debe ser ohh amigo mio.
+            Puedes crear las tarjetas que quieras y solo pagas si te gusta el resultado.
           </Parragraph>
           <Link href='/crear-cuenta'>
-            <ButtonLink>Crear nueva tarjeta <Icon className='icon-star' /></ButtonLink>
+            <ButtonLink>Crear tarjeta <Icon className='icon-star' /></ButtonLink>
           </Link>
         </Section>
         <Footer />

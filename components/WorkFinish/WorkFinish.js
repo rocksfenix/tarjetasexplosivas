@@ -138,8 +138,8 @@ export default class extends React.Component {
             : (
               <Block>
                 <Text>¡Guau! Ha quedado hermosa</Text>
-                <Text2>Descargar los planos listos para Impresion e instrucciones para hacerla</Text2>
-                <Button onClick={this.props.openPaymentModal}>Obtener Planos</Button>
+                {/* <Text2>Descargar los planos listos para Impresion e instrucciones para hacerla</Text2> */}
+                <Button onClick={this.props.openPaymentModal}>La quiero</Button>
               </Block>
             )
         }
