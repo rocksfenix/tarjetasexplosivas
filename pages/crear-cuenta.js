@@ -185,7 +185,7 @@ export default class extends Component {
         />
         <Wrapper>
           <Form>
-            <Title>CREAR CUENTA GRATIS</Title>
+            <Title>REGISTRATE GRATIS</Title>
             <Subtitle>Con tus redes sociales:</Subtitle>
             <Link href='/api/auth/signup/facebook' passHref>
               <Facebook>Facebook</Facebook>

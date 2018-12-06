@@ -35,7 +35,7 @@ api.get('/api/auth/signup/google', authGoogle.signupOrLogin)
 api.get('/api/auth/signup/google/redirect', authGoogle.callback, authGoogle.redirect)
 
 // Auth Email
-api.post('/api/auth/signup/email', csrfProtection, authEmail.signup)
+api.post('/api/auth/signup/email', authEmail.signup)
 api.post('/api/auth/login/email', csrfProtection, authEmail.login)
 
 // Recuperar pass, envia email a user
