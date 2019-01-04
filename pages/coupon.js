@@ -37,6 +37,15 @@ const Panel = styled.div`
   height: 100vh;
 `
 
+const Message = styled.div`
+  display: ${p => p.show ? 'block' : 'none'};
+  background-color: #38a707;
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  color: #FFFF;
+  display: block;
+`
+
 export default class extends Component {
   static async getInitialProps ({ req, res }) {
     const user = getUser(req)
@@ -53,6 +62,13 @@ export default class extends Component {
     const res = await api.Coupon.apply(this.state.code)
 
     console.log(res)
+
+    if (res.invoice) {
+      this.setState({
+        showMessage: true,
+        message: `Se han aplicado ${res.invoice.credits} creditos a tu cuenta`
+      })
+    }
   }
 
   render () {
@@ -61,9 +77,20 @@ export default class extends Component {
         <SeoHead />
         <Navegation user={this.props.user} />
         <Section>
-          <Title>Ingresa el codigo de tu cupon</Title>
-          <input type='text' value={this.state.code} onChange={this.change} />
-          <button onClick={this.apply}>APPLY</button>
+          {
+            !this.state.showMessage
+              ? (
+                <div>
+                  <Title>Ingresa el codigo de tu cupon</Title>
+                  <input type='text' value={this.state.code} onChange={this.change} />
+                  <button onClick={this.apply}>APPLY</button>
+                </div>
+              )
+              : (
+                <Message show={this.state.showMessage}>{this.state.message}</Message>
+              )
+          }
+
         </Section>
         <CookiesConsent />
       </Panel>
