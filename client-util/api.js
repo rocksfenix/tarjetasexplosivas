@@ -4,7 +4,7 @@ import config from '../config'
 
 const HOST = process.env.NODE_ENV !== 'production'
   ? 'https://localhost:3000'
-  : 'https://morning-everglades-93431.herokuapp.com'
+  : 'https://th-cloud.herokuapp.com'
 
 const logout = () => {
   if (process.browser) {
