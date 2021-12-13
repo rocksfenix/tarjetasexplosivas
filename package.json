@@ -77,7 +77,7 @@
     "svg-to-pdfkit": "^0.1.7",
     "throttle-debounce": "^2.0.1",
     "uuid": "^3.3.2",
-    "validator": "^10.9.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
