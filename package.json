@@ -33,7 +33,7 @@
     "csurf": "^1.9.0",
     "delete": "^1.1.0",
     "dotenv": "^6.1.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-fileupload": "^1.0.0",
     "gm": "^1.23.1",
     "helmet": "^3.15.0",
